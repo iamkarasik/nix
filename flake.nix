@@ -9,7 +9,7 @@
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./hosts/NixOS/configuration.nix
       ];
       specialArgs = { inherit self; };
     };
