@@ -3,15 +3,25 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }: {
-    nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/NixOS/configuration.nix
-      ];
-      specialArgs = { inherit self; };
+  outputs = { self, nixpkgs, home-manager, ... }: {
+    nixosConfigurations = {
+      NixOS = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/NixOS/configuration.nix
+        ];
+        specialArgs = { 
+          inherit self; 
+          username = "goose";
+        };
+      };
     };
   };
 }

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   imports =
@@ -27,11 +27,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-
-  services.getty.autologinUser = "goose";
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -39,6 +34,16 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
+
+  services.displayManager = {
+    autoLogin.user = "goose";
+    sddm = {
+      enable = true; 
+      autoNumlock = true; 
+      wayland.enable = true;
+      theme = "chili";
+    };
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -71,7 +76,12 @@
     rofi-wayland
     swww
     vim
+    waybar
+
+    # sddm themes
+    sddm-chili-theme
+    (import ../../pkgs/sddm/sddm-elegant.nix { inherit pkgs; })
   ];
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11";
 }
