@@ -81,6 +81,9 @@
     # sddm themes
     sddm-chili-theme
     (import ../../pkgs/sddm/sddm-elegant.nix { inherit pkgs; })
+
+    # Cursors
+    catppuccin-cursors.mochaDark
   ];
 
   system.stateVersion = "24.11";
