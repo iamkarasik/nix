@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, username, ... }:
+{ pkgs, username, stateVersion, ... }:
 
 {
   imports =
@@ -56,7 +56,6 @@
     jack.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.goose = {
     isNormalUser = true;
     description = "Goose";
@@ -86,5 +85,5 @@
     catppuccin-cursors.mochaDark
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "${stateVersion}";
 }
