@@ -45,6 +45,9 @@
       "icon-size":20,
       "spacing":16
    },
+   "hyprland/window": {
+     "format": "{initialTitle}"
+   },
    "disk": {
      "interval": 10,
      "format": "{free}  ",
