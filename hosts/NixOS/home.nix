@@ -35,11 +35,13 @@ in
     curl
     wget
     neofetch
+    discord
   ];
 
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;
     ".config/wallpaper".source = ../../dotfiles/wallpaper;
+    ".config/waybar".source = ../../dotfiles/waybar;
   };
 
   home.enableNixpkgsReleaseCheck = false;

@@ -1,0 +1,79 @@
+{
+   "layer":"top",
+   "hyprland/workspaces":{
+     "format":"{name}"
+   },
+   "modules-left":[
+      "custom/launcher",
+      "hyprland/workspaces"
+   ],
+   "modules-center":[
+      "hyprland/window",
+   ],
+   "modules-right":[
+      "tray",
+      "network",
+      "custom/cputemp",
+      "cpu",
+      "custom/memory",
+      "pulseaudio",
+      "clock"
+   ],
+   "pulseaudio":{
+      "tooltip":true,
+      "tooltip-format": "Volume: {volume}%",
+      "exec": "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'",
+      "scroll-step":5,
+      "format":"{icon} ",
+      "format-muted":"🔇",
+      "on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "format-icons":{
+         "default":[
+            "",
+            "",
+            ""
+         ]
+      }
+   },
+   "tray":{
+      "icon-size":20,
+      "spacing":16
+   },
+   "network":{
+      "format-ethernet": "{ipaddr}  ",
+      "tooltip":true,
+      "tooltip-format": "{ipaddr}",
+      "tooltip-format-ethernet": "{ifname}: {ipaddr}",
+      "on-click": "nmapplet"
+   },
+   "clock":{
+      "interval": 1,
+      "tooltip": true,
+      "tooltip-format": "{:%d/%M/%Y %H:%M:%S}",
+      "format": "{:%b %d, %H:%M:%S}"
+   },
+   "cpu":{
+      "interval":15,
+      "format":"{}%  ",
+      "max-length":10
+   },
+   "custom/cputemp":{
+     "interval": 5,
+     "exec": "sensors | awk '/Tctl/ {print $2}'",
+     "format": "{}  ",
+     "tooltip-format": "CPU Temp: {}",
+     "tooltip": true
+   },
+   "custom/memory":{
+     "interval": 5,
+     "exec": "free -h | awk '/Mem:/ {print $3}'",
+     "format":"{}  ",
+     "tooltip-format": "Memory Used: {}",
+     "tooltip": true
+   },
+   "custom/launcher":{
+      "format":" ",
+      "on-click":"rofi -show combi -combi-modi \"window,drun\" --show-icons",
+      "on-click-right":"pkill rofi"
+   }
+}

@@ -72,7 +72,10 @@
     git
     kitty
     libnotify
+    lm_sensors
     (nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" "Noto" ]; })
+    networkmanagerapplet
+    pulseaudio
     rofi-wayland
     swaybg
     swaylock-effects
