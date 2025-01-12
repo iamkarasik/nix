@@ -18,4 +18,9 @@ in
     ripgrep
     fzf
   ];
+
+  home.file = {
+    ".config/zsh/themes".source = ./config/zsh/themes;
+    ".config/zsh/plugins".source = ./config/zsh/plugins;
+  };
 }
