@@ -41,7 +41,7 @@
       enable = true; 
       autoNumlock = true; 
       wayland.enable = true;
-      theme = "chili";
+      theme = "${import ../../pkgs/sddm/chili/chili.nix { inherit pkgs; }}";
     };
   };
 
@@ -72,17 +72,19 @@
     git
     kitty
     libnotify
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" "Noto" ]; })
     rofi-wayland
-    swww
+    swaybg
+    swaylock-effects
     vim
     waybar
+    wl-clipboard
 
-    # sddm themes
-    sddm-chili-theme
-    (import ../../pkgs/sddm/sddm-elegant.nix { inherit pkgs; })
-
-    # Cursors
-    catppuccin-cursors.mochaDark
+    # Start SDDM using QT5+
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+    libsForQt5.qt5.qtsvg
+    # End SDDM
   ];
 
   system.stateVersion = "${stateVersion}";
