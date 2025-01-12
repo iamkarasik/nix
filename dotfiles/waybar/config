@@ -15,10 +15,16 @@
       "network",
       "custom/cputemp",
       "cpu",
-      "custom/memory",
+      "memory",
+      "disk",
       "pulseaudio",
       "clock"
    ],
+   "custom/launcher":{
+      "format":" ",
+      "on-click":"rofi -show combi -combi-modi \"window,drun\" --show-icons",
+      "on-click-right":"pkill rofi"
+   },
    "pulseaudio":{
       "tooltip":true,
       "tooltip-format": "Volume: {volume}%",
@@ -39,12 +45,18 @@
       "icon-size":20,
       "spacing":16
    },
+   "disk": {
+     "interval": 10,
+     "format": "{free}  ",
+     "tooltip": true,
+     "tooltip-format": "Disk Usage: {used} out of {total} ({percentage_used}%)",
+     "on-click": "thunar"
+   },
    "network":{
       "format-ethernet": "{ipaddr}  ",
       "tooltip":true,
       "tooltip-format": "{ipaddr}",
-      "tooltip-format-ethernet": "{ifname}: {ipaddr}",
-      "on-click": "nmapplet"
+      "tooltip-format-ethernet": "{ifname}: {ipaddr}"
    },
    "clock":{
       "interval": 1,
@@ -53,27 +65,21 @@
       "format": "{:%b %d, %H:%M:%S}"
    },
    "cpu":{
-      "interval":15,
+      "interval":10,
       "format":"{}%  ",
       "max-length":10
    },
    "custom/cputemp":{
-     "interval": 5,
+     "interval": 10,
      "exec": "sensors | awk '/Tctl/ {print $2}'",
      "format": "{}  ",
      "tooltip-format": "CPU Temp: {}",
      "tooltip": true
    },
-   "custom/memory":{
-     "interval": 5,
-     "exec": "free -h | awk '/Mem:/ {print $3}'",
-     "format":"{}  ",
-     "tooltip-format": "Memory Used: {}",
+   "memory":{
+     "interval": 10,
+     "format":"{used}G  ",
+     "tooltip-format": "Memory Usage: {used}G out of {total}G ({percentage}%)",
      "tooltip": true
-   },
-   "custom/launcher":{
-      "format":" ",
-      "on-click":"rofi -show combi -combi-modi \"window,drun\" --show-icons",
-      "on-click-right":"pkill rofi"
    }
 }

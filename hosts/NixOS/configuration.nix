@@ -36,7 +36,7 @@
   services.printing.enable = false;
 
   services.displayManager = {
-    autoLogin.user = "goose";
+    autoLogin.user = username;
     sddm = {
       enable = true; 
       autoNumlock = true; 
@@ -56,8 +56,10 @@
     jack.enable = true;
   };
 
-  users.users.goose = {
+  programs.zsh.enable = true; # Required because shell defaults are in /etc/passwd
+  users.users.${username} = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "Goose";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
