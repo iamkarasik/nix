@@ -82,6 +82,7 @@
     vim
     waybar
     wl-clipboard
+    xfce.thunar
 
     # Start SDDM using QT5+
     libsForQt5.qt5.qtquickcontrols2
