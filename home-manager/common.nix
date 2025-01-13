@@ -18,11 +18,13 @@ in
 
   home.packages = with pkgs; [
     customFonts
-    ripgrep
     fzf
+    ripgrep
+    tmux
   ];
 
   home.file = {
+    ".config/tmux".source = ../dotfiles/tmux;
     ".config/zsh/themes".source = ./config/zsh/themes;
     ".config/zsh/plugins".source = ./config/zsh/plugins;
   };
