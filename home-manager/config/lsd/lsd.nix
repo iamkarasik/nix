@@ -27,6 +27,6 @@ pkgs: {
     };
     no-symlink = false;
     total-size = false;
-    symlink-arrow = "⇒ ";
+    symlink-arrow = "⇒";
   };
 }

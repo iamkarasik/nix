@@ -35,7 +35,10 @@ in
     curl
     wget
     neofetch
-    discord
+  ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+    "discord"
   ];
 
   home.file = {
