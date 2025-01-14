@@ -30,7 +30,6 @@ in
   
   # Enable system-wide packages through Home Manager
   home.packages = with pkgs; [
-    neovim
     htop
     curl
     wget

@@ -4,6 +4,7 @@ let
   customFonts = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" ]; };
   customLsd = import ./config/lsd/lsd.nix;
   customZsh = import ./config/zsh/zsh.nix;
+  customNvim = import ./config/nvim/nvim.nix;
 in
 {
 
@@ -14,6 +15,7 @@ in
   programs = {
     zsh = customZsh pkgs;
     lsd = customLsd pkgs;
+    neovim = customNvim pkgs;
   };
 
   home.packages = with pkgs; [

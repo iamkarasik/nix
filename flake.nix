@@ -30,7 +30,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.${username} = ./hosts/NixOS/home.nix;
           home-manager.extraSpecialArgs = commonSettings;
-	}
+        }
       ];
     };
 

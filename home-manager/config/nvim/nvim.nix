@@ -8,7 +8,6 @@ let
     src = pkgs.lib.cleanSource ./lua/vscode.nvim;
   };
 in
-
 {
   enable = true;
   defaultEditor = true;
@@ -17,29 +16,28 @@ in
   vimdiffAlias = true;
 
   extraConfig = ''
-    luafile $HOME/.config/home-manager/config/nvim/lua/keymaps.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/settings.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/vscode.nvim/vscode.lua
+    luafile ${./lua/keymaps.lua}
+    luafile ${./lua/settings.lua}
+    luafile ${./lua/vscode.nvim/vscode.lua}
 
-    luafile $HOME/.config/home-manager/config/nvim/lua/treesitter.lua
+    luafile ${./lua/treesitter.lua}
 
-    luafile $HOME/.config/home-manager/config/nvim/lua/toggleterm.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/telescope.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/autopairs.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/comment.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/cmp.lua
+    luafile ${./lua/toggleterm.lua}
+    luafile ${./lua/telescope.lua}
+    luafile ${./lua/autopairs.lua}
+    luafile ${./lua/cmp.lua}
 
-    luafile $HOME/.config/home-manager/config/nvim/lua/file-trees/neotree.lua
+    luafile ${./lua/file-trees/neotree.lua}
 
-    luafile $HOME/.config/home-manager/config/nvim/lua/bufferline.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/lualine.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/colorizer.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/which-key.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/rainbow-delimiters.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/indent-blankline.lua
+    luafile ${./lua/bufferline.lua}
+    luafile ${./lua/lualine.lua}
+    luafile ${./lua/colorizer.lua}
+    luafile ${./lua/which-key.lua}
+    luafile ${./lua/rainbow-delimiters.lua}
+    luafile ${./lua/indent-blankline.lua}
 
-    luafile $HOME/.config/home-manager/config/nvim/lua/gitsigns.lua
-    luafile $HOME/.config/home-manager/config/nvim/lua/lsp/lsp.lua
+    luafile ${./lua/gitsigns.lua}
+    luafile ${./lua/lsp/lsp.lua}
     '';
 
 
@@ -62,7 +60,6 @@ in
     plenary-nvim
     telescope-nvim
     telescope-ui-select-nvim
-    nvim-comment
     indent-blankline-nvim
     nvim-colorizer-lua
     onedarkpro-nvim
