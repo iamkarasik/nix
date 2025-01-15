@@ -2,7 +2,7 @@ pkgs: {
   enable = true;
   settings = {
     general.import = [
-      "~/.config/home-manager/config/alacritty/themes/vscode.toml"
+      "${./themes/vscode.toml}"
     ];
     env = {
       TERM = "xterm-256color";
@@ -37,10 +37,10 @@ pkgs: {
           family = "JetBrainsMono Nerd Font Propo";
           style = "Thin";
         };
-        size = 14.0;
+        size = 11.0;
         offset = {
           x = 1;
-          y = 4;
+          y = 1;
         };
     };
     cursor = {

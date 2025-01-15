@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 let
+  customAlacritty = import ./config/alacritty/alacritty.nix;
   customFonts = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" ]; };
   customLsd = import ./config/lsd/lsd.nix;
   customZsh = import ./config/zsh/zsh.nix;
@@ -13,9 +14,10 @@ in
   };
 
   programs = {
-    zsh = customZsh pkgs;
+    alacritty = customAlacritty pkgs;
     lsd = customLsd pkgs;
     neovim = customNvim pkgs;
+    zsh = customZsh pkgs;
   };
 
   home.packages = with pkgs; [
