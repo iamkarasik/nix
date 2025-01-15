@@ -45,13 +45,13 @@ in
   ];
 
   plugins = with pkgs.vimPlugins; [
+    # Themes
     theme-vscode
 
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
     rainbow-delimiters-nvim
 
-    rose-pine
     nvim-web-devicons
     nvim-autopairs
     lualine-nvim
@@ -62,7 +62,6 @@ in
     telescope-ui-select-nvim
     indent-blankline-nvim
     nvim-colorizer-lua
-    onedarkpro-nvim
 
     # Util
     which-key-nvim
