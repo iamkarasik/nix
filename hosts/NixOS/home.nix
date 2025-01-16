@@ -37,9 +37,9 @@ in
     discord
   ];
 
-  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-  #   "discord"
-  # ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+    "discord"
+  ];
 
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;

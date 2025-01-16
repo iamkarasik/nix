@@ -1,13 +1,5 @@
 { pkgs, lib, ... }:
 
-let
-  theme-vscode = pkgs.vimUtils.buildVimPlugin {
-    pname = "vscode.nvim";
-    version = "1";
-    rev = "18097b7"; # The latest commit
-    src = pkgs.lib.cleanSource ./lua/vscode.nvim;
-  };
-in
 {
   enable = true;
   defaultEditor = true;
@@ -16,37 +8,42 @@ in
   vimdiffAlias = true;
 
   extraConfig = ''
-    luafile ${./lua/keymaps.lua}
-    luafile ${./lua/settings.lua}
-    luafile ${./lua/vscode.nvim/vscode.lua}
-
-    luafile ${./lua/treesitter.lua}
-
-    luafile ${./lua/toggleterm.lua}
-    luafile ${./lua/telescope.lua}
     luafile ${./lua/autopairs.lua}
-    luafile ${./lua/cmp.lua}
-
-    luafile ${./lua/file-trees/neotree.lua}
-
     luafile ${./lua/bufferline.lua}
-    luafile ${./lua/lualine.lua}
+    luafile ${./lua/cmp.lua}
     luafile ${./lua/colorizer.lua}
-    luafile ${./lua/which-key.lua}
-    luafile ${./lua/rainbow-delimiters.lua}
-    luafile ${./lua/indent-blankline.lua}
-
+    luafile ${./lua/conform.lua}
+    luafile ${./lua/file-trees/neotree.lua}
     luafile ${./lua/gitsigns.lua}
+    luafile ${./lua/indent-blankline.lua}
+    luafile ${./lua/keymaps.lua}
     luafile ${./lua/lsp/lsp.lua}
+    luafile ${./lua/lualine.lua}
+    luafile ${./lua/rainbow-delimiters.lua}
+    luafile ${./lua/settings.lua}
+    luafile ${./lua/telescope.lua}
+    luafile ${./lua/toggleterm.lua}
+    luafile ${./lua/treesitter.lua}
+    luafile ${./lua/vscode.lua}
+    luafile ${./lua/which-key.lua}
     '';
 
 
   extraPackages = with pkgs; [
+    black
+    gofumpt
+    google-java-format
+    prettierd
+    rustfmt
+    sonarlint-ls
+    scalafmt
+    stylua
   ];
 
   plugins = with pkgs.vimPlugins; [
     # Themes
-    theme-vscode
+    vscode-nvim
+    conform-nvim
 
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
