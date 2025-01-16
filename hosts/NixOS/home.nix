@@ -42,7 +42,6 @@ in
   # ];
 
   home.file = {
-    ".config/rofi".source = ../../dotfiles/rofi;
     ".config/hypr".source = ../../dotfiles/hypr;
     ".config/wallpaper".source = ../../dotfiles/wallpaper;
     ".config/waybar".source = ../../dotfiles/waybar;
