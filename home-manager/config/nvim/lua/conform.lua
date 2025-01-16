@@ -5,28 +5,29 @@ conform.setup({
     lua = { "stylua" },
 
     -- Conform will run multiple formatters sequentially
-    python = { "isort", "black" },
+    python = { "black" },
 
     -- You can customize some of the format options for the filetype (:help conform.format)
-    rust = { "rustfmt", lsp_format = "fallback" },
+    rust = { "rustfmt" },
 
     -- Conform will run the first available formatter
-    javascript = { "prettierd", "prettier", stop_after_first = true },
+    javascript = { "prettierd" },
 
     java = { "google-java-format" },
 
     scala = { "scalafmt" },
 
-    go = { "gofumpt" }
+    go = { "gofumpt" },
   },
 })
 
-local format = function()
+local format_fn = function()
   conform.format({
     lsp_fallback = true,
     async = false,
-    timeout_ms = 1000
+    timeout_ms = 1000,
   })
 end
 
-vim.keymap.set("n", "<leader>mp", format)
+print("Hello???")
+vim.keymap.set("n", "<leader>mp", format_fn)
