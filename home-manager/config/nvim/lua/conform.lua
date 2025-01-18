@@ -29,4 +29,4 @@ local format_fn = function()
   })
 end
 
-vim.keymap.set("n", "<leader>mp", format_fn)
+vim.keymap.set("n", "<leader>mp", format_fn, { desc = "Format File" })

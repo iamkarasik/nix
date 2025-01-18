@@ -18,13 +18,13 @@ pkgs: {
   initExtra = ''
     # PROMPT
     autoload -U colors && colors
-    source ${zshDir}/themes/robbyrussel.zsh-theme
+    source $HOME/${zshDir}/themes/robbyrussel.zsh-theme
     setopt prompt_subst
 
     # PLUGINS
-    source ${zshDir}/plugins/git-aliases.zsh
-    source ${zshDir}/plugins/git.zsh
-    source ${zshDir}/plugins/zsh-fzf-history-search.zsh
+    source $HOME/${zshDir}/plugins/git-aliases.zsh
+    source $HOME/${zshDir}/plugins/git.zsh
+    source $HOME/${zshDir}/plugins/zsh-fzf-history-search.zsh
 
     # CONFIG
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Ignore case for tab completion

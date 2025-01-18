@@ -35,10 +35,12 @@ in
     wget
     neofetch
     discord
+    spotify
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
     "discord"
+    "spotify"
   ];
 
   home.file = {
