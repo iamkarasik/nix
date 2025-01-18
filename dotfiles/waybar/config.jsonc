@@ -8,9 +8,10 @@
       "hyprland/workspaces"
    ],
    "modules-center":[
-      "hyprland/window",
+      "hyprland/window"
    ],
    "modules-right":[
+      "custom/music",
       "tray",
       "network",
       "custom/cputemp",
@@ -20,6 +21,12 @@
       "pulseaudio",
       "clock"
    ],
+   "custom/music": {
+      "return-type": "json",
+      "exec": "waybar-mpris --position --autofocus --order SYMBOL:ARTIST:TITLE --play '' --pause ''",
+      "on-click": "waybar-mpris --send toggle",
+      "escape": true
+  },
    "custom/launcher":{
       "format":" ",
       "on-click":"rofi -show combi -combi-modi \"window,drun\" --show-icons",

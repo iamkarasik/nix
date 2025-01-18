@@ -93,6 +93,7 @@
     swaylock-effects
     vim
     waybar
+    waybar-mpris # Waybar utility to toggle audio
     wl-clipboard
     xfce.thunar
 

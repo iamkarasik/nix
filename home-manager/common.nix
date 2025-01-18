@@ -24,6 +24,7 @@ in
     customFonts
     fzf
     ripgrep
+    spotify
     tmux
   ];
 

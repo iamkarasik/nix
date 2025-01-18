@@ -29,5 +29,4 @@ local format_fn = function()
   })
 end
 
-print("Hello???")
 vim.keymap.set("n", "<leader>mp", format_fn)
