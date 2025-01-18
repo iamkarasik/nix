@@ -11,8 +11,6 @@ let
       sha256 = "1fw7jkj96gk8wpwgb1yw87j7dv2ws7d31ahksjy1zazy4m1v9kmg";
     };
   };
-
-  customSonarLint = import ../../../pkgs/sonarlint-language-server/derivation.nix { inherit pkgs; };
 in
 {
   enable = true;
@@ -52,7 +50,6 @@ in
     rustfmt
     scalafmt
     stylua
-    customSonarLint
   ];
 
   plugins = with pkgs.vimPlugins; [

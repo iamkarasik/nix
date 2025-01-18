@@ -6,6 +6,7 @@ let
   customLsd = import ./config/lsd/lsd.nix;
   customZsh = import ./config/zsh/zsh.nix;
   customNvim = import ./config/nvim/nvim.nix;
+  customSonarLint = import ../pkgs/sonarlint-language-server/derivation.nix { inherit pkgs; };
 in
 {
 
@@ -25,6 +26,7 @@ in
     fzf
     ripgrep
     tmux
+    customSonarLint
   ];
 
   home.file = {

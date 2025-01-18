@@ -32,3 +32,13 @@ keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts)
 keymap.set('n', '<leader>D', ":Telescope diagnostics bufnr=0<CR>", opts)
 keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
+
+vim.diagnostic.config({
+  virtual_text = false
+})
+
+keymap.set('n', "<leader>td", function ()
+  vim.diagnostic.config({
+    virtual_text = not vim.diagnostic.config().virtual_text
+  })
+end, { silent = true, noremap = true, desc = 'Toggle Virtual Text'})
