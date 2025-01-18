@@ -1,6 +1,6 @@
 require("toggleterm").setup({
   open_mapping = [[<c-\>]],
-  direction = 'horizontal', -- 'vertical' | 'horizontal' | 'tab' | 'float'
+  direction = 'float', -- 'vertical' | 'horizontal' | 'tab' | 'float'
 })
 
 vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<CR>")

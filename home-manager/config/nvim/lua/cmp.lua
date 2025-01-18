@@ -31,6 +31,7 @@ local cmp = require('cmp')
 cmp.setup({
   snippet = {
     expand = function(args)
+      vim.snippet.expand(args.body)
       vim.fn["vsnip#anonymous"](args.body)
     end,
   },
@@ -46,8 +47,8 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'buffer' },
     { name = 'vsnip' },
+    { name = 'buffer' },
   }),
   completion = {
     completeopt = 'menu,menuone,noinsert'
