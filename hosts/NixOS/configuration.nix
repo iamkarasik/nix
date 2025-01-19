@@ -80,8 +80,10 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    file # File command
     firefox
     git
+    hypridle
     kitty
     libnotify
     lm_sensors
