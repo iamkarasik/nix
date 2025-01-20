@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   sonarlint-nvim = pkgs.vimUtils.buildVimPlugin {

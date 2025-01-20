@@ -1,8 +1,13 @@
-local sonarlint = require("sonarlint")
-
-sonarlint.setup({
+require("sonarlint").setup({
 	server = {
-		cmd = { "sonarlint-ls" },
+		cmd = {
+			"sonarlint-ls",
+		},
+		settings = {
+			sonarlint = {
+				test = "test",
+			},
+		},
 	},
 	filetypes = {
 		"go",
