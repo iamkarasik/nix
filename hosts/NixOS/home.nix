@@ -1,8 +1,7 @@
-# /hosts/nixos/home.nix
-{ pkgs, stateVersion, username, ... }:
+{ pkgs, stateVersion, username, system, ... }:
 
 let
-  common = import ../../home-manager/common.nix { inherit pkgs; };
+  common = import ../../home-manager/common.nix { inherit pkgs; inherit system; };
 in
 {
   imports = [ common ];

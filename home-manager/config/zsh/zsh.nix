@@ -1,9 +1,6 @@
-let
-  zshDir = ".config/zsh";
-in
-pkgs: {
+rec {
   enable = true;
-  dotDir = zshDir;
+  dotDir =  ".config/zsh";
 
   history = {
     save = 100000;
@@ -18,13 +15,14 @@ pkgs: {
   initExtra = ''
     # PROMPT
     autoload -U colors && colors
-    source $HOME/${zshDir}/themes/robbyrussel.zsh-theme
+    source ${./themes/robbyrussel.zsh-theme}
     setopt prompt_subst
 
     # PLUGINS
-    source $HOME/${zshDir}/plugins/git-aliases.zsh
-    source $HOME/${zshDir}/plugins/git.zsh
-    source $HOME/${zshDir}/plugins/zsh-fzf-history-search.zsh
+    source ${./plugins/git-aliases.zsh}
+    source ${./plugins/git.zsh}
+    source ${./plugins/zsh-vi-mode.zsh}
+    source ${./plugins/zsh-fzf-history-search.zsh}
 
     # CONFIG
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Ignore case for tab completion

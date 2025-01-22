@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, system, ... }:
 
 let
   customNeovim = import ./config/nvim/nvim.nix;

@@ -1,4 +1,13 @@
-pkgs: {
+{ system }: let 
+
+  fonts = {
+    "aarch64-darwin" = { size = 13.0; x = 1; y = 1; };
+    "x86_64-linux" = { size = 11.0; x = 0; y = 0; };
+  };
+
+  curFont = fonts.${system} or { size = 12.0; x = 1; y = 1; };
+in
+{
   enable = true;
   settings = {
     general.import = [
@@ -37,10 +46,10 @@ pkgs: {
           family = "JetBrainsMono Nerd Font Propo";
           style = "Thin";
         };
-        size = 11.0;
+        size = curFont.size;
         offset = {
-          x = 1;
-          y = 1;
+          x = curFont.x;
+          y = curFont.y;
         };
     };
     cursor = {

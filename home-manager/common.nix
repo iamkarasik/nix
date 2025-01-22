@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, system, ... }:
 
 let
   customAlacritty = import ./config/alacritty/alacritty.nix;
@@ -15,10 +15,10 @@ in
   };
 
   programs = {
-    alacritty = customAlacritty pkgs;
-    lsd = customLsd pkgs;
     neovim = customNvim pkgs;
-    zsh = customZsh pkgs;
+    alacritty = customAlacritty { inherit system; };
+    lsd = customLsd;
+    zsh = customZsh;
   };
 
   home.packages = with pkgs; [
