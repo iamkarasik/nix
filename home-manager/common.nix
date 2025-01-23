@@ -1,12 +1,12 @@
 { pkgs, system, ... }:
 
 let
-  customAlacritty = import ./config/alacritty/alacritty.nix;
+  customAlacritty = import ../pkgs/alacritty/alacritty.nix;
   customFonts = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" ]; };
-  customLsd = import ./config/lsd/lsd.nix;
-  customZsh = import ./config/zsh/zsh.nix;
-  customNvim = import ./config/nvim/nvim.nix;
+  customLsd = import ../pkgs/lsd/lsd.nix;
+  customNvim = import ../pkgs/nvim/nvim.nix;
   customSonarLint = import ../pkgs/sonarlint-language-server/derivation.nix { inherit pkgs; };
+  customZsh = import ../pkgs/zsh/zsh.nix;
 in
 {
 
@@ -31,7 +31,7 @@ in
 
   home.file = {
     ".config/tmux".source = ../dotfiles/tmux;
-    ".config/zsh/themes".source = ./config/zsh/themes;
-    ".config/zsh/plugins".source = ./config/zsh/plugins;
+    ".config/zsh/themes".source = ../pkgs/zsh/themes;
+    ".config/zsh/plugins".source = ../pkgs/zsh/plugins;
   };
 }
