@@ -2,14 +2,16 @@
 
 let
   customAlacritty = import ../pkgs/alacritty/alacritty.nix;
-  customFonts = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" ]; };
   customLsd = import ../pkgs/lsd/lsd.nix;
   customNvim = import ../pkgs/nvim/nvim.nix;
   customSonarLint = import ../pkgs/sonarlint-language-server/derivation.nix { inherit pkgs; };
   customZsh = import ../pkgs/zsh/zsh.nix;
+
+  # Extra 
+  golang = import ./modules/golang.nix { inherit pkgs; };
+  k8s = import ./modules/k8s.nix { inherit pkgs; };
 in
 {
-
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -22,12 +24,13 @@ in
   };
 
   home.packages = with pkgs; [
-    customFonts
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" ]; })
+    customSonarLint
     fzf
+    jq
     ripgrep
     tmux
-    customSonarLint
-  ];
+  ] ++ golang ++ k8s;
 
   home.file = {
     ".config/tmux".source = ../dotfiles/tmux;

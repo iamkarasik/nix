@@ -31,6 +31,9 @@ rec {
     bindkey "^A" vi-beginning-of-line # Go to start
     bindkey "^E" vi-end-of-line # Go to end
 
+    # Aliases
+    source ${./aliases/k8s.sh}
+
     # WORK-ALIASES
     [[ -f ~/.extrarc ]] && source ~/.extrarc
   '';
