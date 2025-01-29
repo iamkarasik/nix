@@ -1,32 +1,30 @@
 # Kubernetes alias for kubectl
 alias k='kubectl'
 
-# List pods in all namespaces
+# get pods
 alias ka='kubectl get pods --all-namespaces'
+alias kpods='kubectl get pods'
 
 # Get pod logs
-alias kl='kubectl logs'
+alias klogs='kubectl logs'
 
 # Show cluster nodes
-alias kn='kubectl get nodes'
+alias knodes='kubectl get nodes'
 
 # Show all services
-alias ks='kubectl get svc --all-namespaces'
+alias kserv='kubectl get svc'
 
 # Get deployments in all namespaces
-alias kd='kubectl get deployments --all-namespaces'
+alias kdep='kubectl get deployments --all-namespaces'
 
 # Show pod info
-alias kdi='kubectl describe pod'
+alias kdesc='kubectl describe'
 
 # Access a pod’s shell
-alias kex='kubectl exec -it'
+alias kx='kubectl exec -it'
 
 # Port forward a service
 alias kpf='kubectl port-forward'
 
-# Deploy from a YAML file
-alias kapply='kubectl apply -f'
-
 # Delete all resources in a namespace
-alias kdel='kubectl delete --all --namespace'
+alias kdel='kubectl delete'
