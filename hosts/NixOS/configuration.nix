@@ -104,7 +104,21 @@
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtsvg
     # End SDDM
+
+    # Containers
+    dive
+    podman-tui
+    podman-compose
   ];
+
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   system.stateVersion = "${stateVersion}";
 }
