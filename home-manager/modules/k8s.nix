@@ -5,6 +5,7 @@ with pkgs; [
   kubectl
   kubectl-ktop
   kubectl-neat
+  kubectl-tree
   kubernetes-helm
   stern
 ]
