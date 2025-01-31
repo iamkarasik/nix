@@ -1,6 +1,9 @@
 # Kubernetes alias for kubectl
 alias k='kubectl'
 
+# K8s get everything
+alias kaa='kubectl get all --all-namespaces'
+
 # get pods
 alias ka='kubectl get pods --all-namespaces'
 alias kpods='kubectl get pods'
@@ -15,7 +18,11 @@ alias knodes='kubectl get nodes'
 alias kserv='kubectl get svc'
 
 # Get deployments in all namespaces
-alias kdep='kubectl get deployments --all-namespaces'
+alias kdep='kubectl get deployments'
+alias kdeps='kubectl get deployments'
+
+# Edit
+alias kedit='kubectl edit'
 
 # Show pod info
 alias kdesc='kubectl describe'
