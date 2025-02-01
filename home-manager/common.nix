@@ -6,12 +6,15 @@ let
   customNvim = import ../pkgs/nvim/nvim.nix;
   customSonarLint = import ../pkgs/sonarlint-language-server/derivation.nix { inherit pkgs; };
   customZsh = import ../pkgs/zsh/zsh.nix;
-
-  # Extra 
-  golang = import ./modules/golang.nix { inherit pkgs; };
-  k8s = import ./modules/k8s.nix { inherit pkgs; };
 in
 {
+  imports = [
+    ./modules/dev.nix
+    ./modules/fonts.nix
+    ./modules/golang.nix
+    ./modules/k8s.nix
+  ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -24,14 +27,9 @@ in
   };
 
   home.packages = with pkgs; [
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" ]; })
-    bat
     customSonarLint
-    fzf
-    jq
-    ripgrep
     tmux
-  ] ++ golang ++ k8s;
+  ];
 
   home.file = {
     ".config/tmux".source = ../dotfiles/tmux;

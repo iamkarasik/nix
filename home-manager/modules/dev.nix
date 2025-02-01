@@ -2,9 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    gnumake
-    go_1_23
-    gotools
-    go-tools
+    bat
+    fzf
+    jq
+    ripgrep
+    yq
   ];
 }
