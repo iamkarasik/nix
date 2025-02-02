@@ -82,7 +82,6 @@ in
     gitsigns-nvim
 
     # File Trees
-    nui-nvim
     neo-tree-nvim
 
     # LSP
