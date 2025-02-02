@@ -33,7 +33,5 @@ in
 
   home.file = {
     ".config/tmux".source = ../dotfiles/tmux;
-    ".config/zsh/themes".source = ../pkgs/zsh/themes;
-    ".config/zsh/plugins".source = ../pkgs/zsh/plugins;
   };
 }

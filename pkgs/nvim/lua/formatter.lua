@@ -2,23 +2,25 @@ local conform = require("conform")
 
 conform.setup({
   formatters_by_ft = {
-    lua = { "stylua" },
-
-    -- Conform will run multiple formatters sequentially
-    python = { "black" },
-
-    -- You can customize some of the format options for the filetype (:help conform.format)
-    rust = { "rustfmt" },
-
-    -- Conform will run the first available formatter
-    javascript = { "prettierd" },
-
-    java = { "google-java-format" },
-
-    scala = { "scalafmt" },
-
     go = { "gofumpt" },
+    java = { "google-java-format" },
+    javascript = { "prettierd" },
+    json = { "jq" },
+    lua = { "stylua" },
+    rust = { "rustfmt" },
+    scala = { "scalafmt" },
+    yaml = { "yq" }
   },
+  formatters = {
+    yq = {
+      command = "yq",
+      args = { "-y" }
+    },
+    jq = {
+      command = "jq",
+      args = {}
+    }
+  }
 })
 
 local format_fn = function()

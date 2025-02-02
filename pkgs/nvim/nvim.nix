@@ -22,20 +22,22 @@ in
   extraConfig = ''
     luafile ${./lua/keymaps.lua}
     luafile ${./lua/settings.lua}
-    luafile ${./lua/vscode.lua}
+    luafile ${./lua/theme.lua}
+
     luafile ${./lua/treesitter.lua}
     luafile ${./lua/toggleterm.lua}
     luafile ${./lua/telescope.lua}
     luafile ${./lua/autopairs.lua}
-    luafile ${./lua/conform.lua}
+    luafile ${./lua/formatter.lua}
     luafile ${./lua/cmp.lua}
-    luafile ${./lua/file-trees/neotree.lua}
+    luafile ${./lua/filetree.lua}
     luafile ${./lua/bufferline.lua}
     luafile ${./lua/lualine.lua}
     luafile ${./lua/colorizer.lua}
     luafile ${./lua/which-key.lua}
     luafile ${./lua/rainbow-delimiters.lua}
-    luafile ${./lua/indent-blankline.lua}
+    luafile ${./lua/cursorword.lua}
+    luafile ${./lua/indent.lua}
     luafile ${./lua/gitsigns.lua}
     luafile ${./lua/lsp/lsp.lua}
     luafile ${./lua/lsp/sonarlint.lua}
@@ -43,7 +45,6 @@ in
 
 
   extraPackages = with pkgs; [
-    black
     gofumpt
     google-java-format
     prettierd
@@ -68,7 +69,10 @@ in
     plenary-nvim
     telescope-nvim
     telescope-ui-select-nvim
-    indent-blankline-nvim
+
+    mini-indentscope
+    mini-cursorword
+
     nvim-colorizer-lua
 
     # Util
