@@ -24,6 +24,7 @@ in
     luafile ${./lua/settings.lua}
     luafile ${./lua/theme.lua}
 
+    luafile ${./lua/notifications.lua}
     luafile ${./lua/treesitter.lua}
     luafile ${./lua/toggleterm.lua}
     luafile ${./lua/telescope.lua}
@@ -31,7 +32,7 @@ in
     luafile ${./lua/formatter.lua}
     luafile ${./lua/cmp.lua}
     luafile ${./lua/filetree.lua}
-    luafile ${./lua/bufferline.lua}
+    luafile ${./lua/tabline.lua}
     luafile ${./lua/lualine.lua}
     luafile ${./lua/colorizer.lua}
     luafile ${./lua/which-key.lua}
@@ -57,6 +58,9 @@ in
     # Themes
     vscode-nvim
 
+    # Notifications
+    noice-nvim
+
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
     rainbow-delimiters-nvim
@@ -65,7 +69,11 @@ in
     nvim-autopairs
     lualine-nvim
     toggleterm-nvim
-    bufferline-nvim
+
+    # Tab Line
+    # bufferline-nvim
+    barbar-nvim
+
     plenary-nvim
     telescope-nvim
     telescope-ui-select-nvim
