@@ -14,7 +14,7 @@ conform.setup({
   formatters = {
     yq = {
       command = "yq",
-      args = { "-y" }
+      args = { "-y", "--indentless" }
     },
     jq = {
       command = "jq",
