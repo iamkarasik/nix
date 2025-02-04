@@ -3,6 +3,7 @@ local keymap = vim.keymap
 keymap.set("n", "<c-e>", ":Neotree show toggle<CR>")
 keymap.set("n", "<leader>ee", ":Neotree show toggle<CR>")
 keymap.set("n", "<leader>ec", ":Neotree reveal<CR>")
+keymap.set("n", "<leader>eg", ":Neotree float git_status<CR>")
 
 require("neo-tree").setup({
   close_if_last_window = true,
