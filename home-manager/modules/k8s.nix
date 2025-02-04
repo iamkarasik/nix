@@ -8,6 +8,7 @@
     kubectl-neat
     kubectl-tree
     kubernetes-helm
+    skaffold
     stern
   ];
 }
