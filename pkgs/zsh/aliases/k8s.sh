@@ -16,6 +16,7 @@ alias knodes='kubectl get nodes'
 
 # Show all services
 alias kserv='kubectl get svc'
+alias ksvc='kubectl get svc'
 
 # Get deployments in all namespaces
 alias kdep='kubectl get deployments'
