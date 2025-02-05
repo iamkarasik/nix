@@ -32,9 +32,9 @@ keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code A
 keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", { desc = "Show All Diagnostics" })
 keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show Diagnostic" })
 
-vim.diagnostic.config({
-	virtual_text = false,
-})
+-- vim.diagnostic.config({
+-- 	virtual_text = false,
+-- })
 
 keymap.set("n", "<leader>td", function()
 	vim.diagnostic.config({
