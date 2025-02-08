@@ -31,6 +31,8 @@ keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
 keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", { desc = "Show All Diagnostics" })
 keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show Diagnostic" })
+keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 
 -- vim.diagnostic.config({
 -- 	virtual_text = false,
