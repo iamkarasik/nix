@@ -44,6 +44,7 @@ in
 
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;
+    ".config/rofi".source = ../../dotfiles/rofi;
     ".config/wallpaper".source = ../../dotfiles/wallpaper;
     ".config/waybar".source = ../../dotfiles/waybar;
   };

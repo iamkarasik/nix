@@ -1,0 +1,17 @@
+configuration {
+  show-icons:           true;
+  hide-scrollbar:       true;
+  sidebar-mode:         false;
+  kb-remove-to-eol:     "Control+p";
+  kb-secondary-copy:    "Control+c";
+  kb-accept-entry:      "Return";
+  kb-mode-complete:     "";
+  kb-remove-char-back:  "BackSpace";
+  kb-row-up:            "Up,Control+k";
+  kb-row-down:          "Down,Control+j";
+  kb-row-right:         "Control+l";
+  kb-row-left:          "Control+h";
+  hover-select:         true;
+}
+
+@theme "./themes/style-5.rasi"
