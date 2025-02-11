@@ -2,7 +2,7 @@
 
   fonts = {
     "aarch64-darwin" = { size = 13.0; x = 1; y = 1; };
-    "x86_64-linux" = { size = 11.0; x = 0; y = 0; };
+    "x86_64-linux" = { size = 12.0; x = 0; y = 0; };
   };
 
   curFont = fonts.${system} or { size = 12.0; x = 1; y = 1; };
