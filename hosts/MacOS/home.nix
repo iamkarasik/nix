@@ -12,9 +12,18 @@
   home.username = username;
   home.homeDirectory = "/Users/${username}";
 
-  personal = with pkgs; [
+  home.packages = with pkgs; [
     raycast
     spotify
+  ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+    "confluent-cli"
+    "goland"
+    "idea-community"
+    "raycast"
+    "spotify"
+    "vault"
   ];
 
   home.file = {
