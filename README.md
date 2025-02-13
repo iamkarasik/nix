@@ -9,5 +9,5 @@
 - [x] - Setup resizing in hyprland
 - [x] - Setup swaylock
 - [x] - Setup hypridle
-- [ ] - Set up a Darwin module
+- [x] - Set up a Darwin module
 

@@ -8,40 +8,67 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: let
-    stateVersion = "24.11";
-    username = "goose";
-    system = "x86_64-linux";
+  outputs = { nixpkgs, nix-darwin, home-manager, ... }: let
+
     personalSettings = {
-      inherit username;
-      inherit stateVersion;
-      inherit system;
+      stateVersion = "24.11";
+      system = "x86_64-linux";
+      username = "goose";
+    };
+
+    workSettings = {
+      stateVersion = "24.11";
+      system = "aarch64-darwin";
+      username = "ilankarasik";
     };
   in
   {
 
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      system = personalSettings.system;
       specialArgs = personalSettings;
       modules = [
         ./hosts/NixOS/configuration.nix
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${username} = ./hosts/NixOS/home.nix;
+          home-manager.users.${personalSettings.username} = ./hosts/NixOS/home.nix;
           home-manager.extraSpecialArgs = personalSettings;
         }
       ];
     };
 
-    homeConfigurations.goose = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      extraSpecialArgs = personalSettings;
+    darwinConfigurations.MacOS = nix-darwin.lib.darwinSystem {
+      system = workSettings.system;
+      specialArgs = workSettings;
       modules = [
-        ./hosts/NixOS/home.nix
+        ./hosts/MacOS/configuration.nix
+        home-manager.darwinModules.home-manager {
+          home-manager.useUserPackages = true;
+          home-manager.users.${workSettings.username} = ./home-manager/home.nix;
+          home-manager.extraSpecialArgs = workSettings;
+          users.users.${workSettings.username}.home = "/Users/${workSettings.username}";
+        }
       ];
+    };
+
+    homeConfigurations.${personalSettings.username} = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${personalSettings.system};
+      extraSpecialArgs = personalSettings;
+      modules = [ ./hosts/NixOS/home.nix ];
+    };
+
+    homeConfigurations.${workSettings.username} = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${workSettings.system};
+      extraSpecialArgs = workSettings;
+      modules = [ ./hosts/MacOS/home.nix ];
     };
 
   };

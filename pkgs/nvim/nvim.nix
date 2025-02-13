@@ -52,6 +52,7 @@ in
     rustfmt
     scalafmt
     stylua
+    alejandra
   ];
 
   plugins = with pkgs.vimPlugins; [

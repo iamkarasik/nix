@@ -1,10 +1,9 @@
-{ pkgs, stateVersion, username, system, ... }:
+{ pkgs, stateVersion, username, ... }:
 
-let
-  common = import ../../home-manager/common.nix { inherit pkgs; inherit system; };
-in
 {
-  imports = [ common ];
+  imports = [ 
+    ../../home-manager/common.nix 
+  ];
 
   gtk = {
     enable = true;
@@ -20,19 +19,12 @@ in
     cursorTheme.size = 30;
   };
 
-  # Enable Home Manager for the user
-  home.username = username;  # Replace with your actual username
-  home.homeDirectory = "/home/${username}";  # Replace with your actual home directory if needed
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
-  # Enable Git
   programs.git.enable = true;
   
-  # Enable system-wide packages through Home Manager
   home.packages = with pkgs; [
-    htop
-    curl
-    wget
-    neofetch
     discord
     spotify
   ];
