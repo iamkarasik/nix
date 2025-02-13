@@ -13,8 +13,6 @@ rec {
   enableCompletion = true;
 
   initExtra = ''
-    export TERM=alacritty
-
     # PROMPT
     autoload -U colors && colors
     source ${./themes/robbyrussel.zsh-theme}

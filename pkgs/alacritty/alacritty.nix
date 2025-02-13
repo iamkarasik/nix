@@ -14,7 +14,8 @@ in
       "${./themes/vscode.toml}"
     ];
     env = {
-      TERM = "xterm-256color";
+      TERM = "alacritty";
+      # TERM = "xterm-256color";
     };
     window = {
       dimensions = {
