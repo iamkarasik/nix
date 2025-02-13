@@ -28,7 +28,7 @@ in
       dynamic_padding = false;
       decorations = "buttonless";
       opacity = 1.0;
-      option_as_alt = "LeftOnly";
+      option_as_alt = "OnlyLeft";
     };
     scrolling = {
       history = 100000;
