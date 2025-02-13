@@ -24,7 +24,6 @@ in
     luafile ${./lua/settings.lua}
     luafile ${./lua/theme.lua}
 
-    luafile ${./lua/notifications.lua}
     luafile ${./lua/treesitter.lua}
     luafile ${./lua/toggleterm.lua}
     luafile ${./lua/telescope.lua}
@@ -58,9 +57,6 @@ in
   plugins = with pkgs.vimPlugins; [
     # Themes
     vscode-nvim
-
-    # Notifications
-    noice-nvim
 
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
