@@ -32,7 +32,6 @@ cmp.setup({
 	snippet = {
 		expand = function(args)
 			vim.snippet.expand(args.body)
-			vim.fn["vsnip#anonymous"](args.body)
 		end,
 	},
 	window = {
@@ -42,12 +41,11 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<c-j>"] = cmp.mapping.select_next_item(),
 		["<c-k>"] = cmp.mapping.select_prev_item(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		["<C-Space>"] = cmp.mapping.complete(),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "vsnip" },
 	}, {
 		{ name = "buffer" },
 	}),

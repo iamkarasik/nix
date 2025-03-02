@@ -43,3 +43,5 @@ keymap.set("n", "<leader>td", function()
 		virtual_text = not vim.diagnostic.config().virtual_text,
 	})
 end, { silent = true, noremap = true, desc = "Toggle Virtual Text" })
+
+-- vim.lsp.set_log_level('debug')
