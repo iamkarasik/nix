@@ -24,6 +24,7 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.method.static.java", { fg = c.vscFront })
 vim.api.nvim_set_hl(0, "@keyword.conditional.java", { fg = c.vscBlue })
 vim.api.nvim_set_hl(0, "@keyword.return.java", { fg = c.vscBlue })
 vim.api.nvim_set_hl(0, "@keyword.import.java", { fg = c.vscBlue })
+vim.api.nvim_set_hl(0, "@keyword.exception.java", { fg = c.vscBlue })
 
 vim.api.nvim_set_hl(0, "@lsp.typemod.annotation.public.java", { fg = c.vscBlueGreen })
 
