@@ -5,7 +5,12 @@
     "x86_64-linux" = { size = 12.0; x = 0; y = 0; };
   };
 
+  term = {
+    "aarch64-darwin" = "xterm-256color";
+  };
+
   curFont = fonts.${system} or { size = 12.0; x = 1; y = 1; };
+  curTerm = term.${system} or "alacritty";
 in
 {
   enable = true;
@@ -14,8 +19,7 @@ in
       "${./themes/vscode.toml}"
     ];
     env = {
-      TERM = "alacritty";
-      # TERM = "xterm-256color";
+      TERM = curTerm;
     };
     window = {
       dimensions = {
@@ -37,16 +41,16 @@ in
     };
     font = {
         normal = {
-          family = "JetBrainsMono Nerd Font Propo";
-          style = "Light";
+          family = "JetBrainsMonoNL Nerd Font";
+          style = "ExtraLight";
         };
         bold = {
-          family = "JetBrainsMono Nerd Font Propo";
+          family = "JetBrainsMonoNL Nerd Font";
           style = "Regular";
         };
         italic = {
-          family = "JetBrainsMono Nerd Font Propo";
-          style = "Thin";
+          family = "JetBrainsMonoNL Nerd Font";
+          style = "ThinItalic";
         };
         size = curFont.size;
         offset = {

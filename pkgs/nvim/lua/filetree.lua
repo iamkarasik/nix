@@ -8,7 +8,7 @@ keymap.set("n", "<leader>eg", ":Neotree float git_status<CR>")
 require("neo-tree").setup({
   close_if_last_window = true,
   source_selector = {
-    winbar = true, -- toggle to show selector on winbar
+    winbar = false, -- toggle to show selector on winbar
     content_layout = "center",
     tabs_layout = "equal",
     show_separator_on_edge = true,
@@ -62,3 +62,5 @@ require("neo-tree").setup({
     },
   },
 })
+
+vim.api.nvim_set_hl(0, "NeoTreeRootName", { italic = false })
