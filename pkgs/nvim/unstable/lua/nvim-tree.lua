@@ -6,7 +6,7 @@ end
 
 require("nvim-tree").setup({
   on_attach = custom_on_attach,
-  hijack_cursor = false,
+  hijack_cursor = true,
   disable_netrw = true,
   sort = {
     sorter = "case_sensitive",
@@ -28,14 +28,6 @@ require("nvim-tree").setup({
     highlight_clipboard = "name",
     indent_markers = {
       enable = true,
-      -- inline_arrows = true,
-      -- icons = {
-      --   corner = "└",
-      --   edge = "│",
-      --   item = "│",
-      --   bottom = "─",
-      --   none = " ",
-      -- },
     },
     icons = {
       show = {
@@ -80,5 +72,5 @@ vim.api.nvim_create_autocmd({"QuitPre"}, {
 })
 
 vim.keymap.set({"i", "n"}, "<c-e>", "<Esc>:NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set({"i", "n"}, "<leader>ee", "<Esc>:NvimTreeFindFile<CR>", { noremap = true, silent = true })
-vim.keymap.set({"i", "n"}, "<leader>ec", "<Esc>:NvimTreeFindFile<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ec", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
