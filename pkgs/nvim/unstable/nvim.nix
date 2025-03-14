@@ -26,6 +26,8 @@
 
   plugins = with pkgs.vimPlugins; [
     melange-nvim
+    tokyonight-nvim
+
     nvim-web-devicons
 
     telescope-nvim
