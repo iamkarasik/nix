@@ -15,3 +15,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
   end,
 })
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●',
+    source = 'always',
+  },
+  signs = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticError', linehl = '', numhl = '' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticWarn', linehl = '', numhl = '' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticInfo', linehl = '', numhl = '' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticHint', linehl = '', numhl = '' })

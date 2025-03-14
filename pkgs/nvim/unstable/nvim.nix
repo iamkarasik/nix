@@ -13,6 +13,7 @@
     luafile ${./lua/telescope.lua}
     luafile ${./lua/lualine.lua}
     luafile ${./lua/nvim-tree.lua}
+    luafile ${./lua/gitsigns.lua}
     luafile ${./lua/theme.lua}
   '';
 
@@ -27,13 +28,13 @@
   plugins = with pkgs.vimPlugins; [
     melange-nvim
     tokyonight-nvim
-
     nvim-web-devicons
 
     telescope-nvim
     lualine-nvim
     nvim-tree-lua
 
+    gitsigns-nvim
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
 

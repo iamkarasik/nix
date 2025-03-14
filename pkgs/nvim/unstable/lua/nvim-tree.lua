@@ -34,11 +34,6 @@ require("nvim-tree").setup({
         folder = true,
       },
       glyphs = {
-        default = "",
-        symlink = "",
-        bookmark = "󰆤",
-        modified = "●",
-        hidden = "󰜌",
         folder = {
           arrow_closed = "",
           arrow_open = "",
