@@ -8,11 +8,17 @@ require("nvim-tree").setup({
   on_attach = custom_on_attach,
   hijack_cursor = true,
   disable_netrw = true,
+  sync_root_with_cwd = true,
+  update_focused_file = {
+    enable = false,
+    update_root = false,
+  },
   sort = {
     sorter = "case_sensitive",
   },
   view = {
     width = 30,
+    preserve_window_proportions = true,
   },
   renderer = {
     root_folder_label = function(path)
@@ -27,11 +33,12 @@ require("nvim-tree").setup({
     highlight_bookmarks = "name",
     highlight_clipboard = "name",
     indent_markers = {
-      enable = true,
+      enable = false,
     },
     icons = {
       show = {
         folder = true,
+        git = false,
       },
       glyphs = {
         folder = {
@@ -40,7 +47,7 @@ require("nvim-tree").setup({
           default = "",
           open = "",
           empty = "",
-          empty_open = "",
+          empty_open = "",
           symlink = "",
           symlink_open = "",
         },
@@ -48,8 +55,9 @@ require("nvim-tree").setup({
     },
   },
   git = {
-    enable = false,
-    ignore = false,
+    enable = true,
+    show_on_dirs = false,
+    show_on_open_dirs = false,
   },
   actions = {
     change_dir = {
