@@ -6,15 +6,17 @@
   vimdiffAlias = true;
 
   extraConfig = ''
+    set runtimepath+=${./lua/themes}
+
+    luafile ${./lua/theme.lua}
     luafile ${./lua/keymaps.lua}
     luafile ${./lua/settings.lua}
     luafile ${./lua/treesitter.lua}
     luafile ${./lua/lsp.lua}
     luafile ${./lua/telescope.lua}
-    luafile ${./lua/lualine.lua}
     luafile ${./lua/nvim-tree.lua}
     luafile ${./lua/gitsigns.lua}
-    luafile ${./lua/theme.lua}
+    luafile ${./lua/lualine.lua}
   '';
 
   extraPackages = with pkgs; [
@@ -26,12 +28,14 @@
   ];
 
   plugins = with pkgs.vimPlugins; [
-    melange-nvim
+    melange-nvim 
     tokyonight-nvim
+    vscode-nvim
+
     nvim-web-devicons
 
-    telescope-nvim
     lualine-nvim
+    telescope-nvim
     nvim-tree-lua
 
     gitsigns-nvim
