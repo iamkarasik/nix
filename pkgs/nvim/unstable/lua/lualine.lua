@@ -1,14 +1,23 @@
+local normal = vim.api.nvim_get_hl_by_name("Normal", true)
+local fg = string.format("#%06x", normal.foreground)
+local bg = string.format("#%06x", normal.background)
+
+local reset = "%#Normal#"
+
 local devicons = require('nvim-web-devicons')
 
 local M = {}
 
 M.symbols = {
-  vim = "",
-  git = "",
-  block = "█",
-  added = "",
+  vim = '',
+  git = '',
+  block = '█',
+  added = '',
   changed = '',
   removed = '',
+  gear = '',
+  cursor = '',
+  folder = '',
 }
 
 M.modes = {
@@ -56,16 +65,11 @@ M.modes = {
   ["!"] = { "SHELL", "Unknown" },
 }
 
-M.get_symbol = function()
-  local mode = vim.api.nvim_get_mode().mode
-  local hl_group = "LualineSymbolMode" .. M.modes[mode][2]
-  return "%#" .. hl_group .. "#" .. M.symbols.vim
-end
-
 M.get_mode = function()
   local mode = vim.api.nvim_get_mode().mode
-  local hl_group = "LualineMode" .. M.modes[mode][2]
-  return "%#" .. hl_group .. "#" .. M.modes[mode][1] .. " %#Normal#"
+  local icon = "%#LualineIconMode" .. M.modes[mode][2] .. '#' .. M.symbols.vim .. " "
+  local text = "%#LualineTextMode" .. M.modes[mode][2] .. "# " .. M.modes[mode][1] .. " "
+  return icon .. text .. reset
 end
 
 M.get_filename = function()
@@ -73,8 +77,8 @@ M.get_filename = function()
   local icon, hl_group = devicons.get_icon(filename)
 
   local icon_color = vim.api.nvim_get_hl_by_name(hl_group, true).foreground
-  local dark_bg = vim.api.nvim_get_hl_by_name("LualineSymbolModeNormal", true).foreground
-  local light_bg = vim.api.nvim_get_hl_by_name("LualineModeNormal", true).background
+  local dark_bg = vim.api.nvim_get_hl_by_name("LualineIconModeNormal", true).foreground
+  local light_bg = vim.api.nvim_get_hl_by_name("LualineTextModeNormal", true).background
 
   vim.api.nvim_set_hl(0, "Lualine" .. hl_group, { bg = icon_color, fg = dark_bg })
   local icon_block = "%#Lualine" .. hl_group .. "#" .. icon .. " "
@@ -94,15 +98,93 @@ M.get_git = function()
   local diff_info = ' '
   diff_info = diff_info .. M.symbols.added .. " " .. added .. " "
   diff_info = diff_info .. M.symbols.changed .. " " .. changed .. " "
-  diff_info = diff_info .. M.symbols.removed .. " " .. removed .. " "
+  diff_info = diff_info .. M.symbols.removed .. " " .. removed .. ""
 
-  return "%#LualineGitBranch#" .. M.symbols.git .. " " .. branch .. diff_info .. "%#Normal#"
+  return "%#LualineGitBranch#" .. M.symbols.git .. " " .. branch .. diff_info .. reset
+end
+
+M.get_diagnostics = {
+  'diagnostics',
+  sources = { 'nvim_diagnostic' },
+  sections = { 'error', 'warn' },
+  symbols = { error = ' ', warn = ' ', info = ' ', hint= ' ' },
+  always_visible = true,
+}
+
+M.get_lsp = function()
+  local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+  local clients = vim.lsp.get_clients()
+
+  if next(clients) == nil then return '' end
+
+  local client_name = ''
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      client_name = client.name
+      break
+    end
+  end
+
+  local icon_block = "%#LualineIconLsp#" .. M.symbols.gear .. " "
+  return icon_block .. "%#LualineTextLsp# " .. client_name .. " " .. reset
+end
+
+M.get_project_root = function()
+  local icon_block = "%#LualineIconProjectRoot#" .. M.symbols.folder .. " "
+  return icon_block .. "%#LualineTextProjectRoot# " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " " .. reset
+end
+
+M.get_cursor = function()
+  local icon_block = "%#LualineIconCursor#" .. M.symbols.cursor .. " "
+  return icon_block .. "%#LualineTextCursor# " .. vim.fn.line('.') .. ":" .. vim.fn.col('.') .. " " .. reset
 end
 
 local config = {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = {
+      normal = {
+        a = { fg = fg, bg = bg, gui = 'bold' },
+        b = { fg = fg, bg = bg },
+        c = { fg = fg, bg = bg },
+        x = { fg = fg, bg = bg },
+        y = { fg = fg, bg = bg },
+        z = { fg = fg, bg = bg },
+      },
+      insert = {
+        a = { fg = fg, bg = bg },
+        b = { fg = fg, bg = bg },
+        c = { fg = fg, bg = bg },
+        x = { fg = fg, bg = bg },
+        y = { fg = fg, bg = bg },
+        z = { fg = fg, bg = bg },
+      },
+      visual = {
+        a = { fg = fg, bg = bg },
+        b = { fg = fg, bg = bg },
+        c = { fg = fg, bg = bg },
+        x = { fg = fg, bg = bg },
+        y = { fg = fg, bg = bg },
+        z = { fg = fg, bg = bg },
+      },
+      replace = {
+        a = { fg = fg, bg = bg },
+        b = { fg = fg, bg = bg },
+        c = { fg = fg, bg = bg },
+        x = { fg = fg, bg = bg },
+        y = { fg = fg, bg = bg },
+        z = { fg = fg, bg = bg },
+      },
+      command = {
+        a = { fg = fg, bg = bg },
+        b = { fg = fg, bg = bg },
+        c = { fg = fg, bg = bg },
+        x = { fg = fg, bg = bg },
+        y = { fg = fg, bg = bg },
+        z = { fg = fg, bg = bg },
+      },
+    },
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
@@ -120,12 +202,12 @@ local config = {
     }
   },
   sections = {
-    lualine_a = {M.get_symbol, M.get_mode},
+    lualine_a = {M.get_mode},
     lualine_b = {M.get_filename, M.get_git},
     lualine_c = {},
-    lualine_x = {},
+    lualine_x = {M.get_diagnostics},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {M.get_lsp, M.get_project_root, M.get_cursor}
   },
   inactive_sections = {
     lualine_a = {},
@@ -140,69 +222,5 @@ local config = {
   inactive_winbar = {},
   extensions = {}
 }
-
--- Inserts a component in lualine_c at left section
-local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
-end
-
--- Inserts a component in lualine_x at right section
-local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
-end
-
-ins_right {
-  function()
-    return string.format("%d:%d", vim.fn.line('.'), vim.fn.col('.'))
-  end,
-}
-
-ins_right {
-  function()
-    return string.format("%s", vim.bo.filetype)
-  end,
-}
-
-ins_right {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', info = ' ', hint= ' ' },
-  -- diagnostics_color = {
-    -- error = {},
-    -- warn = {},
-    -- info = {},
-  -- },
-  always_visible = true,
-}
-
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
-ins_left {
-  function()
-    return '%='
-  end,
-}
-
--- ins_left {
---   function()
---     local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
---     local clients = vim.lsp.get_clients()
---     if next(clients) == nil then
---       return nil
---     end
---     for _, client in ipairs(clients) do
---       local filetypes = client.config.filetypes
---       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
---         return client.name
---       end
---     end
---     return nil
---   end,
---   icon = ' ',
---   cond = function()
---     local clients = vim.lsp.get_clients()
---     return next(clients) ~= nil -- Only show this section if there are active LSP clients
---   end
--- }
 
 require('lualine').setup(config)

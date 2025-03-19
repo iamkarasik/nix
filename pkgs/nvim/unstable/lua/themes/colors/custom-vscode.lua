@@ -7,20 +7,17 @@ vim.o.termguicolors = true
 vim.o.background = 'dark'
 vim.g.colors_name = 'custom-vscode'
 
---xxx cterm=bold gui=bold guifg=#0a7aca guibg=#2f2f2f
-
 local colors = {
   inactive = '#666666',
   fg = '#D4D4D4',
-  fg2 = '#A1A1A1',
   bg = '#1E1E1E',
-  bg2 = '#2F2F2F',
+  bg2 = '#2B2B2B',
   red = '#f44747',
   green = '#4ec9b0',
   blue = '#0a7aca',
   lightblue = '#5cb6f8',
   yellow = '#ffaf00',
-  pink = '#ddb6f2',
+  pink = '#ddb6f2'
 }
 
 local c = {
@@ -949,21 +946,30 @@ local function link_highlight()
   hl(0, 'CmpItemKindTypeParameter', { link = '@variable.parameter' })
 
   -- Custom status line
-  hl(0, 'LualineModeNormal', { fg = colors.blue, bg = colors.bg2, bold = true })
-  hl(0, 'LualineModeVisual', { fg = colors.yellow, bg = colors.bg2, bold = true })
-  hl(0, 'LualineModeReplace', { fg = colors.red, bg = colors.bg2, bold = true })
-  hl(0, 'LualineModeInsert', { fg = colors.green, bg = colors.bg2, bold = true })
-  hl(0, 'LualineModeCommand', { fg = colors.pink, bg = colors.bg2, bold = true })
-  hl(0, 'LualineModeUnknown', { fg = colors.lightblue, bg = colors.bg2, bold = true })
+  hl(0, 'LualineTextModeNormal', { fg = colors.blue, bg = colors.bg2, bold = true })
+  hl(0, 'LualineTextModeVisual', { fg = colors.yellow, bg = colors.bg2, bold = true })
+  hl(0, 'LualineTextModeReplace', { fg = colors.red, bg = colors.bg2, bold = true })
+  hl(0, 'LualineTextModeInsert', { fg = colors.green, bg = colors.bg2, bold = true })
+  hl(0, 'LualineTextModeCommand', { fg = colors.pink, bg = colors.bg2, bold = true })
+  hl(0, 'LualineTextModeUnknown', { fg = colors.lightblue, bg = colors.bg2, bold = true })
 
-  hl(0, 'LualineSymbolModeNormal', { fg = colors.bg, bg = colors.blue })
-  hl(0, 'LualineSymbolModeVisual', { fg = colors.bg, bg = colors.yellow })
-  hl(0, 'LualineSymbolModeReplace', { fg = colors.bg, bg = colors.red })
-  hl(0, 'LualineSymbolModeInsert', { fg = colors.bg, bg = colors.green })
-  hl(0, 'LualineSymbolModeCommand', { fg = colors.bg, bg = colors.pink })
-  hl(0, 'LualineSymbolModeUnknown', { fg = colors.bg, bg = colors.lightblue })
+  hl(0, 'LualineIconModeNormal', { fg = colors.bg, bg = colors.blue, bold = true })
+  hl(0, 'LualineIconModeVisual', { fg = colors.bg, bg = colors.yellow, bold = true })
+  hl(0, 'LualineIconModeReplace', { fg = colors.bg, bg = colors.red, bold = true })
+  hl(0, 'LualineIconModeInsert', { fg = colors.bg, bg = colors.green, bold = true })
+  hl(0, 'LualineIconModeCommand', { fg = colors.bg, bg = colors.pink, bold = true })
+  hl(0, 'LualineIconModeUnknown', { fg = colors.bg, bg = colors.lightblue, bold = true })
 
   hl(0, 'LualineGitBranch', { fg = colors.fg, bg = colors.bg, bold = false })
+
+  hl(0, 'LualineIconLsp', { fg = colors.bg, bg = colors.green, bold = true })
+  hl(0, 'LualineTextLsp', { fg = colors.green, bg = colors.bg2, bold = true })
+
+  hl(0, 'LualineIconProjectRoot', { fg = colors.bg, bg = colors.pink, bold = true })
+  hl(0, 'LualineTextProjectRoot', { fg = colors.pink, bg = colors.bg2, bold = true })
+
+  hl(0, 'LualineIconCursor', { fg = colors.bg, bg = colors.yellow, bold = true })
+  hl(0, 'LualineTextCursor', { fg = colors.yellow, bg = colors.bg2, bold = true })
 end
 
 set_highlights()
