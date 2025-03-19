@@ -4,7 +4,11 @@ local M = {}
 
 M.symbols = {
   vim = "",
+  git = "",
   block = "█",
+  added = "",
+  changed = '',
+  removed = '',
 }
 
 M.modes = {
@@ -61,21 +65,38 @@ end
 M.get_mode = function()
   local mode = vim.api.nvim_get_mode().mode
   local hl_group = "LualineMode" .. M.modes[mode][2]
-  return "%#" .. hl_group .. "#" .. M.modes[mode][1]
+  return "%#" .. hl_group .. "#" .. M.modes[mode][1] .. " %#Normal#"
 end
 
 M.get_filename = function()
   local filename = vim.fn.expand('%:t')
   local icon, hl_group = devicons.get_icon(filename)
 
-  local fg = vim.api.nvim_get_hl_by_name(hl_group, true).foreground
-  local bg = vim.api.nvim_get_hl_by_name("Normal", true).background
+  local icon_color = vim.api.nvim_get_hl_by_name(hl_group, true).foreground
+  local dark_bg = vim.api.nvim_get_hl_by_name("LualineSymbolModeNormal", true).foreground
+  local light_bg = vim.api.nvim_get_hl_by_name("LualineModeNormal", true).background
 
-  vim.api.nvim_set_hl(0, "Lualine" .. hl_group, { bg = fg, fg = bg })
+  vim.api.nvim_set_hl(0, "Lualine" .. hl_group, { bg = icon_color, fg = dark_bg })
   local icon_block = "%#Lualine" .. hl_group .. "#" .. icon .. " "
 
-  vim.api.nvim_set_hl(0, "Lualine" .. hl_group .. "Filename", { bg = "none", fg = fg })
+  vim.api.nvim_set_hl(0, "Lualine" .. hl_group .. "Filename", { bg = light_bg, fg = icon_color })
   return icon_block .. "%#Lualine" .. hl_group .. "Filename" .. "# " .. filename
+end
+
+M.get_git = function()
+  local branch = vim.b.gitsigns_head or '' -- Get branch name
+  if branch == '' then return '' end
+
+  local added = vim.b.gitsigns_status_dict and vim.b.gitsigns_status_dict.added or 0
+  local changed = vim.b.gitsigns_status_dict and vim.b.gitsigns_status_dict.changed or 0
+  local removed = vim.b.gitsigns_status_dict and vim.b.gitsigns_status_dict.removed or 0
+
+  local diff_info = ' '
+  diff_info = diff_info .. M.symbols.added .. " " .. added .. " "
+  diff_info = diff_info .. M.symbols.changed .. " " .. changed .. " "
+  diff_info = diff_info .. M.symbols.removed .. " " .. removed .. " "
+
+  return "%#LualineGitBranch#" .. M.symbols.git .. " " .. branch .. diff_info .. "%#Normal#"
 end
 
 local config = {
@@ -83,7 +104,7 @@ local config = {
     icons_enabled = true,
     theme = 'auto',
     component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = ' ' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = { "NvimTree", "TelescopePrompt" },
       winbar = {},
@@ -100,7 +121,7 @@ local config = {
   },
   sections = {
     lualine_a = {M.get_symbol, M.get_mode},
-    lualine_b = {M.get_filename, 'branch'},
+    lualine_b = {M.get_filename, M.get_git},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
@@ -154,13 +175,6 @@ ins_right {
   always_visible = true,
 }
 
-ins_left {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
-  always_visible = true,
-}
-
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
 ins_left {
@@ -169,26 +183,26 @@ ins_left {
   end,
 }
 
-ins_left {
-  function()
-    local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
-    local clients = vim.lsp.get_clients()
-    if next(clients) == nil then
-      return nil
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return nil
-  end,
-  icon = ' ',
-  cond = function()
-    local clients = vim.lsp.get_clients()
-    return next(clients) ~= nil -- Only show this section if there are active LSP clients
-  end
-}
+-- ins_left {
+--   function()
+--     local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+--     local clients = vim.lsp.get_clients()
+--     if next(clients) == nil then
+--       return nil
+--     end
+--     for _, client in ipairs(clients) do
+--       local filetypes = client.config.filetypes
+--       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+--         return client.name
+--       end
+--     end
+--     return nil
+--   end,
+--   icon = ' ',
+--   cond = function()
+--     local clients = vim.lsp.get_clients()
+--     return next(clients) ~= nil -- Only show this section if there are active LSP clients
+--   end
+-- }
 
 require('lualine').setup(config)

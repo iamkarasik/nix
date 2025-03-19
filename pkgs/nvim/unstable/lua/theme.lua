@@ -1,1 +1,1 @@
-vim.cmd.colorscheme 'goosecode'
+vim.cmd.colorscheme 'custom-vscode'

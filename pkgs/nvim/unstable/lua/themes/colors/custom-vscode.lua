@@ -5,12 +5,16 @@ end
 
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.g.colors_name = 'goos'
+vim.g.colors_name = 'custom-vscode'
+
+--xxx cterm=bold gui=bold guifg=#0a7aca guibg=#2f2f2f
 
 local colors = {
   inactive = '#666666',
-  bg = '#1E1E1E',
   fg = '#D4D4D4',
+  fg2 = '#A1A1A1',
+  bg = '#1E1E1E',
+  bg2 = '#2F2F2F',
   red = '#f44747',
   green = '#4ec9b0',
   blue = '#0a7aca',
@@ -21,10 +25,7 @@ local colors = {
 
 local c = {
   vscNone = 'NONE',
-  vscFront = '#D4D4D4',
-  vscBack = '#1F1F1F',
 
-  vscTabCurrent = '#1F1F1F',
   vscTabOther = '#2D2D2D',
   vscTabOutside = '#252526',
 
@@ -163,7 +164,7 @@ local function set_highlights()
   hl(0, 'StatusLineNC', { fg = colors.fg, bg = colors.bg })
   hl(0, 'TabLine', { fg = colors.fg, bg = c.vscTabOther })
   hl(0, 'TabLineFill', { fg = colors.fg, bg = c.vscTabOutside })
-  hl(0, 'TabLineSel', { fg = colors.fg, bg = c.vscTabCurrent })
+  hl(0, 'TabLineSel', { fg = colors.fg, bg = colors.bg })
   hl(0, 'Title', { fg = c.vscNone, bg = c.vscNone, bold = true })
   hl(0, 'Visual', { fg = c.vscNone, bg = c.vscSelection })
   hl(0, 'VisualNOS', { fg = c.vscNone, bg = c.vscSelection })
@@ -614,16 +615,16 @@ local function set_highlights()
   hl(0, 'BufferLineFill', { fg = 'NONE', bg = opts.transparent and colors.bg or c.vscLeftDark })
 
   -- BarBar
-  hl(0, 'BufferCurrent', { fg = colors.fg, bg = c.vscTabCurrent })
-  hl(0, 'BufferCurrentIndex', { fg = colors.fg, bg = c.vscTabCurrent })
-  hl(0, 'BufferCurrentMod', { fg = c.vscYellowOrange, bg = c.vscTabCurrent })
-  hl(0, 'BufferCurrentSign', { fg = colors.fg, bg = c.vscTabCurrent })
-  hl(0, 'BufferCurrentTarget', { fg = c.vscRed, bg = c.vscTabCurrent })
-  hl(0, 'BufferVisible', { fg = c.vscGray, bg = c.vscTabCurrent })
-  hl(0, 'BufferVisibleIndex', { fg = c.vscGray, bg = c.vscTabCurrent })
-  hl(0, 'BufferVisibleMod', { fg = c.vscYellowOrange, bg = c.vscTabCurrent })
-  hl(0, 'BufferVisibleSign', { fg = c.vscGray, bg = c.vscTabCurrent })
-  hl(0, 'BufferVisibleTarget', { fg = c.vscRed, bg = c.vscTabCurrent })
+  hl(0, 'BufferCurrent', { fg = colors.fg, bg = colors.bg })
+  hl(0, 'BufferCurrentIndex', { fg = colors.fg, bg = colors.bg })
+  hl(0, 'BufferCurrentMod', { fg = c.vscYellowOrange, bg = colors.bg })
+  hl(0, 'BufferCurrentSign', { fg = colors.fg, bg = colors.bg })
+  hl(0, 'BufferCurrentTarget', { fg = c.vscRed, bg = colors.bg })
+  hl(0, 'BufferVisible', { fg = c.vscGray, bg = colors.bg })
+  hl(0, 'BufferVisibleIndex', { fg = c.vscGray, bg = colors.bg })
+  hl(0, 'BufferVisibleMod', { fg = c.vscYellowOrange, bg = colors.bg })
+  hl(0, 'BufferVisibleSign', { fg = c.vscGray, bg = colors.bg })
+  hl(0, 'BufferVisibleTarget', { fg = c.vscRed, bg = colors.bg })
   hl(0, 'BufferInactive', { fg = c.vscGray, bg = c.vscTabOther })
   hl(0, 'BufferInactiveIndex', { fg = c.vscGray, bg = c.vscTabOther })
   hl(0, 'BufferInactiveMod', { fg = c.vscYellowOrange, bg = c.vscTabOther })
@@ -948,12 +949,12 @@ local function link_highlight()
   hl(0, 'CmpItemKindTypeParameter', { link = '@variable.parameter' })
 
   -- Custom status line
-  hl(0, 'LualineModeNormal', { fg = colors.blue, bg = colors.bg, bold = true })
-  hl(0, 'LualineModeVisual', { fg = colors.yellow, bg = colors.bg, bold = true })
-  hl(0, 'LualineModeReplace', { fg = colors.red, bg = colors.bg, bold = true })
-  hl(0, 'LualineModeInsert', { fg = colors.green, bg = colors.bg, bold = true })
-  hl(0, 'LualineModeCommand', { fg = colors.pink, bg = colors.bg, bold = true })
-  hl(0, 'LualineModeUnknown', { fg = colors.lightblue, bg = colors.bg, bold = true })
+  hl(0, 'LualineModeNormal', { fg = colors.blue, bg = colors.bg2, bold = true })
+  hl(0, 'LualineModeVisual', { fg = colors.yellow, bg = colors.bg2, bold = true })
+  hl(0, 'LualineModeReplace', { fg = colors.red, bg = colors.bg2, bold = true })
+  hl(0, 'LualineModeInsert', { fg = colors.green, bg = colors.bg2, bold = true })
+  hl(0, 'LualineModeCommand', { fg = colors.pink, bg = colors.bg2, bold = true })
+  hl(0, 'LualineModeUnknown', { fg = colors.lightblue, bg = colors.bg2, bold = true })
 
   hl(0, 'LualineSymbolModeNormal', { fg = colors.bg, bg = colors.blue })
   hl(0, 'LualineSymbolModeVisual', { fg = colors.bg, bg = colors.yellow })
@@ -961,6 +962,8 @@ local function link_highlight()
   hl(0, 'LualineSymbolModeInsert', { fg = colors.bg, bg = colors.green })
   hl(0, 'LualineSymbolModeCommand', { fg = colors.bg, bg = colors.pink })
   hl(0, 'LualineSymbolModeUnknown', { fg = colors.bg, bg = colors.lightblue })
+
+  hl(0, 'LualineGitBranch', { fg = colors.fg, bg = colors.bg, bold = false })
 end
 
 set_highlights()
