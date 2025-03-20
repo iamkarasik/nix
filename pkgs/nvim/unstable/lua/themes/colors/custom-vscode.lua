@@ -587,18 +587,13 @@ local function set_highlights()
   hl(0, 'NvimTreeGitDirty', { fg = c.vscYellow, bg = 'NONE' })
   hl(0, 'NvimTreeGitNew', { fg = c.vscGreen, bg = 'NONE' })
   hl(0, 'NvimTreeImageFile', { fg = c.vscViolet, bg = 'NONE' })
-  hl(0, 'NvimTreeEmptyFolderName', { fg = c.vscGray, bg = 'NONE' })
   hl(0, 'NvimTreeFolderName', { fg = colors.fg, bg = 'NONE' })
   hl(0, 'NvimTreeSpecialFile', { fg = c.vscPink, bg = 'NONE', underline = true })
   hl(0, 'NvimTreeNormal', { fg = colors.fg, bg = opts.disable_nvimtree_bg and colors.bg or c.vscLeftDark })
   hl(0, 'NvimTreeCursorLine', { fg = 'NONE', bg = opts.disable_nvimtree_bg and c.vscCursorDarkDark or c.vscLeftMid })
   hl(0, 'NvimTreeVertSplit', { fg = opts.disable_nvimtree_bg and c.vscSplitDark or colors.bg, bg = colors.bg })
   hl(0, 'NvimTreeEndOfBuffer', { fg = opts.disable_nvimtree_bg and c.vscCursorDarkDark or c.vscLeftDark })
-  hl(
-    0,
-    'NvimTreeOpenedFolderName',
-    { fg = 'NONE', bg = opts.disable_nvimtree_bg and c.vscCursorDarkDark or c.vscLeftDark }
-  )
+  hl(0, 'NvimTreeOpenedFolderName', { fg = 'NONE', bg = opts.disable_nvimtree_bg and c.vscCursorDarkDark or c.vscLeftDark })
   hl(0, 'NvimTreeGitRenamed', { fg = c.vscGitRenamed, bg = 'NONE' })
   hl(0, 'NvimTreeGitIgnored', { fg = c.vscGitIgnored, bg = 'NONE' })
   hl(0, 'NvimTreeGitDeleted', { fg = c.vscGitDeleted, bg = 'NONE' })
@@ -606,6 +601,9 @@ local function set_highlights()
   hl(0, 'NvimTreeGitMerge', { fg = c.vscGitUntracked, bg = 'NONE' })
   hl(0, 'NvimTreeGitDirty', { fg = c.vscGitModified, bg = 'NONE' })
   hl(0, 'NvimTreeGitNew', { fg = c.vscGitAdded, bg = 'NONE' })
+
+  hl(0, 'NvimTreeOpenedHL', { link = 'NONE' })
+  hl(0, 'NvimTreeEmptyFolderName', { link = 'NONE' })
 
   -- Bufferline
   hl(0, 'BufferLineIndicatorSelected', { fg = c.vscLeftDark, bg = 'NONE' })
