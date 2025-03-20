@@ -11,7 +11,7 @@ local colors = {
   inactive = '#666666',
   fg = '#D4D4D4',
   bg = '#1E1E1E',
-  bg2 = '#2B2B2B',
+  bg2 = '#2A2A2A',
   red = '#f44747',
   green = '#4ec9b0',
   blue = '#0a7aca',
@@ -970,6 +970,9 @@ local function link_highlight()
 
   hl(0, 'LualineIconCursor', { fg = colors.bg, bg = colors.yellow, bold = true })
   hl(0, 'LualineTextCursor', { fg = colors.yellow, bg = colors.bg2, bold = true })
+
+  hl(0, 'LualineIconGitBranch', { fg = colors.bg, bg = colors.red, bold = true })
+  hl(0, 'LualineTextGitBranch', { fg = colors.red, bg = colors.bg2, bold = true })
 end
 
 set_highlights()

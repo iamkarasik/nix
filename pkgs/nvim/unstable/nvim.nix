@@ -1,4 +1,17 @@
-{pkgs, ...}: {
+{pkgs, ...}: 
+let
+  sonarlint-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "sonarlint.nvim";
+    version = "1";
+    src = pkgs.fetchFromGitLab {
+      owner = "schrieveslaach";
+      repo = "sonarlint.nvim";
+      rev = "67e7c6e1aa1114748ca58ed2fc05fc754c866075";
+      sha256 = "1260si7ham1k3jvx35b1g4hyj20ia8ybi5biw3f2kzmpwikaqrgq";
+    };
+  };
+in
+{
   enable = true;
   defaultEditor = true;
   viAlias = true;
@@ -42,6 +55,7 @@
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
 
+    sonarlint-nvim
     nvim-lspconfig
   ];
 }

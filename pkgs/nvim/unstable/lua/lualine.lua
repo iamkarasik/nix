@@ -84,10 +84,18 @@ M.get_filename = function()
   local icon_block = "%#Lualine" .. hl_group .. "#" .. icon .. " "
 
   vim.api.nvim_set_hl(0, "Lualine" .. hl_group .. "Filename", { bg = light_bg, fg = icon_color })
-  return icon_block .. "%#Lualine" .. hl_group .. "Filename" .. "# " .. filename
+  return icon_block .. "%#Lualine" .. hl_group .. "Filename# " .. filename .. " " .. reset
 end
 
-M.get_git = function()
+M.get_git_branch = function()
+  local branch = vim.b.gitsigns_head or '' -- Get branch name
+  if branch == '' then return '' end
+
+  local icon_block = "%#LualineIconGitBranch#" .. M.symbols.git .. ' '
+  return icon_block .. "%#LualineTextGitBranch# " .. branch
+end
+
+M.get_git_diff = function()
   local branch = vim.b.gitsigns_head or '' -- Get branch name
   if branch == '' then return '' end
 
@@ -95,12 +103,16 @@ M.get_git = function()
   local changed = vim.b.gitsigns_status_dict and vim.b.gitsigns_status_dict.changed or 0
   local removed = vim.b.gitsigns_status_dict and vim.b.gitsigns_status_dict.removed or 0
 
-  local diff_info = ' '
-  diff_info = diff_info .. M.symbols.added .. " " .. added .. " "
-  diff_info = diff_info .. M.symbols.changed .. " " .. changed .. " "
-  diff_info = diff_info .. M.symbols.removed .. " " .. removed .. ""
+  vim.api.nvim_set_hl(0, 'LualineIconGitAdded', { link = 'GitSignsAdd' })
+  vim.api.nvim_set_hl(0, 'LualineIconGitChanged', { link = 'GitSignsChange' })
+  vim.api.nvim_set_hl(0, 'LualineIconGitRemoved', { link = 'GitSignsDelete' })
 
-  return "%#LualineGitBranch#" .. M.symbols.git .. " " .. branch .. diff_info .. reset
+  local diff_info = ''
+  diff_info = diff_info .. "%#LualineIconGitAdded#" .. M.symbols.added .. " " .. added .. " "
+  diff_info = diff_info .. "%#LualineIconGitChanged#" .. M.symbols.changed .. " " .. changed .. " "
+  diff_info = diff_info .. "%#LualineIconGitRemoved#" .. M.symbols.removed .. " " .. removed
+
+  return diff_info .. reset .. " "
 end
 
 M.get_diagnostics = {
@@ -203,10 +215,10 @@ local config = {
   },
   sections = {
     lualine_a = {M.get_mode},
-    lualine_b = {M.get_filename, M.get_git},
+    lualine_b = {M.get_filename, M.get_git_branch, M.get_git_diff},
     lualine_c = {},
-    lualine_x = {M.get_diagnostics},
-    lualine_y = {},
+    lualine_x = {},
+    lualine_y = {M.get_diagnostics},
     lualine_z = {M.get_lsp, M.get_project_root, M.get_cursor}
   },
   inactive_sections = {
