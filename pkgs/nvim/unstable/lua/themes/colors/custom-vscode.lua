@@ -960,8 +960,6 @@ local function link_highlight()
   hl(0, 'LualineIconModeCommand', { fg = colors.bg, bg = colors.pink, bold = true })
   hl(0, 'LualineIconModeUnknown', { fg = colors.bg, bg = colors.lightblue, bold = true })
 
-  hl(0, 'LualineGitBranch', { fg = colors.fg, bg = colors.bg, bold = false })
-
   hl(0, 'LualineIconLsp', { fg = colors.bg, bg = colors.green, bold = true })
   hl(0, 'LualineTextLsp', { fg = colors.green, bg = colors.bg2, bold = true })
 
