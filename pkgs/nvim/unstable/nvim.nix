@@ -1,5 +1,4 @@
-{pkgs, ...}: 
-let
+{pkgs, ...}: let
   sonarlint-nvim = pkgs.vimUtils.buildVimPlugin {
     pname = "sonarlint.nvim";
     version = "1";
@@ -22,6 +21,7 @@ in
     set runtimepath+=${./lua/themes}
 
     luafile ${./lua/theme.lua}
+    luafile ${./lua/indent-blankline.lua}
     luafile ${./lua/keymaps.lua}
     luafile ${./lua/settings.lua}
     luafile ${./lua/treesitter.lua}
@@ -42,6 +42,7 @@ in
 
   plugins = with pkgs.vimPlugins; [
     nvim-web-devicons
+    indent-blankline-nvim
 
     lualine-nvim
     telescope-nvim

@@ -633,11 +633,8 @@ local function set_highlights()
   hl(0, 'BufferTabpagesFill', { fg = colors.fg, bg = c.vscTabOther })
 
   -- IndentBlankLine
-  hl(0, 'IndentBlanklineContextChar', { fg = c.vscContextCurrent, bg = 'NONE', nocombine = true })
-  hl(0, 'IndentBlanklineContextStart', { sp = c.vscContextCurrent, bg = 'NONE', nocombine = true, underline = true })
-  hl(0, 'IndentBlanklineChar', { fg = c.vscContext, bg = 'NONE', nocombine = true })
-  hl(0, 'IndentBlanklineSpaceChar', { fg = c.vscContext, bg = 'NONE', nocombine = true })
-  hl(0, 'IndentBlanklineSpaceCharBlankline', { fg = c.vscContext, bg = 'NONE', nocombine = true })
+  hl(0, 'IblIndent', { fg = colors.bg2, bg = 'NONE', nocombine = true })
+  hl(0, 'IblScope', { fg = colors.bg2, bg = 'NONE', nocombine = true })
 
   -- Neotest
   hl(0, 'NeotestAdapterName', { fg = colors.fg, bold = true })
@@ -805,93 +802,44 @@ local function set_highlights()
   hl(0, 'IlluminatedWordRead', { bg = isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue })
   hl(0, 'IlluminatedWordWrite', { bg = isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue })
 
-  if isDark then
-    hl(0, 'NvimTreeFolderIcon', { fg = c.vscBlue, bg = 'NONE' })
-    hl(0, 'NvimTreeIndentMarker', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'NvimTreeFolderIcon', { fg = c.vscBlue, bg = 'NONE' })
+  hl(0, 'NvimTreeIndentMarker', { fg = c.vscLineNumber, bg = 'NONE' })
 
-    hl(0, 'LspFloatWinNormal', { fg = colors.fg, bg = 'NONE' })
-    hl(0, 'LspFloatWinBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspInfoBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaHoverBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaSignatureHelpBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaCodeActionBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaDefPreviewBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspLinesDiagBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaRenameBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaBorderTitle', { fg = c.vscCursorDark, bg = 'NONE' })
-    hl(0, 'LSPSagaDiagnosticTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaDiagnosticBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaDiagnosticBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaShTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaShTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaDocTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaRenameBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'LspSagaLspFinderBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspFloatWinNormal', { fg = colors.fg, bg = 'NONE' })
+  hl(0, 'LspFloatWinBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspInfoBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaHoverBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaSignatureHelpBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaCodeActionBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaDefPreviewBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspLinesDiagBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaRenameBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaBorderTitle', { fg = c.vscCursorDark, bg = 'NONE' })
+  hl(0, 'LSPSagaDiagnosticTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaDiagnosticBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaDiagnosticBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaShTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaShTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaDocTruncateLine', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaRenameBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'LspSagaLspFinderBorder', { fg = c.vscLineNumber, bg = 'NONE' })
 
-    hl(0, 'TelescopePromptBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'TelescopeResultsBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'TelescopePreviewBorder', { fg = c.vscLineNumber, bg = 'NONE' })
-    hl(0, 'TelescopeNormal', { fg = colors.fg, bg = 'NONE' })
-    hl(0, 'TelescopeSelection', { fg = colors.fg, bg = c.vscPopupHighlightBlue })
-    hl(0, 'TelescopeMultiSelection', { fg = colors.fg, bg = c.vscPopupHighlightBlue })
-    hl(0, 'TelescopeMatching', { fg = c.vscMediumBlue, bg = 'NONE', bold = true })
-    hl(0, 'TelescopePromptPrefix', { fg = colors.fg, bg = 'NONE' })
+  hl(0, 'TelescopePromptBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'TelescopeResultsBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'TelescopePreviewBorder', { fg = c.vscLineNumber, bg = 'NONE' })
+  hl(0, 'TelescopeNormal', { fg = colors.fg, bg = 'NONE' })
+  hl(0, 'TelescopeSelection', { fg = colors.fg, bg = c.vscPopupHighlightBlue })
+  hl(0, 'TelescopeMultiSelection', { fg = colors.fg, bg = c.vscPopupHighlightBlue })
+  hl(0, 'TelescopeMatching', { fg = c.vscMediumBlue, bg = 'NONE', bold = true })
+  hl(0, 'TelescopePromptPrefix', { fg = colors.fg, bg = 'NONE' })
 
-    -- Debugging
-    hl(0, 'debugPC', { bg = '#4C4C19' })
+  -- Debugging
+  hl(0, 'debugPC', { bg = '#4C4C19' })
 
-    -- symbols-outline
-    -- white fg and lualine blue bg
-    hl(0, 'FocusedSymbol', { fg = '#ffffff', bg = c.vscUiBlue })
-    hl(0, 'SymbolsOutlineConnector', { fg = c.vscLineNumber, bg = 'NONE' })
-  else
-    hl(0, 'NvimTreeFolderIcon', { fg = c.vscDarkBlue, bg = 'NONE' })
-    hl(0, 'NvimTreeIndentMarker', { fg = c.vscTabOther, bg = 'NONE' })
-
-    hl(0, 'LspFloatWinNormal', { fg = colors.fg, bg = 'NONE' })
-    hl(0, 'LspFloatWinBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspInfoBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaHoverBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaSignatureHelpBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaCodeActionBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaDefPreviewBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspLinesDiagBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaRenameBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaBorderTitle', { fg = c.vscCursorDark, bg = 'NONE' })
-    hl(0, 'LSPSagaDiagnosticTruncateLine', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaDiagnosticBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaDiagnosticBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaShTruncateLine', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaShTruncateLine', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaDocTruncateLine', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaRenameBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'LspSagaLspFinderBorder', { fg = c.vscTabOther, bg = 'NONE' })
-
-    hl(0, 'TelescopePromptBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'TelescopeResultsBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'TelescopePreviewBorder', { fg = c.vscTabOther, bg = 'NONE' })
-    hl(0, 'TelescopeNormal', { fg = colors.fg, bg = 'NONE' })
-    hl(0, 'TelescopeSelection', { fg = '#FFFFFF', bg = c.vscPopupHighlightBlue })
-    hl(0, 'TelescopeMultiSelection', { fg = colors.bg, bg = c.vscPopupHighlightBlue })
-    hl(0, 'TelescopeMatching', { fg = 'orange', bg = 'NONE', bold = true, nil })
-    hl(0, 'TelescopePromptPrefix', { fg = colors.fg, bg = 'NONE' })
-
-    -- Debugging
-    hl(0, 'debugPC', { bg = '#FFFFBA' })
-
-    -- COC.nvim
-    hl(0, 'CocFloating', { fg = 'NONE', bg = c.vscPopupBack })
-    hl(0, 'CocMenuSel', { fg = '#FFFFFF', bg = '#285EBA' })
-    hl(0, 'CocSearch', { fg = '#2A64B9', bg = 'NONE' })
-
-    -- Copilot
-    hl(0, 'CopilotSuggestion', { fg = c.vscGray, bg = 'NONE' })
-
-    -- symbols-outline
-    -- white fg and lualine blue bg
-    hl(0, 'FocusedSymbol', { fg = colors.bg, bg = '#AF00DB' })
-    hl(0, 'SymbolsOutlineConnector', { fg = c.vscTabOther, bg = 'NONE' })
-  end
+  -- symbols-outline
+  -- white fg and lualine blue bg
+  hl(0, 'FocusedSymbol', { fg = '#ffffff', bg = c.vscUiBlue })
+  hl(0, 'SymbolsOutlineConnector', { fg = c.vscLineNumber, bg = 'NONE' })
 end
 
 local function link_highlight()
