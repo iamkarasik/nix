@@ -41,10 +41,6 @@ in
   ];
 
   plugins = with pkgs.vimPlugins; [
-    melange-nvim 
-    tokyonight-nvim
-    vscode-nvim
-
     nvim-web-devicons
 
     lualine-nvim

@@ -227,7 +227,7 @@ local config = {
     lualine_c = {},
     lualine_x = {'location'},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
   tabline = {},
   winbar = {},
