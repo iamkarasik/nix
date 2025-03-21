@@ -631,8 +631,8 @@ local function set_highlights()
   hl(0, 'BufferTabpagesFill', { fg = colors.fg, bg = c.vscTabOther })
 
   -- IndentBlankLine
-  hl(0, 'IblIndent', { fg = colors.bg2, bg = 'NONE', nocombine = true })
-  hl(0, 'IblScope', { fg = colors.bg2, bg = 'NONE', nocombine = true })
+  hl(0, 'IblIndent', { fg = '#363636', bg = 'NONE', nocombine = true })
+  hl(0, 'IblScope', { fg = '#363636', bg = 'NONE', nocombine = true })
 
   -- Neotest
   hl(0, 'NeotestAdapterName', { fg = colors.fg, bold = true })
@@ -917,6 +917,9 @@ local function link_highlight()
 
   hl(0, 'LualineIconGitBranch', { fg = colors.bg, bg = colors.red, bold = true })
   hl(0, 'LualineTextGitBranch', { fg = colors.red, bg = colors.bg2, bold = true })
+
+  hl(0, "MiniCursorword", { bg = '#303030' })
+  hl(0, "MiniCursorwordCurrent", { bg = '#303030' })
 end
 
 set_highlights()

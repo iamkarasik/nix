@@ -41,17 +41,29 @@ in
     };
     font = {
         normal = {
-          family = "JetBrainsMonoNL Nerd Font";
+          family = "SpaceMono Nerd Font";
           style = "ExtraLight";
         };
         bold = {
-          family = "JetBrainsMonoNL Nerd Font";
+          family = "SpaceMono Nerd Font";
           style = "Regular";
         };
         italic = {
-          family = "JetBrainsMonoNL Nerd Font";
+          family = "SpaceMono Nerd Font";
           style = "ThinItalic";
         };
+        # normal = {
+        #   family = "JetBrainsMonoNL Nerd Font";
+        #   style = "ExtraLight";
+        # };
+        # bold = {
+        #   family = "JetBrainsMonoNL Nerd Font";
+        #   style = "Regular";
+        # };
+        # italic = {
+        #   family = "JetBrainsMonoNL Nerd Font";
+        #   style = "ThinItalic";
+        # };
         size = curFont.size;
         offset = {
           x = curFont.x;

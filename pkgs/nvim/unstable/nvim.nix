@@ -21,11 +21,13 @@ in
     set runtimepath+=${./lua/themes}
 
     luafile ${./lua/theme.lua}
+    luafile ${./lua/mini-cursorword.lua}
     luafile ${./lua/indent-blankline.lua}
     luafile ${./lua/keymaps.lua}
     luafile ${./lua/settings.lua}
     luafile ${./lua/treesitter.lua}
     luafile ${./lua/lsp.lua}
+    luafile ${./lua/sonarlint.lua}
     luafile ${./lua/telescope.lua}
     luafile ${./lua/nvim-tree.lua}
     luafile ${./lua/gitsigns.lua}
@@ -43,6 +45,7 @@ in
   plugins = with pkgs.vimPlugins; [
     nvim-web-devicons
     indent-blankline-nvim
+    mini-cursorword
 
     lualine-nvim
     telescope-nvim
