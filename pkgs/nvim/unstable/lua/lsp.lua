@@ -1,10 +1,23 @@
-local lspconfig = require('lspconfig')
+local vim = vim
 
-lspconfig['gopls'].setup { }
-lspconfig['jdtls'].setup { }
-lspconfig['lua_ls'].setup { }
-lspconfig['nil_ls'].setup { }
-lspconfig['ts_ls'].setup { }
+local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+lspconfig['gopls'].setup({
+  capabilities = capabilities,
+})
+lspconfig['jdtls'].setup({
+  capabilities = capabilities,
+})
+lspconfig['lua_ls'].setup({
+  capabilities = capabilities,
+})
+lspconfig['nil_ls'].setup({
+  capabilities = capabilities,
+})
+lspconfig['ts_ls'].setup({
+  capabilities = capabilities,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)

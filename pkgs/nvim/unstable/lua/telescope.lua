@@ -1,8 +1,13 @@
+require("telescope").load_extension("ui-select")
 require('telescope').setup({
   defaults = {
     prompt_prefix = "  ",
     selection_caret = " ",
     path_display = { "smart" },
+    layout_config = {
+      prompt_position = "top",
+    },
+    sorting_strategy = "ascending",
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
@@ -24,11 +29,7 @@ require('telescope').setup({
     -- builtin picker
   },
   extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
+
   }
 })
 
