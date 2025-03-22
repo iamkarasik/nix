@@ -1,0 +1,11 @@
+### Missing
+- [ ] Buffer line
+- [ ] Terminal
+- [ ] Running Current Class & Tests
+- [ ] DAP & DAP-UI
+- [ ] Vim surround
+- [ ] Colorizer
+- [ ] Formatter
+- [ ] Rainbow delimiters
+- [ ] Open In Git
+- [ ] Themes

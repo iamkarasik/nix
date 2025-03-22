@@ -54,9 +54,10 @@ in
     telescope-ui-select-nvim
     nvim-tree-lua
 
-    gitsigns-nvim
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
+
+    gitsigns-nvim
 
     sonarlint-nvim
     nvim-lspconfig
