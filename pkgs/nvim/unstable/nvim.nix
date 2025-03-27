@@ -5,11 +5,11 @@
     src = pkgs.fetchFromGitLab {
       owner = "schrieveslaach";
       repo = "sonarlint.nvim";
-      rev = "67e7c6e1aa1114748ca58ed2fc05fc754c866075"; sha256 = "1260si7ham1k3jvx35b1g4hyj20ia8ybi5biw3f2kzmpwikaqrgq";
+      rev = "67e7c6e1aa1114748ca58ed2fc05fc754c866075";
+      sha256 = "1260si7ham1k3jvx35b1g4hyj20ia8ybi5biw3f2kzmpwikaqrgq";
     };
   };
-in
-{
+in {
   enable = true;
   defaultEditor = true;
   viAlias = true;
@@ -33,34 +33,60 @@ in
     luafile ${./lua/nvim-tree.lua}
     luafile ${./lua/gitsigns.lua}
     luafile ${./lua/lualine.lua}
+    luafile ${./lua/barbar.lua}
+    luafile ${./lua/toggleterm.lua}
+    luafile ${./lua/conform.lua}
+    luafile ${./lua/colorizer.lua}
+    luafile ${./lua/rainbow-delimiters.lua}
   '';
 
   extraPackages = with pkgs; [
+    # LSP
     gopls # GoLang
     jdt-language-server # Java
     lua-language-server # Lua
     nil # Nix
     typescript-language-server # JavaScript/TypeScript
+
+    # Formatters
+    gofumpt
+    google-java-format
+    prettierd
+    rustfmt
+    scalafmt
+    stylua
+    alejandra
   ];
 
   plugins = with pkgs.vimPlugins; [
     nvim-web-devicons
     indent-blankline-nvim
     mini-cursorword
-    nvim-autopairs
-
+    nvim-colorizer-lua
+    rainbow-delimiters-nvim
     lualine-nvim
+    barbar-nvim
+
     telescope-nvim
     telescope-ui-select-nvim
     nvim-tree-lua
+    toggleterm-nvim
 
     nvim-treesitter.withAllGrammars
     nvim-ts-autotag
+    nvim-autopairs
+    vim-surround
 
     gitsigns-nvim
 
+    # Fugitive
+    vim-fugitive
+    vim-rhubarb
+    fugitive-gitlab-vim
+
     sonarlint-nvim
     nvim-lspconfig
+    conform-nvim
 
     nvim-cmp
     cmp-buffer

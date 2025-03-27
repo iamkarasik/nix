@@ -8,7 +8,7 @@ require("nvim-tree").setup({
   on_attach = custom_on_attach,
   hijack_cursor = true,
   disable_netrw = true,
-  sync_root_with_cwd = true,
+  sync_root_with_cwd = false,
   update_focused_file = {
     enable = false,
     update_root = false,
@@ -21,10 +21,11 @@ require("nvim-tree").setup({
     preserve_window_proportions = true,
   },
   renderer = {
-    root_folder_label = function(path)
-      local icon = " "
-      return icon .. vim.fn.fnamemodify(path, ":t")
-    end,
+    -- root_folder_label = function(path)
+    --   local icon = " "
+    --   return icon .. vim.fn.fnamemodify(path, ":t")
+    -- end,
+    root_folder_label = false,
     highlight_git = "name",
     highlight_diagnostics = "name",
     highlight_opened_files = "name",
