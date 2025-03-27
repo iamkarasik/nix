@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     bat
     curl
+    fd
     fzf
     htop
     jq
