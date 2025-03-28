@@ -156,24 +156,17 @@ M.get_diagnostics = {
 }
 
 M.get_lsp = function()
-	local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+  if not M.should_display() then
+		return ""
+	end
+
 	local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
 
 	if next(clients) == nil then
 		return ""
 	end
-	if not M.should_display() then
-		return ""
-	end
 
-	local client_name = ""
-	for _, client in ipairs(clients) do
-		local filetypes = client.config.filetypes
-		if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-			client_name = client.name
-			break
-		end
-	end
+	local client_name = clients[1].name
 
 	local icon_block = "%#LualineIconLsp#" .. M.symbols.gear .. " "
 	return icon_block .. "%#LualineTextLsp# " .. client_name .. " " .. reset

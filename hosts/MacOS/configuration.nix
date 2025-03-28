@@ -40,7 +40,7 @@
 
       ApplePressAndHoldEnabled = false;
       KeyRepeat = 1;
-      InitialKeyRepeat = 20;
+      InitialKeyRepeat = 15;
 
     };
 
