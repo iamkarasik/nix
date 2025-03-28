@@ -47,7 +47,7 @@ in {
     gopls # GoLang
     jdt-language-server # Java
     lua-language-server # Lua
-    nixd # Nix
+    nil # Nix
     typescript-language-server # JavaScript/TypeScript
 
     # Formatters

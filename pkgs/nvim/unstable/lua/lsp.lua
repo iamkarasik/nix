@@ -12,7 +12,7 @@ lspconfig['jdtls'].setup({
 lspconfig['lua_ls'].setup({
   capabilities = capabilities,
 })
-lspconfig['nixd'].setup({
+lspconfig['nil_ls'].setup({
   capabilities = capabilities,
 })
 lspconfig['ts_ls'].setup({
