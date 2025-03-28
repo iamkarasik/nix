@@ -16,6 +16,7 @@ in {
   vimAlias = true;
   vimdiffAlias = true;
 
+  # luafile ${./lua/dap.lua}
   extraConfig = ''
     set runtimepath+=${./lua/themes}
 
@@ -38,6 +39,7 @@ in {
     luafile ${./lua/conform.lua}
     luafile ${./lua/colorizer.lua}
     luafile ${./lua/rainbow-delimiters.lua}
+    luafile ${./lua/dap.lua}
   '';
 
   extraPackages = with pkgs; [
@@ -45,7 +47,7 @@ in {
     gopls # GoLang
     jdt-language-server # Java
     lua-language-server # Lua
-    nil # Nix
+    nixd # Nix
     typescript-language-server # JavaScript/TypeScript
 
     # Formatters
@@ -56,6 +58,9 @@ in {
     scalafmt
     stylua
     alejandra
+
+    # Debug
+    delve
   ];
 
   plugins = with pkgs.vimPlugins; [
@@ -94,5 +99,11 @@ in {
     cmp-cmdline
     cmp-nvim-lsp-signature-help
     cmp-path
+
+    # Debug
+    nvim-dap
+    nvim-dap-ui
+    nvim-dap-virtual-text
+    nvim-dap-go
   ];
 }
