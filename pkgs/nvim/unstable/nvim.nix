@@ -16,11 +16,11 @@ in {
   vimAlias = true;
   vimdiffAlias = true;
 
-  # luafile ${./lua/dap.lua}
   extraConfig = ''
-    set runtimepath+=${./lua/themes}
+    set runtimepath+=${./lua/autoload}
 
     luafile ${./lua/theme.lua}
+    luafile ${./lua/noice.lua}
     luafile ${./lua/mini-cursorword.lua}
     luafile ${./lua/indent-blankline.lua}
     luafile ${./lua/autopairs.lua}
@@ -64,6 +64,7 @@ in {
   ];
 
   plugins = with pkgs.vimPlugins; [
+    noice-nvim
     nvim-web-devicons
     indent-blankline-nvim
     mini-cursorword
@@ -81,6 +82,7 @@ in {
     nvim-ts-autotag
     nvim-autopairs
     vim-surround
+    vim-sleuth # Auto configure shiftwidth and tabstop
 
     gitsigns-nvim
 
@@ -105,5 +107,8 @@ in {
     nvim-dap-ui
     nvim-dap-virtual-text
     nvim-dap-go
+
+    # Java
+    nvim-jdtls
   ];
 }

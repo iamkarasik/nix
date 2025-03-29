@@ -35,21 +35,9 @@ local icons = {
 cmp.setup({
   formatting = {
     fields = { "kind", "abbr", "menu" },
-    format = function(entry, vim_item)
+    format = function(_, vim_item)
       local kind = vim_item.kind -- Class, Method, Variable, Text, ...
       vim_item.kind = icons[kind] or ""
-
-      local max_length = 32 -- Same as IntelliJ
-
-      if vim_item.abbr:len() > max_length then
-        vim_item.abbr = vim_item.abbr.sub(vim_item.abbr, 1, max_length - 2) .. ".." -- Limit the length
-      end
-
-      local item = entry:get_completion_item()
-      if item.detail then
-        vim_item.menu = item.detail.sub(item.detail, 1, 23)
-      end
-
       return vim_item
     end,
   },

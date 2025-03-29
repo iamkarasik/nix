@@ -29,3 +29,7 @@ keymap.set("n", "<c-j>", "<c-w>j")
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Comments
+keymap.set({'n','i'}, '<C-/>', ':normal gcc<CR>', { desc = '[/] Toggle comment line' })
+keymap.set('v', '<C-/>', '<Esc>:normal gvgc<CR><DOWN>', { desc = '[/] Toggle comment block' })

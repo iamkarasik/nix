@@ -36,8 +36,8 @@ M.skip_file_type = {
 }
 
 M.should_display = function()
-	local mode = M.modes[vim.api.nvim_get_mode().mode][2]
-	local file_type = vim.bo.filetype
+	local mode = (M.modes[vim.api.nvim_get_mode().mode] or { "UNKNOWN", "Unknown" })[2]
+	local file_type = vim.bo.filetype or ""
 	return M.display_modes[mode] ~= nil and M.skip_file_type[file_type] == nil
 end
 
@@ -166,7 +166,17 @@ M.get_lsp = function()
 		return ""
 	end
 
-	local client_name = clients[1].name
+	local client_name = ""
+  for _, client in ipairs(clients) do
+    if client.name ~= "sonarlint.nvim" then
+      client_name = client.name
+      break
+    end
+  end
+
+  if client_name == "" then
+    return ""
+  end
 
 	local icon_block = "%#LualineIconLsp#" .. M.symbols.gear .. " "
 	return icon_block .. "%#LualineTextLsp# " .. client_name .. " " .. reset

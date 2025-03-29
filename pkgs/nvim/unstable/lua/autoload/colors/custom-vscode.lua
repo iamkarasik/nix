@@ -1,3 +1,5 @@
+local vim = vim
+
 vim.cmd('hi clear')
 if vim.fn.exists('syntax_on') then
   vim.cmd('syntax reset')
@@ -920,6 +922,34 @@ local function link_highlight()
 
   hl(0, "MiniCursorword", { bg = '#303030' })
   hl(0, "MiniCursorwordCurrent", { bg = '#303030' })
+
+  -- Custom Java
+  local warnUnderline = "#be9117"
+  local customYellow = "#ffc66d"
+  local customGreen = "#3d8f7f"
+
+  vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = c.vscGray, bg = "NONE", undercurl = true, sp = warnUnderline })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { fg = c.vscRed, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { fg = "NONE", bg = "NONE", undercurl = true, sp = warnUnderline })
+
+  vim.api.nvim_set_hl(0, "@constant.java", { fg = customYellow })
+  vim.api.nvim_set_hl(0, "@lsp.typemod.property.static.java", { fg = customYellow })
+  vim.api.nvim_set_hl(0, "@variable.parameter.java", { fg = c.vscYellow })
+  vim.api.nvim_set_hl(0, "@lsp.type.parameter.java", { fg = c.vscYellow })
+
+  vim.api.nvim_set_hl(0, "@lsp.typemod.property.readonly.java", { link = "@lsp" })
+  vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.java", { link = "@lsp" })
+
+  vim.api.nvim_set_hl(0, "@lsp.typemod.method.static.java", { fg = c.vscFront })
+
+  vim.api.nvim_set_hl(0, "@keyword.conditional.java", { fg = c.vscBlue })
+  vim.api.nvim_set_hl(0, "@keyword.return.java", { fg = c.vscBlue })
+  vim.api.nvim_set_hl(0, "@keyword.import.java", { fg = c.vscBlue })
+  vim.api.nvim_set_hl(0, "@keyword.exception.java", { fg = c.vscBlue })
+
+  vim.api.nvim_set_hl(0, "@lsp.typemod.annotation.public.java", { fg = c.vscBlueGreen })
+
+  vim.api.nvim_set_hl(0, "@lsp.typemod.interface.public.java", { fg = customGreen })
 end
 
 set_highlights()

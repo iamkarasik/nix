@@ -6,9 +6,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig['gopls'].setup({
   capabilities = capabilities,
 })
-lspconfig['jdtls'].setup({
-  capabilities = capabilities,
-})
 lspconfig['lua_ls'].setup({
   capabilities = capabilities,
 })
@@ -22,6 +19,8 @@ lspconfig['ts_ls'].setup({
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local opts = { buffer = ev.buf }
+    vim.keymap.set("n", "gR", ":Telescope lsp_references<CR>", { desc = "Find References" })
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
