@@ -1,12 +1,4 @@
-local vim = vim
-
 require("bufferline").setup({
-	sidebar_filetypes = {
-		NvimTree = {
-			text = "󰉋 " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t"),
-			align = "left",
-		},
-	},
 	icons = {
 		separator_at_end = true,
 		separator = {

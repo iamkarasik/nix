@@ -33,6 +33,7 @@ M.display_modes = {
 
 M.skip_file_type = {
 	NvimTree = true,
+	['neo-tree'] = true,
 	TelescopePrompt = true,
 }
 

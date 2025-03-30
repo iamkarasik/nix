@@ -31,7 +31,7 @@ in {
     luafile ${./lua/sonarlint.lua}
     luafile ${./lua/nvim-cmp.lua}
     luafile ${./lua/telescope.lua}
-    luafile ${./lua/nvim-tree.lua}
+    luafile ${./lua/neo-tree.lua}
     luafile ${./lua/gitsigns.lua}
     luafile ${./lua/lualine.lua}
     luafile ${./lua/barbar.lua}
@@ -65,6 +65,7 @@ in {
 
   plugins = with pkgs.vimPlugins; [
     noice-nvim
+    nvim-notify
     nvim-web-devicons
     indent-blankline-nvim
     mini-cursorword
@@ -75,7 +76,8 @@ in {
 
     telescope-nvim
     telescope-ui-select-nvim
-    nvim-tree-lua
+    # nvim-tree-lua
+    neo-tree-nvim
     toggleterm-nvim
 
     nvim-treesitter.withAllGrammars
