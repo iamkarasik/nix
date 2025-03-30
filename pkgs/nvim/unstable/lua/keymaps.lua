@@ -33,3 +33,19 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Comments
 keymap.set({'n','i'}, '<C-/>', ':normal gcc<CR>', { desc = '[/] Toggle comment line' })
 keymap.set('v', '<C-/>', '<Esc>:normal gvgc<CR><DOWN>', { desc = '[/] Toggle comment block' })
+
+keymap.set({ "i", "s" }, "<Tab>", function()
+	if vim.snippet.active({ direction = 1 }) then
+		return "<cmd>lua vim.snippet.jump(1)<cr>"
+	else
+		return "<Tab>"
+	end
+end, { expr = true })
+
+keymap.set({ "i", "s" }, "<S-Tab>", function()
+	if vim.snippet.active({ direction = -1 }) then
+		return "<cmd>lua vim.snippet.jump(-1)<cr>"
+	else
+		return "<S-Tab>"
+	end
+end, { expr = true })

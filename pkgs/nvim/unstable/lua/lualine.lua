@@ -23,11 +23,12 @@ M.symbols = {
 }
 
 M.display_modes = {
-	Normal = true,
-	Visual = true,
-	Insert = true,
-	Replace = true,
 	Command = true,
+	Insert = true,
+	Normal = true,
+	Replace = true,
+	Select = true,
+	Visual = true,
 }
 
 M.skip_file_type = {
@@ -76,8 +77,9 @@ M.modes = {
 	["ce"] = { "COMMAND", "Command" },
 	["cr"] = { "COMMAND", "Command" },
 
-	["s"] = { "SELECT", "Unknown" },
-	["S"] = { "S-LINE", "Unknown" },
+	["s"] = { "SELECT", "Insert" },
+	["S"] = { "S-LINE", "Insert" },
+
 	[""] = { "S-BLOCK", "Unknown" },
 	["r"] = { "PROMPT", "Unknown" },
 	["rm"] = { "MORE", "Unknown" },
