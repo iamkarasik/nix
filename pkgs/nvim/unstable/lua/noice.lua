@@ -8,23 +8,13 @@ require("noice").setup({
 			filter = {
 				event = "msg_show",
 				kind = "",
-				find = "written",
-			},
-			opts = { skip = true },
-		},
-		{
-			filter = {
-				event = "msg_show",
-				kind = "",
-				find = "more lines",
-			},
-			opts = { skip = true },
-		},
-		{
-			filter = {
-				event = "msg_show",
-				kind = "",
-				find = "fewer lines",
+				any = {
+					{ find = "lines yanked" },
+					{ find = "written" },
+					{ find = "more line" },
+					{ find = "line less" },
+					{ find = "fewer lines" },
+				},
 			},
 			opts = { skip = true },
 		},
