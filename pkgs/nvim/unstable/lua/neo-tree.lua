@@ -11,7 +11,7 @@ require("neo-tree").setup({
 			with_expanders = true,
 		},
 		icon = {
-			folder_closed = "",
+			folder_closed = " ",
 			folder_open = "",
 			folder_empty = "",
 			folder_empty_open = "",

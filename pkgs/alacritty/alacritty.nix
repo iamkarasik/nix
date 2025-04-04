@@ -40,25 +40,13 @@ in
       multiplier = 5;
     };
     font = {
-        # normal = {
-        #   family = "SpaceMono Nerd Font";
-        #   style = "ExtraLight";
-        # };
-        # bold = {
-        #   family = "SpaceMono Nerd Font";
-        #   style = "Regular";
-        # };
-        # italic = {
-        #   family = "SpaceMono Nerd Font";
-        #   style = "ThinItalic";
-        # };
         normal = {
           family = "JetBrainsMonoNL Nerd Font";
-          style = "ExtraLight";
+          style = "Regular";
         };
         bold = {
           family = "JetBrainsMonoNL Nerd Font";
-          style = "Regular";
+          style = "Bold";
         };
         italic = {
           family = "JetBrainsMonoNL Nerd Font";

@@ -1,12 +1,11 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./modules/alacritty.nix
     ./modules/dev.nix
     ./modules/fonts.nix
-    ./modules/java.nix
+    ./modules/git.nix
     ./modules/golang.nix
+    ./modules/java.nix
     ./modules/k8s.nix
     ./modules/lsd.nix
     ./modules/nvim.nix
