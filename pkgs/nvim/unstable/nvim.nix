@@ -21,6 +21,7 @@ in {
 
     luafile ${./lua/theme.lua}
     luafile ${./lua/noice.lua}
+    luafile ${./lua/notify.lua}
     luafile ${./lua/mini-cursorword.lua}
     luafile ${./lua/indent-blankline.lua}
     luafile ${./lua/autopairs.lua}
