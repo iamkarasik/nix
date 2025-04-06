@@ -40,6 +40,7 @@ in {
     luafile ${./lua/colorizer.lua}
     luafile ${./lua/rainbow-delimiters.lua}
     luafile ${./lua/dap.lua}
+    luafile ${./lua/neotest.lua}
   '';
 
   extraPackages = with pkgs; [
@@ -112,5 +113,10 @@ in {
 
     # Java
     nvim-jdtls
+
+    # Testing
+    neotest
+    neotest-java
+    neotest-go
   ];
 }

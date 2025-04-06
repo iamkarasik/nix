@@ -46,9 +46,5 @@ require('gitsigns').setup({
     map('n', '<leader>hb', function()
       gitsigns.blame_line({ full = false })
     end)
-
-    -- Toggles
-    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-    map('n', '<leader>td', gitsigns.toggle_deleted)
   end
 })

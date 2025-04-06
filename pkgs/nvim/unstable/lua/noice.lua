@@ -14,6 +14,7 @@ require("noice").setup({
 					{ find = "more line" },
 					{ find = "line less" },
 					{ find = "fewer lines" },
+					{ find = "Compile successful" },
 				},
 			},
 			opts = { skip = true },

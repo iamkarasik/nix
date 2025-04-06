@@ -7,7 +7,7 @@ require("dap-go").setup({
 	dap_configurations = {
 		{
 			type = "go",
-			name = "Attach remote",
+			name = "Debug Remote (Attach)",
 			mode = "remote",
 			request = "attach",
 		},
@@ -29,6 +29,17 @@ require("dap-go").setup({
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	ui.open({})
 end
+
+dap.configurations.java = {
+	{
+		type = 'java';
+		request = 'attach';
+		name = "Debug Remote (Attach)";
+		hostName = "127.0.0.1";
+		vmArgs = "-Xmx2g";
+		port = 5005;
+	},
+}
 
 -- nvim-dap
 vim.keymap.set("n", "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, { desc = "Breakpoint Condition" })
