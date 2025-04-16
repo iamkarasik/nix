@@ -2,14 +2,14 @@
 
   fonts = {
     "aarch64-darwin" = { size = 13.0; x = 1; y = 1; };
-    "x86_64-linux" = { size = 12.0; x = 0; y = 0; };
+    "x86_64-linux" = { size = 10.0; x = 0; y = 0; };
   };
 
   term = {
     "aarch64-darwin" = "xterm-256color";
   };
 
-  curFont = fonts.${system} or { size = 12.0; x = 1; y = 1; };
+  curFont = fonts.${system} or { size = 12.0; x = 0; y = 0; };
   curTerm = term.${system} or "alacritty";
 in
 {
