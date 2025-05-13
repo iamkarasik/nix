@@ -2,15 +2,15 @@
 
 pkgs.stdenv.mkDerivation rec {
   name = "sonarlint-language-server";
-  version = "4.14.1";
-  snapshot = "77101";
+  version = "4.20.2";
+  snapshot = "77498";
 
   src = pkgs.fetchurl {
     url = "https://github.com/SonarSource/sonarlint-vscode/releases/download/${version}+${snapshot}/sonarlint-vscode-${version}.vsix";
-    sha256 = "15yy1sqdxmzcz4knj69bgy93z988vzp0891hr80p72y7907vgmma";
+    sha256 = "0wsj09nwq8shp4fy7bk6kgmy6iw1pnx0n0c10pjiq48by8adhlbv";
   };
 
-  nativeBuildInputs = with pkgs; [
+  nativeBuildInputs = [
     pkgs.unzip
     pkgs.makeWrapper
   ];
@@ -26,7 +26,7 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    analyzers=$(find $out/analyzers | xargs echo)
+    analyzers=$(find $out/analyzers -type f -name "*.jar" | xargs echo)
 
     makeWrapper ${pkgs.jre_headless}/bin/java $out/bin/sonarlint-ls \
       --add-flags "-jar $out/server/sonarlint-ls.jar" \

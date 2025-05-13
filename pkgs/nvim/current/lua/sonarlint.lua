@@ -1,3 +1,4 @@
+-- vim.keymap.set('n', '<leader>sl', function() 
 require("sonarlint").setup({
 	server = {
 		cmd = {
@@ -21,3 +22,4 @@ require("sonarlint").setup({
 		"xml",
 	},
 })
+-- end, { noremap = true })

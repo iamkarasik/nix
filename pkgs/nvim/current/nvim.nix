@@ -1,12 +1,12 @@
 {pkgs, ...}: let
-  sonarlint-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "sonarlint.nvim";
+  sonarqube-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "sonarqube.nvim";
     version = "1";
-    src = pkgs.fetchFromGitLab {
-      owner = "schrieveslaach";
-      repo = "sonarlint.nvim";
-      rev = "67e7c6e1aa1114748ca58ed2fc05fc754c866075";
-      sha256 = "1260si7ham1k3jvx35b1g4hyj20ia8ybi5biw3f2kzmpwikaqrgq";
+    src = pkgs.fetchFromGitHub {
+      owner = "iamkarasik";
+      repo = "sonarqube.nvim";
+      rev = "9a911801f64bd20c8d6ea885a83ff8e7692a1bc3";
+      sha256 = "0mxw728j541ipa8gps1a2an6k2ql8d25byp521zyffzjh4dlpsi5";
     };
   };
 in {
@@ -15,6 +15,7 @@ in {
   viAlias = true;
   vimAlias = true;
   vimdiffAlias = true;
+
 
   extraConfig = ''
     set runtimepath+=${./lua/autoload}
@@ -29,7 +30,7 @@ in {
     luafile ${./lua/settings.lua}
     luafile ${./lua/treesitter.lua}
     luafile ${./lua/lsp.lua}
-    luafile ${./lua/sonarlint.lua}
+    luafile ${./lua/sonarqube.lua}
     luafile ${./lua/nvim-cmp.lua}
     luafile ${./lua/telescope.lua}
     luafile ${./lua/neo-tree.lua}
@@ -78,7 +79,6 @@ in {
 
     telescope-nvim
     telescope-ui-select-nvim
-    # nvim-tree-lua
     neo-tree-nvim
     toggleterm-nvim
 
@@ -86,7 +86,7 @@ in {
     nvim-ts-autotag
     nvim-autopairs
     vim-surround
-    vim-sleuth # Auto configure shiftwidth and tabstop
+    vim-sleuth
 
     gitsigns-nvim
 
@@ -95,7 +95,7 @@ in {
     vim-rhubarb
     fugitive-gitlab-vim
 
-    sonarlint-nvim
+    sonarqube-nvim
     nvim-lspconfig
     conform-nvim
 
@@ -111,6 +111,7 @@ in {
     nvim-dap-ui
     nvim-dap-virtual-text
     nvim-dap-go
+    one-small-step-for-vimkind
 
     # Java
     nvim-jdtls

@@ -49,3 +49,13 @@ keymap.set({ "i", "s" }, "<S-Tab>", function()
 		return "<S-Tab>"
 	end
 end, { expr = true })
+
+P = function(...)
+  local args = {...}
+  local output = {}
+  for _, arg in ipairs(args) do
+    table.insert(output, vim.inspect(arg))
+  end
+  print(table.concat(output, ", "))
+  return unpack(args)
+end

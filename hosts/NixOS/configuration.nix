@@ -1,15 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, username, stateVersion, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./nvidia.nix
-      ./hardware-configuration.nix
-    ];
+  pkgs,
+  username,
+  stateVersion,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./nvidia.nix
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader = {
@@ -49,10 +48,10 @@
   services.displayManager = {
     autoLogin.user = username;
     sddm = {
-      enable = true; 
-      autoNumlock = true; 
+      enable = true;
+      autoNumlock = true;
       wayland.enable = true;
-      theme = "${import ../../pkgs/sddm/chili/chili.nix { inherit pkgs; }}";
+      theme = "${import ../../pkgs/sddm/chili/chili.nix {inherit pkgs;}}";
     };
   };
 
@@ -72,13 +71,20 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "Goose";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  environment.sessionVariables = {
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+  };
 
   environment.systemPackages = with pkgs; [
     file # File command
@@ -88,7 +94,7 @@
     kitty
     libnotify
     lm_sensors
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" "Noto" ]; })
+    (nerdfonts.override {fonts = ["JetBrainsMono" "ZedMono" "Noto"];})
     networkmanagerapplet
     pulseaudio
     rofi-wayland
