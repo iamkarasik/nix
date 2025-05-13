@@ -16,23 +16,37 @@ require("telescope").setup({
 			},
 		},
 		file_ignore_patterns = {
-			".git/",
-			".idea/",
-			"node_modules/",
-			"target/", -- Java build directories
-			"bin/", -- Go binaries
-			"out/", -- JavaScript/TypeScript build outputs
-			"build/",
-			"dist/",
-			".vscode/",
-			".gradle/",
-			"*.class", -- Java compiled files
-			"*.jar", -- Java archives
-			"*.war", -- Java web archives
-			"*.exe", -- Executables (Go binaries)
-			"*.so", -- Shared objects (Go)
-			"*.d.ts", -- TypeScript definition files
-			"*.log", -- Log files}
+			"%.class$",
+			"%.o$",
+			"%.so$",
+			"%.dll$",
+			"%.exe$",
+			"%.out$",
+			"%.a$",
+			"%.lib$",
+			"%.bin$",
+			"%.obj$",
+			"%.pyc$",
+			"%.pyo$",
+			"%.pyd$",
+			"%.iml$",
+			"%.ipr$",
+			"%.iws$",
+			"%.log$",
+			"/%.git/",
+			"/%.svn/",
+			"/%.hg/",
+			"/build/",
+			"/target/",
+			"/dist/",
+			"/node_modules/",
+			"/vendor/",
+			"/%.cache/",
+			"/%.idea/",
+			"/%.vscode/",
+			"/env/",
+			"/venv/",
+			"__pycache__/",
 		},
 	},
 	pickers = {
@@ -48,5 +62,7 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find f
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope find grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-vim.keymap.set("n", "<leader>fc", function() builtin.live_grep({ default_text = vim.fn.expand("<cword>"), }) end, { desc = "Telescope find text under cursor" })
+vim.keymap.set("n", "<leader>fc", function()
+	builtin.live_grep({ default_text = vim.fn.expand("<cword>") })
+end, { desc = "Telescope find text under cursor" })
 vim.keymap.set("n", "<leader>fn", ":Telescope notify<CR>", { desc = "Telescope find text under cursor" })

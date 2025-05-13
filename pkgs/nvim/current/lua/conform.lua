@@ -25,11 +25,11 @@ conform.setup({
 })
 
 local format_fn = function()
-  conform.format({
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 1000,
-  })
+	conform.format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 1000,
+	})
 end
 
 vim.keymap.set("n", "<leader>mp", format_fn, { desc = "Format File" })
