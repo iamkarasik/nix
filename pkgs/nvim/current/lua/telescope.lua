@@ -33,7 +33,6 @@ require("telescope").setup({
 			"%.ipr$",
 			"%.iws$",
 			"%.log$",
-			"/%.git/",
 			"/%.svn/",
 			"/%.hg/",
 			"/build/",
@@ -47,6 +46,7 @@ require("telescope").setup({
 			"/env/",
 			"/venv/",
 			"__pycache__/",
+			".git/",
 		},
 	},
 	pickers = {
