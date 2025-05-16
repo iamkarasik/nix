@@ -5,8 +5,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "iamkarasik";
       repo = "sonarqube.nvim";
-      rev = "9a911801f64bd20c8d6ea885a83ff8e7692a1bc3";
-      sha256 = "0mxw728j541ipa8gps1a2an6k2ql8d25byp521zyffzjh4dlpsi5";
+      rev = "8f501536fcfd5b2b79a06132d4ed9d93801d1753";
+      sha256 = "1qdkqqblmggj78j15gjd6gcg2h02mp0mnmra41h1gbzwsqalpc9d";
     };
   };
 in {
@@ -15,7 +15,6 @@ in {
   viAlias = true;
   vimAlias = true;
   vimdiffAlias = true;
-
 
   extraConfig = ''
     set runtimepath+=${./lua/autoload}
