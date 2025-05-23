@@ -5,8 +5,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "iamkarasik";
       repo = "sonarqube.nvim";
-      rev = "8f501536fcfd5b2b79a06132d4ed9d93801d1753";
-      sha256 = "1qdkqqblmggj78j15gjd6gcg2h02mp0mnmra41h1gbzwsqalpc9d";
+      rev = "1cf3ae2afb24b17d9c5b6dd8b556eaf0ce487779";
+      sha256 = "0s5r9kbqxaj0i7pxlw6g4r71qzcy7x1ly4czjn7zv39np6z4igqa";
     };
   };
 in {
