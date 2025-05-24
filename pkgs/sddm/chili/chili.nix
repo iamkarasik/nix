@@ -1,7 +1,7 @@
-{ pkgs }:
+{ pkgs, wallpaper }:
 
 let
-  image = ../../../dotfiles/wallpaper/blurred/Shark-Blurred.jpg;
+  image = ../../../dotfiles/wallpaper/blurred/${wallpaper}.jpg;
 in
 pkgs.stdenv.mkDerivation rec {
 

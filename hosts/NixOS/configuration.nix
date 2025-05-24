@@ -3,7 +3,9 @@
   username,
   stateVersion,
   ...
-}: {
+}: let
+  wallpaper = "Shark";
+in {
   imports = [
     # Include the results of the hardware scan.
     ./nvidia.nix
@@ -51,7 +53,10 @@
       enable = true;
       autoNumlock = true;
       wayland.enable = true;
-      theme = "${import ../../pkgs/sddm/chili/chili.nix {inherit pkgs;}}";
+      theme = "${import ../../pkgs/sddm/chili/chili.nix {
+        inherit pkgs;
+        inherit wallpaper;
+      }}";
     };
   };
 
