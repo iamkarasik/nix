@@ -66,24 +66,35 @@ local diagnostics_text = function()
 	local cur = vim.diagnostic.config().virtual_text
 
 	if not cur then
-		vim.diagnostic.config({ virtual_text = { prefix = "●", source = "always" } })
+		vim.diagnostic.config({ virtual_text = { prefix = "●", source = true } })
 	else
 		vim.diagnostic.config({ virtual_text = false })
 	end
 end
 
 vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
+	virtual_text = {
+		prefix = "●",
+		source = true,
+	},
 	update_in_insert = false,
 	severity_sort = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.INFO] = "󰋼 ",
+			[vim.diagnostic.severity.HINT] = "󰌵 ",
+		},
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+	},
 })
 
 vim.keymap.set("n", "<leader>vt", diagnostics_text, { silent = true, noremap = true, desc = "Toggle [V]irtual [T]ext" })
-
-vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWarn", linehl = "", numhl = "" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint", linehl = "", numhl = "" })
 
 -- vim.lsp.set_log_level("debug")

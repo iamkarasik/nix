@@ -40,3 +40,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ higroup = "Visual", timeout = 500 })
   end,
 })
+
+
+-- PATCHES - nui.nvim uses deprecated tbl_islist
+vim.tbl_islist = vim.islist or vim.tbl_islist
+
