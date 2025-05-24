@@ -14,7 +14,7 @@ local config = {
 	root_dir = vim.fs.dirname(
 		vim.fs.find({ "build.gradle", "pom.xml", "gradlew", ".git", "mvnw" }, { upward = true })[1]
 	),
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
 	init_options = {
 		bundles = {
 			ms_java_debug_jar,

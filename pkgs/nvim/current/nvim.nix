@@ -30,7 +30,7 @@ in {
     luafile ${./lua/treesitter.lua}
     luafile ${./lua/lsp.lua}
     luafile ${./lua/sonarqube.lua}
-    luafile ${./lua/nvim-cmp.lua}
+    luafile ${./lua/blink-cmp.lua}
     luafile ${./lua/telescope.lua}
     luafile ${./lua/neo-tree.lua}
     luafile ${./lua/gitsigns.lua}
@@ -98,12 +98,7 @@ in {
     nvim-lspconfig
     conform-nvim
 
-    nvim-cmp
-    cmp-buffer
-    cmp-nvim-lsp
-    cmp-cmdline
-    cmp-nvim-lsp-signature-help
-    cmp-path
+    blink-cmp
 
     # Debug
     nvim-dap

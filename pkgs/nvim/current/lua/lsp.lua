@@ -1,7 +1,7 @@
 local vim = vim
 
 local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 lspconfig["gopls"].setup({
 	capabilities = capabilities,
