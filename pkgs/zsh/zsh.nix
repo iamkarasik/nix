@@ -12,7 +12,7 @@ rec {
   syntaxHighlighting.enable = true;
   enableCompletion = true;
 
-  initExtra = ''
+  initContent = ''
     # PROMPT
     autoload -U colors && colors
     source ${./themes/robbyrussel.zsh-theme}

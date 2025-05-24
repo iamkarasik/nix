@@ -1,7 +1,7 @@
 { pkgs }:
 
 let
-  image = ../../../dotfiles/wallpaper/blurred/current;
+  image = ../../../dotfiles/wallpaper/blurred/Shark-Blurred.jpg;
 in
 pkgs.stdenv.mkDerivation rec {
 
@@ -24,6 +24,6 @@ pkgs.stdenv.mkDerivation rec {
     mkdir -p $out
     cp -R ./* $out/
     cd $out/
-    cp -r ${image} $out/assets/background.jpg
+    cp -rL ${image} $out/assets/background.jpg
   '';
 }

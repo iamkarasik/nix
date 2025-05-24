@@ -1,6 +1,5 @@
 {
   enable = true;
-  enableAliases = true;
   settings = {
     classic = false;
     color = {

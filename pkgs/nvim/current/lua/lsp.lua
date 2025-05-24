@@ -86,4 +86,4 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWar
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint", linehl = "", numhl = "" })
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")

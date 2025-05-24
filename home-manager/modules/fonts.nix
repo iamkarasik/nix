@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "ZedMono" "SpaceMono" ]; })
+  home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.zed-mono
+    nerd-fonts.space-mono
   ];
 }

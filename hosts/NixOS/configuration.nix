@@ -56,7 +56,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -86,6 +86,12 @@
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.zed-mono
+    nerd-fonts.space-mono
+  ];
+
   environment.systemPackages = with pkgs; [
     file # File command
     firefox
@@ -94,7 +100,6 @@
     kitty
     libnotify
     lm_sensors
-    (nerdfonts.override {fonts = ["JetBrainsMono" "ZedMono" "Noto"];})
     networkmanagerapplet
     pulseaudio
     rofi-wayland
