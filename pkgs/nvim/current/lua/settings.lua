@@ -41,6 +41,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- Uncomment this when other plugins have migrated their border
+-- vim.o.winborder = "rounded"
 
 -- PATCHES - nui.nvim uses deprecated tbl_islist
 vim.tbl_islist = vim.islist or vim.tbl_islist

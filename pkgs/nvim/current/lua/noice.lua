@@ -26,6 +26,9 @@ require("noice").setup({
 			["vim.lsp.util.stylize_markdown"] = true,
 			["cmp.entry.get_documentation"] = true,
 		},
+		signature = {
+			auto_open = false,
+		},
 	},
 	presets = {
 		bottom_search = false, -- use a classic bottom cmdline for search
