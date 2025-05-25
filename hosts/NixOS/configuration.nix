@@ -4,7 +4,7 @@
   stateVersion,
   ...
 }: let
-  wallpaper = "Shark";
+  wallpaper = "DarkForestLights.png";
 in {
   imports = [
     # Include the results of the hardware scan.
