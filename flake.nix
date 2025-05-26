@@ -57,7 +57,6 @@
           home-manager.useUserPackages = true;
           home-manager.users.${workSettings.username} = ./hosts/MacOS/home.nix;
           home-manager.extraSpecialArgs = workSettings;
-          users.users.${workSettings.username}.home = "/Users/${workSettings.username}";
         }
       ];
     };

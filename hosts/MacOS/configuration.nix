@@ -1,5 +1,9 @@
-{pkgs, system, ...}: {
-
+{
+  pkgs,
+  system,
+  username,
+  ...
+}: {
   programs = {
     zsh.enable = true;
   };
@@ -11,6 +15,12 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = system;
   nixpkgs.config.allowUnfree = true;
+
+  system.primaryUser = username;
+
+  users.users.${username} = {
+    home = "/Users/${username}";
+  };
 
   system.defaults = {
     dock = {
@@ -41,7 +51,6 @@
       ApplePressAndHoldEnabled = false;
       KeyRepeat = 1;
       InitialKeyRepeat = 15;
-
     };
 
     screencapture.location = "~/Pictures/ScreenShots";
