@@ -14,7 +14,15 @@ require("blink.cmp").setup({
 			draw = {
 				padding = 1,
 				gap = 2,
+				components = {
+					source_name = {
+						text = function(ctx)
+							return "[" .. ctx.source_name .. "]"
+						end,
+					},
+				},
 				columns = {
+					{ "source_name" },
 					{ "label", "label_description", gap = 1 },
 					{ "kind_icon", "kind", gap = 1 },
 				},
