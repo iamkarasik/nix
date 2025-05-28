@@ -1,9 +1,17 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    pgcli
-    postgresql
     pgloader
+    postgresql
   ];
+
+  programs.pgcli = {
+    enable = true;
+    settings = {
+      main = {
+        # row_limit = 0;
+        keyring = "False";
+        pager = "nvim";
+      };
+    };
+  };
 }
