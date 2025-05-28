@@ -14,4 +14,8 @@
       };
     };
   };
+
+  home.file = {
+    ".psqlrc".source = ../../dotfiles/psql/.psqlrc;
+  };
 }
