@@ -60,6 +60,7 @@ in {
     scalafmt
     stylua
     alejandra
+    sql-formatter
 
     # Debug
     delve

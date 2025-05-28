@@ -2,7 +2,7 @@
 
   fonts = {
     "aarch64-darwin" = { size = 13.0; x = 1; y = 1; };
-    "x86_64-linux" = { size = 10.0; x = 0; y = 1; };
+    "x86_64-linux" = { size = 11.0; x = 1; y = 1; };
   };
 
   term = {
@@ -41,15 +41,15 @@ in
     };
     font = {
         normal = {
-          family = "JetBrainsMonoNL Nerd Font";
+          family = "ZedMono Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "JetBrainsMonoNL Nerd Font";
+          family = "ZedMono Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "JetBrainsMonoNL Nerd Font";
+          family = "ZedMono Nerd Font";
           style = "ThinItalic";
         };
         size = curFont.size;

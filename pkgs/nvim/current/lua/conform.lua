@@ -7,10 +7,11 @@ conform.setup({
 		javascript = { "prettierd" },
 		json = { "jq" },
 		lua = { "stylua" },
+		nix = { "alejandra" },
 		rust = { "rustfmt" },
+		sql = { "sql_formatter" },
 		scala = { "scalafmt" },
 		yaml = { "yq" },
-		nix = { "alejandra" },
 	},
 	formatters = {
 		yq = {

@@ -27,11 +27,13 @@ in {
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+    extraHosts = ''
+      10.88.111.77 server
+    '';
+  };
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
