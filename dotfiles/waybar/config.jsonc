@@ -29,7 +29,7 @@
   },
    "custom/launcher":{
       "format":" ",
-      "on-click":"rofi -show combi -combi-modi \"window,drun\" --show-icons",
+      "on-click":"/home/goose/.config/rofi/powermenu/type-2/powermenu.sh",
       "on-click-right":"pkill rofi"
    },
    "pulseaudio":{
