@@ -15,6 +15,7 @@ require("noice").setup({
 					{ find = "line less" },
 					{ find = "fewer lines" },
 					{ find = "Compile successful" },
+					{ find = "exit Nvim"},
 				},
 			},
 			opts = { skip = true },
