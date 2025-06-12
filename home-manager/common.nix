@@ -4,6 +4,7 @@
     ./modules/db.nix
     ./modules/dev.nix
     ./modules/fonts.nix
+    ./modules/ghostty.nix
     ./modules/git.nix
     ./modules/golang.nix
     ./modules/haskell.nix
