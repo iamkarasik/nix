@@ -2,9 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    maven
     gradle
     jdk21
+    maven
+    visualvm
   ];
 
   home.file = {

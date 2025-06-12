@@ -6,6 +6,7 @@
     ./modules/fonts.nix
     ./modules/git.nix
     ./modules/golang.nix
+    ./modules/haskell.nix
     ./modules/java.nix
     ./modules/k8s.nix
     ./modules/lsd.nix
