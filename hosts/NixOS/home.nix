@@ -32,6 +32,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
     "discord"
     "spotify"
+    "vault"
   ];
 
   home.file = {
