@@ -15,7 +15,7 @@ require("noice").setup({
 					{ find = "line less" },
 					{ find = "fewer lines" },
 					{ find = "Compile successful" },
-					{ find = "exit Nvim"},
+					{ find = "exit Nvim" },
 				},
 			},
 			opts = { skip = true },
@@ -28,7 +28,7 @@ require("noice").setup({
 			["cmp.entry.get_documentation"] = true,
 		},
 		signature = {
-			auto_open = false,
+			enabled = false,
 		},
 	},
 	presets = {
@@ -36,6 +36,6 @@ require("noice").setup({
 		command_palette = false, -- position the cmdline and popupmenu together
 		long_message_to_split = false, -- long messages will be sent to a split
 		inc_rename = false, -- enables an input dialog for inc-rename.nvim
-		lsp_doc_border = false, -- add a border to hover docs and signature help
+		lsp_doc_border = true, -- add a border to hover docs and signature help
 	},
 })

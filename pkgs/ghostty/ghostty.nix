@@ -17,6 +17,8 @@ in {
     theme = "vscode";
     window-decoration = "none";
 
+    # cursor-style-blink = true;
+
     keybind = [
       "alt+0=unbind"
       "alt+1=unbind"

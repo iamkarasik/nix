@@ -49,16 +49,16 @@ lspconfig["ts_ls"].setup({
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gR", ":Telescope lsp_references<CR>", { desc = "Find References" })
+		vim.keymap.set("n", "gR", ":Telescope lsp_references<CR>", { desc = "LSP: Find References" })
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>", { desc = "Find Implementations" })
+		vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>", { desc = "LSP: Find Implementations" })
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", { desc = "Show All Diagnostics" })
-		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show Diagnostic" })
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: Code Actions" })
+		vim.keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", { desc = "LSP: Show All Diagnostics" })
+		vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { desc = "LSP: Show Diagnostic" })
 	end,
 })
 

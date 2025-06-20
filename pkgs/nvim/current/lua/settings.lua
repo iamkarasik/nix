@@ -34,6 +34,8 @@ opt.clipboard:append("unnamedplus")
 
 opt.showmode = false
 
+vim.opt.guicursor = "i-ci-ve:ver25,n-v:block-blinkwait1001-blinkon500-blinkoff500";
+
 -- Highlighted yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()

@@ -9,6 +9,11 @@ vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.g.colors_name = "custom-vscode"
 
+-- Custom Java
+local warnUnderline = "#be9117"
+local customYellow = "#ffc66d"
+local customGreen = "#3d8f7f"
+
 local colors = {
 	inactive = "#666666",
 	fg = "#D4D4D4",
@@ -226,7 +231,7 @@ local function set_highlights()
 	hl(0, "@comment.note", { fg = c.vscBlueGreen, bg = "NONE", bold = true })
 	hl(0, "@comment.warning", { fg = c.vscYellowOrange, bg = "NONE", bold = true })
 	hl(0, "@comment.error", { fg = c.vscRed, bg = "NONE", bold = true })
-	hl(0, "@constant", { fg = c.vscAccentBlue, bg = "NONE" })
+	hl(0, "@constant", { fg = customYellow, bg = "NONE" })
 	hl(0, "@constant.builtin", { fg = c.vscBlue, bg = "NONE" })
 	hl(0, "@constant.macro", { fg = c.vscBlueGreen, bg = "NONE" })
 	hl(0, "@string.regexp", { fg = c.vscOrange, bg = "NONE" })
@@ -609,8 +614,8 @@ local function set_highlights()
 	hl(0, "BufferTabpagesFill", { fg = colors.fg, bg = c.vscTabOther })
 
 	-- IndentBlankLine
-	hl(0, "IblIndent", { fg = "#363636", bg = "NONE", nocombine = true })
-	hl(0, "IblScope", { fg = "#363636", bg = "NONE", nocombine = true })
+	hl(0, "IblIndent", { fg = "#484848", bg = "NONE", nocombine = true })
+	hl(0, "IblScope", { fg = "#484848", bg = "NONE", nocombine = true })
 
 	-- Neotest
 	hl(0, "NeotestAdapterName", { fg = colors.fg, bold = true })
@@ -895,11 +900,6 @@ local function link_highlight()
 
 	hl(0, "MiniCursorword", { bg = "#303030" })
 	hl(0, "MiniCursorwordCurrent", { bg = "#303030" })
-
-	-- Custom Java
-	local warnUnderline = "#be9117"
-	local customYellow = "#ffc66d"
-	local customGreen = "#3d8f7f"
 
 	vim.api.nvim_set_hl(
 		0,
