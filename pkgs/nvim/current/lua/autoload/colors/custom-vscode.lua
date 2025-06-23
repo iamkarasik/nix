@@ -133,7 +133,7 @@ local function set_highlights()
 	local isDark = vim.o.background == "dark"
 
 	hl(0, "Normal", { fg = colors.fg, bg = colors.bg })
-	hl(0, "ColorColumn", { fg = "NONE", bg = c.vscCursorDarkDark })
+	hl(0, "ColorColumn", { fg = "NONE", bg = "#484848" })
 	hl(0, "Cursor", { fg = c.vscCursorDark, bg = c.vscCursorLight })
 	hl(0, "CursorLine", { bg = c.vscCursorDarkDark })
 	hl(0, "CursorColumn", { fg = "NONE", bg = c.vscCursorDarkDark })

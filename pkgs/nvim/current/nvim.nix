@@ -25,6 +25,7 @@ in {
     luafile ${./lua/notify.lua}
     luafile ${./lua/mini-cursorword.lua}
     luafile ${./lua/indent-blankline.lua}
+    luafile ${./lua/virt-column.lua}
     luafile ${./lua/autopairs.lua}
     luafile ${./lua/keymaps.lua}
     luafile ${./lua/settings.lua}
@@ -73,6 +74,7 @@ in {
     nvim-notify
     nvim-web-devicons
     indent-blankline-nvim
+    virt-column-nvim
     mini-cursorword
     nvim-colorizer-lua
     rainbow-delimiters-nvim
