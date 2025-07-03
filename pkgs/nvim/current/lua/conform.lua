@@ -12,6 +12,7 @@ conform.setup({
 		sql = { "sql_formatter" },
 		scala = { "scalafmt" },
 		yaml = { "yq" },
+		haskell = { "ormolu" },
 	},
 	formatters = {
 		yq = {

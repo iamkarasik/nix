@@ -45,6 +45,9 @@ lspconfig["nil_ls"].setup({
 lspconfig["ts_ls"].setup({
 	capabilities = capabilities,
 })
+lspconfig["hls"].setup({
+	capabilities = capabilities,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
