@@ -61,7 +61,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: Code Actions" })
 		vim.keymap.set("n", "<leader>D", ":Telescope diagnostics bufnr=0<CR>", { desc = "LSP: Show All Diagnostics" })
-		vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { desc = "LSP: Show Diagnostic" })
+		vim.keymap.set("n", "<leader>df", function()
+			vim.diagnostic.open_float({ border = "rounded" })
+		end, { desc = "LSP: Show Diagnostic" })
 	end,
 })
 
