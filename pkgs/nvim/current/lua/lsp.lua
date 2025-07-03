@@ -76,10 +76,7 @@ local diagnostics_text = function()
 end
 
 vim.diagnostic.config({
-	virtual_text = {
-		prefix = "●",
-		source = true,
-	},
+	virtual_text = false,
 	update_in_insert = false,
 	severity_sort = true,
 	signs = {
