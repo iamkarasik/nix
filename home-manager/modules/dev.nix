@@ -9,6 +9,7 @@
     htop
     jq
     neofetch
+    nmap
     ripgrep
     wget
     yq
