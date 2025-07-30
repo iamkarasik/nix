@@ -117,6 +117,7 @@ in {
     waybar-mpris # Waybar utility to toggle audio
     wl-clipboard
     xfce.thunar
+    gnome-calculator
 
     # Start SDDM using QT5+
     libsForQt5.qt5.qtquickcontrols2
