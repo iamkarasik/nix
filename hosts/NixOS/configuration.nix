@@ -31,7 +31,7 @@ in {
     hostName = "nixos";
     networkmanager.enable = true;
     extraHosts = ''
-      10.88.111.77 server
+      10.88.111.4 server
     '';
   };
 
