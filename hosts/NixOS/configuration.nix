@@ -119,6 +119,10 @@ in {
     xfce.thunar
     gnome-calculator
 
+    # Wayland screenshot
+    slurp
+    grim
+
     # Start SDDM using QT5+
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
