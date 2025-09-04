@@ -53,6 +53,11 @@ require("telescope").setup({
 		find_files = {
 			find_command = { "fd", "--type", "f", "--hidden" },
 		},
+		live_grep = {
+			additional_args = function(_)
+				return { "--hidden" }
+			end,
+		},
 	},
 	extensions = {},
 })

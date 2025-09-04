@@ -21,7 +21,6 @@ in {
 
     luafile ${./lua/theme.lua}
     luafile ${./lua/which-key.lua}
-    luafile ${./lua/noice.lua}
     luafile ${./lua/notify.lua}
     luafile ${./lua/mini-cursorword.lua}
     luafile ${./lua/indent-blankline.lua}
@@ -70,7 +69,6 @@ in {
 
   plugins = with pkgs.vimPlugins; [
     which-key-nvim
-    noice-nvim
     nvim-notify
     nvim-web-devicons
     indent-blankline-nvim
