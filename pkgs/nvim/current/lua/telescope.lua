@@ -47,6 +47,7 @@ require("telescope").setup({
 			"/venv/",
 			"__pycache__/",
 			".git/",
+			"dist-newstyle/",
 		},
 	},
 	pickers = {

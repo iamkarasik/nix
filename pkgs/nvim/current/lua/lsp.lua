@@ -49,6 +49,22 @@ lspconfig["hls"].setup({
 	capabilities = capabilities,
 })
 
+local hover = vim.lsp.buf.hover
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.buf.hover = function()
+	hover({
+		border = "rounded",
+	})
+end
+
+local signature_help = vim.lsp.buf.signature_help
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.buf.signature_help = function()
+	signature_help({
+		border = "rounded",
+	})
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
