@@ -33,6 +33,9 @@ in {
     extraHosts = ''
       10.88.111.4 server
     '';
+
+    firewall.allowedTCPPorts = [12345];
+    firewall.allowedUDPPorts = [12345];
   };
 
   # Set your time zone.

@@ -13,6 +13,7 @@ conform.setup({
 		scala = { "scalafmt" },
 		yaml = { "yq" },
 		haskell = { "ormolu" },
+		cabal = { "cabal-fmt" },
 	},
 	formatters = {
 		yq = {
@@ -21,6 +22,10 @@ conform.setup({
 		},
 		jq = {
 			command = "jq",
+			args = {},
+		},
+		["cabal-fmt"] = {
+			command = "cabal-fmt",
 			args = {},
 		},
 	},

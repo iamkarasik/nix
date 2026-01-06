@@ -5,6 +5,7 @@
     cabal-install
     ghc
     haskell-language-server
+    haskellPackages.cabal-fmt
     ormolu
     stack
   ];

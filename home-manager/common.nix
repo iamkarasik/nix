@@ -13,6 +13,7 @@
     ./modules/k8s.nix
     ./modules/lsd.nix
     ./modules/nvim.nix
+    ./modules/python.nix
     ./modules/sonarlint.nix
     ./modules/tmux.nix
     ./modules/zsh.nix
