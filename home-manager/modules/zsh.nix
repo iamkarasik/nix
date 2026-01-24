@@ -1,6 +1,3 @@
-{ pkgs, ... }:
-
-{
-  programs.zsh = import ../../pkgs/zsh/zsh.nix;
+{...}: {
+  imports = [../../pkgs/zsh/zsh.nix];
 }
-

@@ -112,7 +112,7 @@ in {
     lm_sensors
     networkmanagerapplet
     pulseaudio
-    rofi-wayland
+    rofi
     swaybg
     swaylock-effects
     vim

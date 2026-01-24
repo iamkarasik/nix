@@ -2,8 +2,10 @@
   programs.git = {
     enable = true;
 
-    aliases = {
-      oops = "commit --amend --no-edit";
+    settings = {
+      aliases = {
+        oops = "commit --amend --no-edit";
+      };
     };
   };
 }

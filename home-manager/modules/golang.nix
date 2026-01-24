@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     gnumake
-    go_1_23
+    go
     gotools
     go-tools
   ];
