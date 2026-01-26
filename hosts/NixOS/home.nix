@@ -3,6 +3,7 @@
 {
   imports = [ 
     ../../home-manager/common.nix 
+    ../../home-manager/modules/ghostty.nix
   ];
 
   gtk = {
