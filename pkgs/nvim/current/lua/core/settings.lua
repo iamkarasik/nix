@@ -34,19 +34,20 @@ opt.clipboard:append("unnamedplus")
 
 opt.showmode = false
 
-vim.opt.guicursor = "i-ci-ve:ver25,n-v:block-blinkwait1001-blinkon500-blinkoff500";
+vim.opt.guicursor = "i-ci-ve:ver25,n-v:block-blinkwait1001-blinkon500-blinkoff500"
 
 -- Highlighted yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank({ higroup = "Visual", timeout = 500 })
-  end,
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Visual", timeout = 500 })
+	end,
 })
 
 -- Uncomment this when other plugins have migrated their border
--- vim.o.winborder = "rounded"
+vim.o.winborder = "rounded"
 
 -- PATCHES - nui.nvim uses deprecated tbl_islist
 vim.g.omni_sql_no_default_maps = 1
 vim.tbl_islist = vim.islist or vim.tbl_islist
 
+vim.opt.updatetime = 300

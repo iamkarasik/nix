@@ -19,30 +19,30 @@ in {
   extraConfig = ''
     set runtimepath+=${./lua/autoload}
 
-    luafile ${./lua/theme.lua}
-    luafile ${./lua/which-key.lua}
-    luafile ${./lua/notify.lua}
-    luafile ${./lua/mini-cursorword.lua}
-    luafile ${./lua/indent-blankline.lua}
-    luafile ${./lua/virt-column.lua}
-    luafile ${./lua/autopairs.lua}
-    luafile ${./lua/keymaps.lua}
-    luafile ${./lua/settings.lua}
-    luafile ${./lua/treesitter.lua}
-    luafile ${./lua/lsp.lua}
-    luafile ${./lua/sonarqube.lua}
-    luafile ${./lua/blink-cmp.lua}
-    luafile ${./lua/telescope.lua}
-    luafile ${./lua/neo-tree.lua}
-    luafile ${./lua/gitsigns.lua}
-    luafile ${./lua/lualine.lua}
-    luafile ${./lua/barbar.lua}
-    luafile ${./lua/toggleterm.lua}
-    luafile ${./lua/conform.lua}
-    luafile ${./lua/colorizer.lua}
-    luafile ${./lua/rainbow-delimiters.lua}
-    luafile ${./lua/dap.lua}
-    luafile ${./lua/neotest.lua}
+    luafile ${./lua/core/settings.lua}
+    luafile ${./lua/core/keymaps.lua}
+    luafile ${./lua/core/lsp.lua}
+
+    luafile ${./lua/plugins/theme.lua}
+    luafile ${./lua/plugins/which-key.lua}
+    luafile ${./lua/plugins/notify.lua}
+    luafile ${./lua/plugins/indent-blankline.lua}
+    luafile ${./lua/plugins/virt-column.lua}
+    luafile ${./lua/plugins/autopairs.lua}
+    luafile ${./lua/plugins/treesitter.lua}
+    luafile ${./lua/plugins/sonarqube.lua}
+    luafile ${./lua/plugins/blink-cmp.lua}
+    luafile ${./lua/plugins/telescope.lua}
+    luafile ${./lua/plugins/neo-tree.lua}
+    luafile ${./lua/plugins/gitsigns.lua}
+    luafile ${./lua/plugins/lualine.lua}
+    luafile ${./lua/plugins/barbar.lua}
+    luafile ${./lua/plugins/toggleterm.lua}
+    luafile ${./lua/plugins/conform.lua}
+    luafile ${./lua/plugins/colorizer.lua}
+    luafile ${./lua/plugins/rainbow-delimiters.lua}
+    luafile ${./lua/plugins/dap.lua}
+    luafile ${./lua/plugins/neotest.lua}
   '';
 
   extraPackages = with pkgs; [
@@ -73,7 +73,6 @@ in {
     nvim-web-devicons
     indent-blankline-nvim
     virt-column-nvim
-    mini-cursorword
     nvim-colorizer-lua
     rainbow-delimiters-nvim
     lualine-nvim
@@ -98,7 +97,6 @@ in {
     fugitive-gitlab-vim
 
     sonarqube-nvim
-    nvim-lspconfig
     conform-nvim
 
     blink-cmp
