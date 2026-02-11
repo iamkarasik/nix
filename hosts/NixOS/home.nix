@@ -1,8 +1,11 @@
-{ pkgs, stateVersion, username, ... }:
-
 {
-  imports = [ 
-    ../../home-manager/common.nix 
+  pkgs,
+  stateVersion,
+  username,
+  ...
+}: {
+  imports = [
+    ../../home-manager/common.nix
     ../../home-manager/modules/ghostty.nix
   ];
 
@@ -23,19 +26,18 @@
   home.username = username;
   home.homeDirectory = "/home/${username}";
 
-  programs.git.enable = true;
-  
   home.packages = with pkgs; [
     discord
     spotify
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-    "discord"
-    "spotify"
-    "vault"
-    "github-copilot-cli"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "discord"
+      "spotify"
+      "vault"
+      "github-copilot-cli"
+    ];
 
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;
