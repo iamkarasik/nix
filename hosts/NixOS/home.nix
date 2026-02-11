@@ -34,6 +34,7 @@
     "discord"
     "spotify"
     "vault"
+    "github-copilot-cli"
   ];
 
   home.file = {

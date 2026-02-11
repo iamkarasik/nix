@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./modules/ai.nix
     ./modules/alacritty.nix
     ./modules/cli.nix
     ./modules/db.nix

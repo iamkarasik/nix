@@ -3,7 +3,7 @@
     enable = true;
 
     settings = {
-      aliases = {
+      alias = {
         oops = "commit --amend --no-edit";
       };
     };

@@ -28,6 +28,7 @@
       "idea-community"
       "spotify"
       "vault"
+      "github-copilot-cli"
     ];
 
   home.file = {
