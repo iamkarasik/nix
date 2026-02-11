@@ -58,6 +58,12 @@
 
   homebrew = {
     enable = true;
+
+    casks = [
+      "ghostty"
+      "alfred"
+    ];
+
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
