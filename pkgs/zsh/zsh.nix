@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   programs.zsh = {
     enable = true;
     dotDir = config.xdg.configHome + "/zsh";
@@ -22,8 +20,9 @@
 
       source ${./plugins/git-aliases.zsh}
       source ${./plugins/git.zsh}
-      source ${./plugins/zsh-vi-mode.zsh}
       source ${./plugins/zsh-fzf-history-search.zsh}
+      source ${./plugins/zsh-fzf-search.zsh}
+      source ${./plugins/zsh-vi-mode.zsh}
 
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       bindkey "^[[1;5C" forward-word
