@@ -18,4 +18,8 @@
     ./modules/tmux.nix
     ./modules/zsh.nix
   ];
+
+  xdg = {
+    enable = true;
+  };
 }
