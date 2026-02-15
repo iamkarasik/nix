@@ -7,8 +7,8 @@ in {
   enable = true;
   enableZshIntegration = true;
   settings = {
+    adjust-cell-width = "4%";
     adjust-cell-height = "8%";
-    adjust-cell-width = "5%";
 
     font-family = "JetBrainsMonoNL Nerd Font";
     font-size = fonts.${system}.size;
@@ -17,7 +17,9 @@ in {
     theme = "vscode";
     window-decoration = "none";
 
-    # cursor-style-blink = true;
+    window-padding-x = 6;
+    window-padding-y = 4;
+    window-padding-balance = true;
 
     keybind = [
       "alt+0=unbind"
@@ -34,6 +36,30 @@ in {
   };
 
   themes = {
+    darkmatter = {
+      background = "000000";
+      foreground = "ffffff";
+      palette = [
+        "0=#000000"
+        "1=#5f8787"
+        "2=#fbcb97"
+        "3=#e78a53"
+        "4=#888888"
+        "5=#999999"
+        "6=#aaaaaa"
+        "7=#c1c1c1"
+        "8=#333333"
+        "9=#5f8787"
+        "10=#fbcb97"
+        "11=#e78a53"
+        "12=#888888"
+        "13=#999999"
+        "14=#aaaaaa"
+        "15=#c1c1c1"
+      ];
+      selection-background = "444444";
+      selection-foreground = "000000";
+    };
     vscode = {
       background = "1e1e1e";
       cursor-color = "cccccc";

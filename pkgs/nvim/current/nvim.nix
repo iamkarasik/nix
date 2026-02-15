@@ -68,6 +68,8 @@ in {
   ];
 
   plugins = with pkgs.vimPlugins; [
+    base16-nvim
+
     which-key-nvim
     nvim-notify
     nvim-web-devicons
