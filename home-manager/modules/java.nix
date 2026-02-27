@@ -1,9 +1,13 @@
 { pkgs, ... }:
 
 {
+  programs.java = {
+    enable = true;
+    package = pkgs.javaPackages.compiler.temurin-bin.jdk-25;
+  };
+
   home.packages = with pkgs; [
     gradle
-    jdk21
     maven
     visualvm
   ];
