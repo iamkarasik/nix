@@ -1,7 +1,7 @@
 {system}: let
   fonts = {
     "aarch64-darwin" = {size = 13.0;};
-    "x86_64-linux" = {size = 11.0;};
+    "x86_64-linux" = {size = 10.0;};
   };
 in {
   enable = true;
