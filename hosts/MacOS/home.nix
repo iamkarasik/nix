@@ -19,15 +19,14 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
-      "confluent-cli"
       "goland"
       "idea-community"
       "spotify"
       "vault"
-      "github-copilot-cli"
     ];
 
   home.file = {
+    ".aliases-jira.sh".source = ../../dotfiles/aliases/aliases-jira.sh;
   };
 
   home.stateVersion = stateVersion;

@@ -63,10 +63,13 @@
       "atlassian/homebrew-acli"
     ];
 
+    brews = [
+      "acli"
+    ];
+
     casks = [
       "ghostty"
       "alfred"
-      "atlassian/acli/acli"
     ];
   };
 
