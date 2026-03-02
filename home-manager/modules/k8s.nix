@@ -11,5 +11,11 @@
     kustomize
     skaffold
     stern
+
+    kubelogin
+    kubelogin-oidc
+    kubernetes-helm
+    aws-iam-authenticator
   ];
 }
+

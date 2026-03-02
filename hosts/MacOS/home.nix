@@ -7,10 +7,6 @@
   imports = [
     ../../home-manager/common.nix
     ../../home-manager/modules/MacOS/aerospace.nix
-    ../../home-manager/modules/cloud-tooling.nix
-    ../../home-manager/modules/core-tooling.nix
-    ../../home-manager/modules/extra.nix
-    ../../home-manager/modules/ide.nix
   ];
 
   home.username = username;

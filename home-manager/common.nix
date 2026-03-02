@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./modules/ai.nix
     ./modules/alacritty.nix
     ./modules/cli.nix
     ./modules/db.nix
@@ -9,6 +8,7 @@
     ./modules/git.nix
     ./modules/golang.nix
     ./modules/haskell.nix
+    ./modules/ide.nix
     ./modules/java.nix
     ./modules/k8s.nix
     ./modules/lsd.nix

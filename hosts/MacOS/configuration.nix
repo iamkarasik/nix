@@ -59,11 +59,15 @@
   homebrew = {
     enable = true;
 
+    taps = [
+      "atlassian/homebrew-acli"
+    ];
+
     casks = [
       "ghostty"
       "alfred"
+      "atlassian/acli/acli"
     ];
-
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
