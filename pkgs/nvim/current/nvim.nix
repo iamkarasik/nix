@@ -36,7 +36,6 @@ in {
     luafile ${./lua/plugins/neo-tree.lua}
     luafile ${./lua/plugins/gitsigns.lua}
     luafile ${./lua/plugins/lualine.lua}
-    luafile ${./lua/plugins/barbar.lua}
     luafile ${./lua/plugins/toggleterm.lua}
     luafile ${./lua/plugins/conform.lua}
     luafile ${./lua/plugins/colorizer.lua}
@@ -78,7 +77,6 @@ in {
     nvim-colorizer-lua
     rainbow-delimiters-nvim
     lualine-nvim
-    barbar-nvim
 
     telescope-nvim
     telescope-ui-select-nvim
