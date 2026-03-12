@@ -14,7 +14,6 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = system;
-  nixpkgs.config.allowUnfree = true;
 
   system.primaryUser = username;
 

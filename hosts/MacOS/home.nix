@@ -17,14 +17,6 @@
     aerospace
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "goland"
-      "idea-community"
-      "spotify"
-      "vault"
-    ];
-
   home.file = {
     ".aliases-jira.sh".source = ../../dotfiles/aliases/aliases-jira.sh;
   };

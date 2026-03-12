@@ -37,9 +37,11 @@
       system = personalSettings.system;
       specialArgs = personalSettings;
       modules = [
+        {nixpkgs.config = {allowUnfree = true;};}
         ./hosts/NixOS/configuration.nix
         home-manager.nixosModules.home-manager
         {
+          home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${personalSettings.username} = ./hosts/NixOS/home.nix;
           home-manager.extraSpecialArgs = personalSettings;
@@ -51,9 +53,11 @@
       system = workSettings.system;
       specialArgs = workSettings;
       modules = [
+        {nixpkgs.config = {allowUnfree = true;};}
         ./hosts/MacOS/configuration.nix
         home-manager.darwinModules.home-manager
         {
+          home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${workSettings.username} = ./hosts/MacOS/home.nix;
           home-manager.extraSpecialArgs = workSettings;
@@ -62,13 +66,19 @@
     };
 
     homeConfigurations.${personalSettings.username} = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${personalSettings.system};
+      pkgs = import nixpkgs {
+        system = personalSettings.system;
+        config = {allowUnfree = true;};
+      };
       extraSpecialArgs = personalSettings;
       modules = [./hosts/NixOS/home.nix];
     };
 
     homeConfigurations.${workSettings.username} = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${workSettings.system};
+      pkgs = import nixpkgs {
+        system = workSettings.system;
+        config = {allowUnfree = true;};
+      };
       extraSpecialArgs = workSettings;
       modules = [./hosts/MacOS/home.nix];
     };

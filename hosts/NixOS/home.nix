@@ -31,14 +31,6 @@
     spotify
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "discord"
-      "spotify"
-      "vault"
-      "github-copilot-cli"
-    ];
-
   home.file = {
     ".config/hypr".source = ../../dotfiles/hypr;
     ".config/rofi".source = ../../dotfiles/rofi;
