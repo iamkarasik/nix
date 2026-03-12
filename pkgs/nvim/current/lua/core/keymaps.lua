@@ -9,8 +9,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "x", '"_x')
 
 -- shift selection
-keymap.set("v", "<", "<gv");
-keymap.set("v", ">", ">gv");
+keymap.set("v", "<", "<gv")
+keymap.set("v", ">", ">gv")
 keymap.set("n", "J", "mzJ`z")
 
 -- Keep cursor in center when doing Ctrl+D/Ctrl+U
@@ -30,10 +30,12 @@ keymap.set("n", "<c-j>", "<c-w>j")
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Comments
-keymap.set({'n','i'}, '<C-/>', ':normal gcc<CR>', { desc = '[/] Toggle comment line' })
-keymap.set('v', '<C-/>', '<Esc>:normal gvgc<CR><DOWN>', { desc = '[/] Toggle comment block' })
+-- Buffers
+keymap.set("n", "<A-c>", ":bd<CR>", { desc = "Buffer: delete" })
+keymap.set("n", "<A-n>", ":bn<CR>", { desc = "Buffer: next" })
+keymap.set("n", "<A-p>", ":bp<CR>", { desc = "Buffer: previous" })
 
+-- Snippets
 keymap.set({ "i", "s" }, "<Tab>", function()
 	if vim.snippet.active({ direction = 1 }) then
 		return "<cmd>lua vim.snippet.jump(1)<cr>"
@@ -51,11 +53,11 @@ keymap.set({ "i", "s" }, "<S-Tab>", function()
 end, { expr = true })
 
 P = function(...)
-  local args = {...}
-  local output = {}
-  for _, arg in ipairs(args) do
-    table.insert(output, vim.inspect(arg))
-  end
-  print(table.concat(output, ", "))
-  return unpack(args)
+	local args = { ... }
+	local output = {}
+	for _, arg in ipairs(args) do
+		table.insert(output, vim.inspect(arg))
+	end
+	print(table.concat(output, ", "))
+	return unpack(args)
 end
