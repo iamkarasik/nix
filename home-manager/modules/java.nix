@@ -7,7 +7,7 @@
   };
 
   home.packages = with pkgs; [
-    gradle
+    gradle_9
     maven
     visualvm
   ];
