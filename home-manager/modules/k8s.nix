@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     k9s
+    kind
     kubectl
     kubectl-ktop
     kubectl-neat
