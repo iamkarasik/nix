@@ -87,4 +87,4 @@ vim.keymap.set("n", "<leader>ec", ":Neotree reveal position=float<CR>", { norema
 vim.keymap.set("n", "<leader>eg", ":Neotree git_status position=float<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>eb", ":Neotree buffers position=float<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_hl(0, "NeoTreeRootName", { italic = false })
+-- vim.api.nvim_set_hl(0, "NeoTreeRootName", { italic = false })

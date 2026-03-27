@@ -24,6 +24,7 @@ in {
     luafile ${./lua/core/lsp.lua}
 
     luafile ${./lua/plugins/theme.lua}
+    luafile ${./lua/plugins/bufferline.lua}
     luafile ${./lua/plugins/which-key.lua}
     luafile ${./lua/plugins/notify.lua}
     luafile ${./lua/plugins/indent-blankline.lua}
@@ -67,7 +68,10 @@ in {
   ];
 
   plugins = with pkgs.vimPlugins; [
-    base16-nvim
+    vscode-nvim
+    kanagawa-nvim
+
+    bufferline-nvim
 
     which-key-nvim
     nvim-notify

@@ -592,26 +592,10 @@ local function set_highlights()
 	hl(0, "GitSignsChangeLn", { fg = colors.bg, bg = c.vscYellow })
 	hl(0, "GitSignsDeleteLn", { fg = colors.bg, bg = c.vscRed })
 
-	-- BarBar
-	hl(0, "BufferCurrent", { fg = colors.fg, bg = colors.bg })
-	hl(0, "BufferCurrentIndex", { fg = colors.fg, bg = colors.bg })
-	hl(0, "BufferCurrentMod", { fg = c.vscYellowOrange, bg = colors.bg })
-	hl(0, "BufferCurrentSign", { fg = colors.fg, bg = colors.bg })
-	hl(0, "BufferCurrentTarget", { fg = c.vscRed, bg = colors.bg })
-	hl(0, "BufferVisible", { fg = c.vscGray, bg = colors.bg })
-	hl(0, "BufferVisibleIndex", { fg = c.vscGray, bg = colors.bg })
-	hl(0, "BufferVisibleMod", { fg = c.vscYellowOrange, bg = colors.bg })
-	hl(0, "BufferVisibleSign", { fg = c.vscGray, bg = colors.bg })
-	hl(0, "BufferVisibleTarget", { fg = c.vscRed, bg = colors.bg })
-	hl(0, "BufferInactive", { fg = c.vscGray, bg = c.vscTabOther })
-	hl(0, "BufferInactiveIndex", { fg = c.vscGray, bg = c.vscTabOther })
-	hl(0, "BufferInactiveMod", { fg = c.vscYellowOrange, bg = c.vscTabOther })
-	hl(0, "BufferInactiveSign", { fg = c.vscGray, bg = c.vscTabOther })
-	hl(0, "BufferInactiveTarget", { fg = c.vscRed, bg = c.vscTabOther })
-	hl(0, "BufferTabpage", { fg = colors.fg, bg = c.vscTabOther })
-	hl(0, "BufferTabpageFill", { fg = colors.fg, bg = c.vscTabOther })
-	hl(0, "BufferTabpages", { fg = colors.fg, bg = c.vscTabOther })
-	hl(0, "BufferTabpagesFill", { fg = colors.fg, bg = c.vscTabOther })
+	-- Bufferline
+	-- hl(0, 'BufferLineIndicatorSelected', { fg = colors.vscLeftDark, bg = 'NONE' })
+	-- hl(0, 'BufferLineFill', { fg = 'NONE', bg = opts.transparent and c.vscBack or c.vscLeftDark })
+	hl(0, "BufferLineOffsetSeparator", { link = "VertSplit" })
 
 	-- IndentBlankLine
 	hl(0, "IblIndent", { fg = "#484848", bg = "NONE", nocombine = true })
@@ -809,7 +793,9 @@ local function set_highlights()
 	hl(0, "TelescopePreviewTitle", { fg = colors.bg, bg = colors.blue, bold = true })
 	hl(0, "TelescopeResultsTitle", { fg = colors.bg, bg = colors.green, bold = true })
 
+	-- Neotree
 	hl(0, "NeoTreeFloatTitle", { fg = colors.bg, bg = colors.red, bold = true })
+	hl(0, "NeoTreeRootName", { fg = colors.fg, bg = colors.bg, bold = false, italic = false })
 
 	-- Debugging
 	hl(0, "debugPC", { bg = "#4C4C19" })
