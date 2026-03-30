@@ -1,5 +1,3 @@
 ### Missing
-- [ ] Create skeleton for java
-- [ ] Pasting without visual
-- [ ] Java ProtoBuf
-- [ ] Themes
+- [ ] Fix `:bd` closing neovim - try `:au BufDelete`
+- [ ] Fix highlight active buffer

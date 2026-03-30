@@ -11,7 +11,7 @@ require("neo-tree").setup({
 			with_expanders = true,
 		},
 		icon = {
-			folder_closed = " ",
+			folder_closed = "",
 			folder_open = "",
 			folder_empty = "",
 			folder_empty_open = "",
@@ -29,18 +29,12 @@ require("neo-tree").setup({
 				conflict = "",
 			},
 		},
-		file_size = {
-			enabled = false,
-		},
-		last_modified = {
-			enabled = false,
-		},
-		type = {
-			enabled = false,
-		},
+		file_size = { enabled = false },
+		last_modified = { enabled = false },
+		type = { enabled = false },
 	},
 	window = {
-		position = "float",
+		position = "left",
 		width = 35,
 	},
 	filesystem = {
@@ -81,10 +75,8 @@ require("neo-tree").setup({
 })
 
 vim.keymap.set("n", "<leader><Tab>", "<Esc>:Neotree toggle position=left<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<c-e>", "<Esc>:Neotree toggle position=float<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ee", ":Neotree toggle position=float<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ec", ":Neotree reveal position=float<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>eg", ":Neotree git_status position=float<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>eb", ":Neotree buffers position=float<CR>", { noremap = true, silent = true })
-
--- vim.api.nvim_set_hl(0, "NeoTreeRootName", { italic = false })
+vim.keymap.set("n", "<c-e>", "<Esc>:Neotree toggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ee", ":Neotree toggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ec", ":Neotree reveal<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>eg", ":Neotree git_status<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>eb", ":Neotree buffers<CR>", { noremap = true, silent = true })

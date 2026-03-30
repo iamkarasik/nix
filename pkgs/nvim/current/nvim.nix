@@ -23,7 +23,6 @@ in {
     luafile ${./lua/core/keymaps.lua}
     luafile ${./lua/core/lsp.lua}
 
-    luafile ${./lua/plugins/theme.lua}
     luafile ${./lua/plugins/bufferline.lua}
     luafile ${./lua/plugins/which-key.lua}
     luafile ${./lua/plugins/notify.lua}
@@ -33,7 +32,7 @@ in {
     luafile ${./lua/plugins/treesitter.lua}
     luafile ${./lua/plugins/sonarqube.lua}
     luafile ${./lua/plugins/blink-cmp.lua}
-    luafile ${./lua/plugins/telescope.lua}
+    luafile ${./lua/plugins/fzf.lua}
     luafile ${./lua/plugins/neo-tree.lua}
     luafile ${./lua/plugins/gitsigns.lua}
     luafile ${./lua/plugins/lualine.lua}
@@ -43,6 +42,8 @@ in {
     luafile ${./lua/plugins/rainbow-delimiters.lua}
     luafile ${./lua/plugins/dap.lua}
     luafile ${./lua/plugins/neotest.lua}
+
+    luafile ${./lua/plugins/theme/vscode.lua}
   '';
 
   extraPackages = with pkgs; [
@@ -70,6 +71,7 @@ in {
   plugins = with pkgs.vimPlugins; [
     vscode-nvim
     kanagawa-nvim
+    tokyonight-nvim
 
     bufferline-nvim
 
@@ -82,8 +84,7 @@ in {
     rainbow-delimiters-nvim
     lualine-nvim
 
-    telescope-nvim
-    telescope-ui-select-nvim
+    fzf-lua
     neo-tree-nvim
     toggleterm-nvim
 

@@ -3,6 +3,7 @@ local opt = vim.opt
 -- line numbers
 opt.relativenumber = true
 opt.number = true
+opt.fillchars = { eob = " " }
 
 -- tabs & indentation
 opt.tabstop = 4
