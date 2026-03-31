@@ -10,34 +10,45 @@ require("vscode").setup({
 	terminal_colors = true,
 
 	color_overrides = {
-		-- vscLineNumber = "#FFFFFF",
+		-- vscLineNumber = c.vscBlue,
 	},
 
 	group_overrides = {
 		Background = { fg = c.vscGray, bg = c.vscBack, bold = false, italic = false },
+		WinSeparator = { fg = c.vscBack, bg = "NONE", bold = false, italic = false },
+		VertLine = { fg = c.vscLineNumber, bg = c.vscBack },
+
+		-- Indent Blankline
+		IblIndent = { link = "VertLine" },
+		["@ibl.indent.char.1"] = { link = "VertLine" },
 
 		-- LSP
 		DiagnosticUnnecessary = { fg = c.vscGray, bg = "None", undercurl = true, sp = c.vscYellowOrange },
 
+		-- BufferLine
 		BufferLineFill = { link = "Background" },
 		BufferLineIndicatorSelected = { link = "Background" },
 		BufferLineIndicatorVisible = { link = "Background" },
 		BufferLineBufferSelected = { fg = c.vscFront, bg = c.vscBack, bold = true, italic = false },
-		BufferLineBufferVisible = { fg = c.vscFront, bg = c.vscBack, bold = true, italic = false },
+		BufferLineBufferVisible = { fg = c.vscFront, bg = c.vscBack, bold = false, italic = false },
 		BufferLineCloseButtonSelected = { fg = c.vscFront, bg = c.vscBack, bold = true, italic = false },
-		BufferLineCloseButtonVisible = { fg = c.vscFront, bg = c.vscBack, bold = true, italic = false },
+		BufferLineCloseButtonVisible = { fg = c.vscFront, bg = c.vscBack, bold = false, italic = false },
 		BufferLineCloseDuplicateSelected = { fg = c.vscFront, bg = c.vscBack, bold = true, italic = false },
-		BufferLineCloseDuplicateVisible = { fg = c.vscFront, bg = c.vscBack, bold = true, italic = false },
+		BufferLineCloseDuplicateVisible = { fg = c.vscFront, bg = c.vscBack, bold = false, italic = false },
 
 		BufferLineModified = { fg = c.vscYellowOrange, bg = c.vscBack },
 		BufferLineModifiedSelected = { fg = c.vscYellowOrange, bg = c.vscBack },
 		BufferLineModifiedVisible = { fg = c.vscYellowOrange, bg = c.vscBack },
 
-		-- NeoTreeRootName = { fg = c.vscFront, bg = "None", bold = false, italic = false },
-		-- NeoTreeBufferLine = { link = "Background" },
-		-- NeoTreeDimText = { link = "Background" },
-
+		-- NvimTree
 		NvimTreeNormal = { link = "Normal" },
+		NvimTreeTitle = { link = "Background" },
+		NvimTreeIndentMarker = { link = "VertLine" },
+		NvimTreeCursorLine = { link = "CursorLine" },
+		NvimTreeModifiedIcon = { fg = c.vscYellowOrange, bg = c.vscBack },
+		NvimTreeGitFileStagedHL = { link = "NvimTreeModifiedIcon" },
+		NvimTreeGitFileDirtyHL = { link = "NvimTreeModifiedIcon" },
+		NvimTreeExecFile = {},
 
 		-- Custom
 		LualineTextModeNormal = { fg = c.vscBlue, bg = c.vscBack, bold = true },

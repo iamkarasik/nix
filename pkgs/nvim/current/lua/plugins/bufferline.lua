@@ -15,8 +15,8 @@ require("bufferline").setup({
 		indicator = { style = "none" },
 		offsets = {
 			{
-				separator = "",
-				highlight = "NvimTreeNormal",
+				separator = false,
+				highlight = "NvimTreeTitle",
 				filetype = "NvimTree",
 				text = function()
 					return vim.fn.getcwd()

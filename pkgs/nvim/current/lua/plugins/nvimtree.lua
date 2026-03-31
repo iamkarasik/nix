@@ -29,11 +29,15 @@ require("nvim-tree").setup({
 	},
 
 	view = {
-		width = 35,
+		width = 38,
 		side = "left",
 	},
 
 	update_focused_file = {
+		enable = true,
+	},
+
+	modified = {
 		enable = true,
 	},
 
@@ -77,19 +81,13 @@ require("nvim-tree").setup({
 					symlink_open = " ",
 				},
 				git = {
-					unstaged = "●",
+					unstaged = "",
 					staged = "",
 					unmerged = "",
 					renamed = "",
 					untracked = "",
 					deleted = "",
 					ignored = "",
-					-- staged = "✓",
-					-- unmerged = "⚠",
-					-- renamed = "➜",
-					-- untracked = "+",
-					-- deleted = "✕",
-					-- ignored = "*",
 				},
 			},
 		},
@@ -101,45 +99,35 @@ require("nvim-tree").setup({
 	},
 
 	filters = {
-		git_ignored = true,
+		git_ignored = false,
 		dotfiles = false,
+		custom = {
+			"^.git$",
+		},
 	},
 
 	on_attach = my_on_attach,
 })
 
-vim.keymap.set("n", "<C-t>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Tree" })
-vim.keymap.set("n", "<leader>ts", "<cmd>NvimTreeToggleSide<cr>", { desc = "Toggle Tree Side" })
-
 vim.keymap.set("n", "<leader><Tab>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<c-e>", "<Esc>:Neotree toggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ee", ":Neotree toggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ec", ":Neotree reveal<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>eg", ":Neotree git_status<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>eb", ":Neotree buffers<CR>", { noremap = true, silent = true })
-
-vim.api.nvim_create_user_command("NvimTreeToggleSide", function()
-	local api = require("nvim-tree.api")
-	local view = require("nvim-tree.view")
-
-	local current_side = view.View.side
-	local new_side = current_side == "left" and "right" or "left"
-
-	local was_open = view.is_visible()
-
-	if was_open then
-		api.tree.close()
-	end
-
-	view.View.side = new_side
-
-	if was_open then
-		api.tree.open()
-	end
-end, { desc = "Toggle NvimTree side (left/right)" })
+vim.keymap.set("n", "<c-e>", "<Esc>:NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ec", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("QuitPre", {
 	callback = function()
-		vim.cmd("NvimTreeClose")
+		local wins = vim.api.nvim_list_wins()
+		local real_wins = 0
+		for _, w in ipairs(wins) do
+			local buf = vim.api.nvim_win_get_buf(w)
+			local ft = vim.bo[buf].filetype
+			local floating = vim.api.nvim_win_get_config(w).relative ~= ""
+			if ft ~= "NvimTree" and not floating then
+				real_wins = real_wins + 1
+			end
+		end
+		if real_wins == 1 then
+			vim.cmd("NvimTreeClose")
+		end
 	end,
 })

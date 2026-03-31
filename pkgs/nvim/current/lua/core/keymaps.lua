@@ -31,7 +31,24 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Buffers
-keymap.set("n", "<A-c>", ":bd<CR>", { silent = true, desc = "Buffer: delete" })
+keymap.set("n", "<A-c>", function()
+	local buf = vim.api.nvim_get_current_buf()
+	if not vim.bo[buf].buflisted then
+		vim.cmd(buf .. "bd")
+		return
+	end
+
+	local bufs = vim.tbl_filter(function(b)
+		return vim.bo[b].buflisted and b ~= buf
+	end, vim.api.nvim_list_bufs())
+
+	if #bufs > 0 then
+		vim.cmd("buffer " .. bufs[1])
+	else
+		vim.cmd("enew")
+	end
+	vim.api.nvim_buf_delete(buf, { force = false })
+end, { silent = true, desc = "Buffer: delete" })
 keymap.set("n", "<A-n>", ":bn<CR>", { silent = true, desc = "Buffer: next" })
 keymap.set("n", "<A-p>", ":bp<CR>", { silent = true, desc = "Buffer: previous" })
 

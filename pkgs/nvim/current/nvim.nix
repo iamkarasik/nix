@@ -85,7 +85,6 @@ in {
     lualine-nvim
 
     fzf-lua
-    neo-tree-nvim
     nvim-tree-lua
     toggleterm-nvim
 

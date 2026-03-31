@@ -1,8 +1,8 @@
 local vim = vim
 
-local normal = vim.api.nvim_get_hl_by_name("Normal", true)
-local fg = string.format("#%06x", normal.foreground)
-local bg = string.format("#%06x", normal.background)
+-- local normal = vim.api.nvim_get_hl_by_name("Normal", true)
+-- local fg = string.format("#%06x", normal.foreground)
+-- local bg = string.format("#%06x", normal.background)
 
 local reset = "%#Normal#"
 
@@ -95,7 +95,7 @@ M.get_mode = function()
 	end
 	local mode = vim.api.nvim_get_mode().mode
 	local icon = "%#LualineIconMode" .. M.modes[mode][2] .. "#" .. M.symbols.vim .. " "
-	local text = "%#LualineTextMode" .. M.modes[mode][2] .. "# " .. M.modes[mode][1]
+	local text = "%#LualineTextMode" .. M.modes[mode][2] .. "# " .. M.modes[mode][1] .. " "
 	return icon .. text .. reset
 end
 
@@ -132,7 +132,7 @@ M.get_git_diff = function()
 	diff_info = diff_info .. "%#LualineIconGitChanged#" .. M.symbols.changed .. " " .. changed .. " "
 	diff_info = diff_info .. "%#LualineIconGitRemoved#" .. M.symbols.removed .. " " .. removed
 
-	return diff_info .. reset .. " "
+	return diff_info .. reset
 end
 
 M.get_diagnostics = {
@@ -186,48 +186,48 @@ end
 local config = {
 	options = {
 		icons_enabled = true,
-		theme = {
-			normal = {
-				a = { fg = fg, bg = bg, gui = "bold" },
-				b = { fg = fg, bg = bg },
-				c = { fg = fg, bg = bg },
-				x = { fg = fg, bg = bg },
-				y = { fg = fg, bg = bg },
-				z = { fg = fg, bg = bg },
-			},
-			insert = {
-				a = { fg = fg, bg = bg },
-				b = { fg = fg, bg = bg },
-				c = { fg = fg, bg = bg },
-				x = { fg = fg, bg = bg },
-				y = { fg = fg, bg = bg },
-				z = { fg = fg, bg = bg },
-			},
-			visual = {
-				a = { fg = fg, bg = bg },
-				b = { fg = fg, bg = bg },
-				c = { fg = fg, bg = bg },
-				x = { fg = fg, bg = bg },
-				y = { fg = fg, bg = bg },
-				z = { fg = fg, bg = bg },
-			},
-			replace = {
-				a = { fg = fg, bg = bg },
-				b = { fg = fg, bg = bg },
-				c = { fg = fg, bg = bg },
-				x = { fg = fg, bg = bg },
-				y = { fg = fg, bg = bg },
-				z = { fg = fg, bg = bg },
-			},
-			command = {
-				a = { fg = fg, bg = bg },
-				b = { fg = fg, bg = bg },
-				c = { fg = fg, bg = bg },
-				x = { fg = fg, bg = bg },
-				y = { fg = fg, bg = bg },
-				z = { fg = fg, bg = bg },
-			},
-		},
+		-- theme = {
+			-- normal = {
+			-- 	a = { fg = fg, bg = bg, gui = "bold" },
+			-- 	b = { fg = fg, bg = bg },
+			-- 	c = { fg = fg, bg = bg },
+			-- 	x = { fg = fg, bg = bg },
+			-- 	y = { fg = fg, bg = bg },
+			-- 	z = { fg = fg, bg = bg },
+			-- },
+			-- insert = {
+			-- 	a = { fg = fg, bg = bg },
+			-- 	b = { fg = fg, bg = bg },
+			-- 	c = { fg = fg, bg = bg },
+			-- 	x = { fg = fg, bg = bg },
+			-- 	y = { fg = fg, bg = bg },
+			-- 	z = { fg = fg, bg = bg },
+			-- },
+			-- visual = {
+			-- 	a = { fg = fg, bg = bg },
+			-- 	b = { fg = fg, bg = bg },
+			-- 	c = { fg = fg, bg = bg },
+			-- 	x = { fg = fg, bg = bg },
+			-- 	y = { fg = fg, bg = bg },
+			-- 	z = { fg = fg, bg = bg },
+			-- },
+			-- replace = {
+			-- 	a = { fg = fg, bg = bg },
+			-- 	b = { fg = fg, bg = bg },
+			-- 	c = { fg = fg, bg = bg },
+			-- 	x = { fg = fg, bg = bg },
+			-- 	y = { fg = fg, bg = bg },
+			-- 	z = { fg = fg, bg = bg },
+			-- },
+			-- command = {
+			-- 	a = { fg = fg, bg = bg },
+			-- 	b = { fg = fg, bg = bg },
+			-- 	c = { fg = fg, bg = bg },
+			-- 	x = { fg = fg, bg = bg },
+			-- 	y = { fg = fg, bg = bg },
+			-- 	z = { fg = fg, bg = bg },
+			-- },
+		-- },
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
@@ -249,7 +249,7 @@ local config = {
 		lualine_c = {},
 		lualine_x = {},
 		lualine_y = { M.get_diagnostics },
-		lualine_z = { M.get_lsp, M.get_project_root, M.get_cursor },
+		lualine_z = { M.get_lsp, M.get_cursor },
 	},
 	inactive_sections = {
 		lualine_a = {},
