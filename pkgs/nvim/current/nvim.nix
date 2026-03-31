@@ -33,7 +33,7 @@ in {
     luafile ${./lua/plugins/sonarqube.lua}
     luafile ${./lua/plugins/blink-cmp.lua}
     luafile ${./lua/plugins/fzf.lua}
-    luafile ${./lua/plugins/neo-tree.lua}
+    luafile ${./lua/plugins/nvimtree.lua}
     luafile ${./lua/plugins/gitsigns.lua}
     luafile ${./lua/plugins/lualine.lua}
     luafile ${./lua/plugins/toggleterm.lua}
@@ -86,6 +86,7 @@ in {
 
     fzf-lua
     neo-tree-nvim
+    nvim-tree-lua
     toggleterm-nvim
 
     nvim-treesitter.withAllGrammars

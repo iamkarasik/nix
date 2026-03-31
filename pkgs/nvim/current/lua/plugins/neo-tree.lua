@@ -1,5 +1,5 @@
 require("neo-tree").setup({
-	close_if_last_window = true,
+	close_if_last_window = false,
 	popup_border_style = "single",
 	enable_git_status = true,
 	enable_modified_markers = false,
@@ -20,7 +20,7 @@ require("neo-tree").setup({
 			symbols = {
 				added = "",
 				deleted = "",
-				modified = "",
+				modified = "●",
 				renamed = "",
 				untracked = "",
 				ignored = "",
@@ -35,7 +35,7 @@ require("neo-tree").setup({
 	},
 	window = {
 		position = "left",
-		width = 35,
+		width = 40,
 	},
 	filesystem = {
 		use_libuv_file_watcher = true,

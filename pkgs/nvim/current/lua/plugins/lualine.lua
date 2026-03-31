@@ -33,7 +33,7 @@ M.display_modes = {
 
 M.skip_file_type = {
 	NvimTree = true,
-	['neo-tree'] = true,
+	["neo-tree"] = true,
 	TelescopePrompt = true,
 }
 
@@ -95,23 +95,8 @@ M.get_mode = function()
 	end
 	local mode = vim.api.nvim_get_mode().mode
 	local icon = "%#LualineIconMode" .. M.modes[mode][2] .. "#" .. M.symbols.vim .. " "
-	local text = "%#LualineTextMode" .. M.modes[mode][2] .. "# " .. M.modes[mode][1] .. " "
+	local text = "%#LualineTextMode" .. M.modes[mode][2] .. "# " .. M.modes[mode][1]
 	return icon .. text .. reset
-end
-
-M.get_filename = function()
-	local filename = vim.fn.expand("%:t")
-	local icon, hl_group = devicons.get_icon(filename)
-
-	local icon_color = vim.api.nvim_get_hl_by_name(hl_group, true).foreground
-	local dark_bg = vim.api.nvim_get_hl_by_name("LualineIconModeNormal", true).foreground
-	local light_bg = vim.api.nvim_get_hl_by_name("LualineTextModeNormal", true).background
-
-	vim.api.nvim_set_hl(0, "Lualine" .. hl_group, { bg = icon_color, fg = dark_bg })
-	local icon_block = "%#Lualine" .. hl_group .. "#" .. icon .. " "
-
-	vim.api.nvim_set_hl(0, "Lualine" .. hl_group .. "Filename", { bg = light_bg, fg = icon_color })
-	return icon_block .. "%#Lualine" .. hl_group .. "Filename# " .. filename .. " " .. reset
 end
 
 M.get_git_branch = function()
@@ -159,7 +144,7 @@ M.get_diagnostics = {
 }
 
 M.get_lsp = function()
-  if not M.should_display() then
+	if not M.should_display() then
 		return ""
 	end
 
@@ -170,16 +155,16 @@ M.get_lsp = function()
 	end
 
 	local client_name = ""
-  for _, client in ipairs(clients) do
-    if client.name ~= "sonarlint.nvim" then
-      client_name = client.name
-      break
-    end
-  end
+	for _, client in ipairs(clients) do
+		if client.name ~= "sonarlint.nvim" then
+			client_name = client.name
+			break
+		end
+	end
 
-  if client_name == "" then
-    return ""
-  end
+	if client_name == "" then
+		return ""
+	end
 
 	local icon_block = "%#LualineIconLsp#" .. M.symbols.gear .. " "
 	return icon_block .. "%#LualineTextLsp# " .. client_name .. " " .. reset
@@ -195,7 +180,7 @@ M.get_cursor = function()
 		return ""
 	end
 	local icon_block = "%#LualineIconCursor#" .. M.symbols.cursor .. " "
-	return icon_block .. "%#LualineTextCursor# " .. vim.fn.line(".") .. ":" .. vim.fn.col(".") .. " " .. reset
+	return icon_block .. "%#LualineTextCursor# " .. vim.fn.line(".") .. ":" .. vim.fn.col(".") .. reset
 end
 
 local config = {
@@ -260,7 +245,7 @@ local config = {
 	},
 	sections = {
 		lualine_a = { M.get_mode },
-		lualine_b = { M.get_filename, M.get_git_branch, M.get_git_diff },
+		lualine_b = { M.get_git_branch, M.get_git_diff },
 		lualine_c = {},
 		lualine_x = {},
 		lualine_y = { M.get_diagnostics },

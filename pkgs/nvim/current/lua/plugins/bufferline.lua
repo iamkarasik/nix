@@ -15,10 +15,13 @@ require("bufferline").setup({
 		indicator = { style = "none" },
 		offsets = {
 			{
-				filetype = "neo-tree",
-				text = "File Explorer",
+				separator = "",
+				highlight = "NvimTreeNormal",
+				filetype = "NvimTree",
+				text = function()
+					return vim.fn.getcwd()
+				end,
 				text_align = "left",
-				highlight = "NeoTreeBufferLine"
 			},
 		},
 		separator_style = { "", "" },

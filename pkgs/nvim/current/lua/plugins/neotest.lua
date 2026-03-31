@@ -1,4 +1,3 @@
-local vim = vim
 local neotest = require("neotest")
 
 neotest.setup({
@@ -60,6 +59,8 @@ vim.keymap.set("n", "<leader>td", function()
 	neotest.summary.open()
 end, { desc = "Test: Debug Nearest test" })
 
-vim.api.nvim_create_autocmd({"QuitPre"}, {
-    callback = function() neotest.summary.close() end,
+vim.api.nvim_create_autocmd({ "QuitPre" }, {
+	callback = function()
+		neotest.summary.close()
+	end,
 })

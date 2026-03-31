@@ -51,4 +51,8 @@ vim.o.winborder = "rounded"
 vim.g.omni_sql_no_default_maps = 1
 vim.tbl_islist = vim.islist or vim.tbl_islist
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.updatetime = 300

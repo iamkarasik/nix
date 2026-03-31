@@ -1,16 +1,16 @@
 {system}: let
   fonts = {
     "aarch64-darwin" = {size = 13.0;};
-    "x86_64-linux" = {size = 11.0;};
+    "x86_64-linux" = {size = 10.0;};
   };
 in {
   enable = true;
   enableZshIntegration = true;
   settings = {
-    adjust-cell-width = "4%";
-    adjust-cell-height = "8%";
+    adjust-cell-width = "6%";
+    adjust-cell-height = "15%";
 
-    font-family = "JetBrainsMonoNL Nerd Font";
+    font-family = "JetBrainsMono Nerd Font";
     font-size = fonts.${system}.size;
     font-thicken = true;
     macos-option-as-alt = true;

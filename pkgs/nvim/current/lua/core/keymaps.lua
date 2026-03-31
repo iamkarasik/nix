@@ -31,9 +31,9 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Buffers
-keymap.set("n", "<A-c>", ":bd<CR>", { desc = "Buffer: delete" })
-keymap.set("n", "<A-n>", ":bn<CR>", { desc = "Buffer: next" })
-keymap.set("n", "<A-p>", ":bp<CR>", { desc = "Buffer: previous" })
+keymap.set("n", "<A-c>", ":bd<CR>", { silent = true, desc = "Buffer: delete" })
+keymap.set("n", "<A-n>", ":bn<CR>", { silent = true, desc = "Buffer: next" })
+keymap.set("n", "<A-p>", ":bp<CR>", { silent = true, desc = "Buffer: previous" })
 
 -- Snippets
 keymap.set({ "i", "s" }, "<Tab>", function()
@@ -59,5 +59,6 @@ P = function(...)
 		table.insert(output, vim.inspect(arg))
 	end
 	print(table.concat(output, ", "))
-	return unpack(args)
+	local unpack_fn = table.unpack or unpack
+	return unpack_fn(args)
 end
