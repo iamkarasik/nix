@@ -9,6 +9,11 @@
       sha256 = "0s5r9kbqxaj0i7pxlw6g4r71qzcy7x1ly4czjn7zv39np6z4igqa";
     };
   };
+
+  kline-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "kline";
+    src = ./lua/plugins/kline;
+  };
 in {
   enable = true;
   defaultEditor = true;
@@ -35,7 +40,6 @@ in {
     luafile ${./lua/plugins/fzf.lua}
     luafile ${./lua/plugins/nvimtree.lua}
     luafile ${./lua/plugins/gitsigns.lua}
-    luafile ${./lua/plugins/lualine.lua}
     luafile ${./lua/plugins/toggleterm.lua}
     luafile ${./lua/plugins/conform.lua}
     luafile ${./lua/plugins/colorizer.lua}
@@ -43,6 +47,7 @@ in {
     luafile ${./lua/plugins/dap.lua}
     luafile ${./lua/plugins/neotest.lua}
 
+    luafile ${./lua/plugins/kline.lua}
     luafile ${./lua/plugins/theme/vscode.lua}
   '';
 
@@ -82,7 +87,8 @@ in {
     virt-column-nvim
     nvim-colorizer-lua
     rainbow-delimiters-nvim
-    lualine-nvim
+
+    kline-nvim
 
     fzf-lua
     nvim-tree-lua

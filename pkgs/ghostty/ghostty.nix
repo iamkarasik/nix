@@ -10,7 +10,7 @@ in {
     adjust-cell-width = "6%";
     adjust-cell-height = "15%";
 
-    font-family = "JetBrainsMono Nerd Font";
+    font-family = "JetBrainsMonoNL Nerd Font";
     font-size = fonts.${system}.size;
     font-thicken = true;
     macos-option-as-alt = true;

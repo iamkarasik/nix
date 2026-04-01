@@ -15,6 +15,8 @@ require("vscode").setup({
 
 	group_overrides = {
 		Background = { fg = c.vscGray, bg = c.vscBack, bold = false, italic = false },
+		StatusLine = { link = "Background" },
+		StatusLineNC = { link = "Background" },
 		WinSeparator = { fg = c.vscBack, bg = "NONE", bold = false, italic = false },
 		VertLine = { fg = c.vscLineNumber, bg = c.vscBack },
 
@@ -48,31 +50,20 @@ require("vscode").setup({
 		NvimTreeModifiedIcon = { fg = c.vscYellowOrange, bg = c.vscBack },
 		NvimTreeGitFileStagedHL = { link = "NvimTreeModifiedIcon" },
 		NvimTreeGitFileDirtyHL = { link = "NvimTreeModifiedIcon" },
+		NvimTreeOpenedFolderName = { bg = c.vscBack },
 		NvimTreeExecFile = {},
 
 		-- Custom
-		LualineTextModeNormal = { fg = c.vscBlue, bg = c.vscBack, bold = true },
-		LualineTextModeVisual = { fg = c.vscYellowOrange, bg = c.vscBack, bold = true },
-		LualineTextModeReplace = { fg = c.vscRed, bg = c.vscBack, bold = true },
-		LualineTextModeInsert = { fg = c.vscGreen, bg = c.vscBack, bold = true },
-		LualineTextModeCommand = { fg = c.vscPink, bg = c.vscBack, bold = true },
-		LualineTextModeUnknown = { fg = c.vscLightBlue, bg = c.vscBack, bold = true },
-
-		LualineIconModeNormal = { fg = c.vscBack, bg = c.vscBlue, bold = true },
-		LualineIconModeVisual = { fg = c.vscBack, bg = c.vscYellowOrange, bold = true },
-		LualineIconModeReplace = { fg = c.vscBack, bg = c.vscRed, bold = true },
-		LualineIconModeInsert = { fg = c.vscBack, bg = c.vscGreen, bold = true },
-		LualineIconModeCommand = { fg = c.vscBack, bg = c.vscPink, bold = true },
-		LualineIconModeUnknown = { fg = c.vscBack, bg = c.vscLightBlue, bold = true },
-
-		LualineIconGitBranch = { fg = c.vscBack, bg = c.vscRed, bold = true },
-		LualineTextGitBranch = { fg = c.vscRed, bg = c.vscBack, bold = true },
-
-		LualineIconLsp = { fg = c.vscBack, bg = c.vscGreen, bold = true },
-		LualineTextLsp = { fg = c.vscGreen, bg = c.vscBack, bold = true },
-
-		LualineIconCursor = { fg = c.vscBack, bg = c.vscYellowOrange, bold = true },
-		LualineTextCursor = { fg = c.vscYellowOrange, bg = c.vscBack, bold = true },
+		KlineModeNormal = { fg = c.vscBack, bg = c.vscGreen, bold = true },
+		KlineModeVisual = { fg = c.vscBack, bg = c.vscYellowOrange, bold = true },
+		KlineModeInsert = { fg = c.vscBack, bg = c.vscBlue, bold = true },
+		KlineModeCommand = { fg = c.vscBack, bg = c.vscPink, bold = true },
+		KlineModeReplace = { fg = c.vscBack, bg = c.vscRed, bold = true },
+		KlineModeOther = { fg = c.vscBack, bg = c.vscRed, bold = true },
+		KlineBranch = { fg = c.vscFront, bg = "NONE", bold = true },
+		KlineFilename = { link = "Background" },
+		KlineCursorIcon = { fg = c.vscBack, bg = c.vscYellowOrange, bold = true },
+		KlineCursorText = { fg = c.vscYellowOrange, bg = c.vscBack, bold = true },
 	},
 })
 
