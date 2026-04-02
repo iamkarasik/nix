@@ -32,6 +32,8 @@
         cmd-q = "close";
         cmd-m = "fullscreen";
         cmd-shift-space = "layout floating tiling";
+        alt-slash = "layout tiles horizontal vertical";
+        alt-comma = "layout accordion horizontal vertical";
 
         # Focus movement
         alt-h = "focus left";
