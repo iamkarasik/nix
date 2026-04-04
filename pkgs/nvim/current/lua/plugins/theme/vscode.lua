@@ -48,6 +48,7 @@ require("vscode").setup({
 		NvimTreeIndentMarker = { link = "VertLine" },
 		NvimTreeCursorLine = { link = "CursorLine" },
 		NvimTreeModifiedIcon = { fg = c.vscYellowOrange, bg = c.vscBack },
+		NvimTreeGitFileNewHL = { link = "NvimTreeModifiedIcon" },
 		NvimTreeGitFileStagedHL = { link = "NvimTreeModifiedIcon" },
 		NvimTreeGitFileDirtyHL = { link = "NvimTreeModifiedIcon" },
 		NvimTreeOpenedFolderName = { bg = c.vscBack },
