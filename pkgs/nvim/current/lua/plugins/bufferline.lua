@@ -19,7 +19,7 @@ require("bufferline").setup({
 				highlight = "NvimTreeTitle",
 				filetype = "NvimTree",
 				text = function()
-					return vim.fn.getcwd()
+					return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 				end,
 				text_align = "left",
 			},
