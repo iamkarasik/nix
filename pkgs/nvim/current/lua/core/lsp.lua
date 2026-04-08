@@ -2,9 +2,10 @@ local vim = vim
 
 local set_keymaps = function(opts)
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: Code Actions" })
-	-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
-	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP: Rename" })
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help)
+
 	vim.keymap.set("n", "<leader>df", function()
 		vim.diagnostic.open_float({ border = "rounded" })
 	end, { desc = "LSP: Show Diagnostic" })
