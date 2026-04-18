@@ -24,12 +24,18 @@ local function my_on_attach(bufnr)
 end
 
 require("nvim-tree").setup({
+	actions = {
+		open_file = {
+			resize_window = false,
+		},
+	},
+
 	sort = {
 		sorter = "case_sensitive",
 	},
 
 	view = {
-		width = 38,
+		width = 40,
 		side = "left",
 	},
 
@@ -68,17 +74,17 @@ require("nvim-tree").setup({
 			},
 
 			glyphs = {
-				default = " ",
-				symlink = " ",
+				default = "",
+				symlink = "",
 				folder = {
-					arrow_closed = " ",
-					arrow_open = " ",
-					default = " ",
-					open = " ",
-					empty = " ",
-					empty_open = " ",
-					symlink = " ",
-					symlink_open = " ",
+					arrow_closed = "",
+					arrow_open = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
 				},
 				git = {
 					unstaged = "",

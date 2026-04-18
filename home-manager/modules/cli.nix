@@ -12,7 +12,6 @@
     curl
     fd
     fzf
-    gemini-cli
     gh
     granted
     htop

@@ -7,7 +7,6 @@ fzf.setup({
 	},
 	fzf_opts = {
 		["--tiebreak"] = "begin",
-		["--nth"] = "-1",
 	},
 	file_ignore_patterns = {
 		"%.class$",
@@ -42,6 +41,12 @@ fzf.setup({
 		"__pycache__/",
 		".git/",
 		"dist-newstyle/",
+	},
+
+	files = {
+		fzf_opts = {
+			["--nth"] = "-1",
+		},
 	},
 })
 
