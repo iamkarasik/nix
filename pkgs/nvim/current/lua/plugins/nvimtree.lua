@@ -68,7 +68,7 @@ require("nvim-tree").setup({
 					color = true,
 				},
 				folder = {
-					enable = true,
+					enable = false,
 					color = true,
 				},
 			},

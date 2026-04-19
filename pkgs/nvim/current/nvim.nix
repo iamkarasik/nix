@@ -14,28 +14,6 @@
     name = "kline";
     src = ./lua/plugins/kline;
   };
-
-  lemons-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "lemons.nvim";
-    version = "1";
-    src = pkgs.fetchFromGitHub {
-      owner = "Kaikacy";
-      repo = "Lemons.nvim";
-      rev = "d51885d1886b8acc28850e1f8285a1f461e9b0a2";
-      sha256 = "1xfa40aw6cx9q6jvf4v6h6slf8h569p1hbqav8m50bw74miyr8dw";
-    };
-  };
-
-  anysphere-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "anysphere.nvim";
-    version = "1";
-    src = pkgs.fetchFromGitHub {
-      owner = "dapovich";
-      repo = "anysphere.nvim";
-      rev = "05d10d2ca1cd1107809ef0941028d2329374f217";
-      sha256 = "0f18rr8hcyhmwm8jjrzfxqmk7i1pdvjf3j2rh4zvibq7yf491s67";
-    };
-  };
 in {
   enable = true;
   defaultEditor = true;
@@ -70,13 +48,11 @@ in {
     luafile ${./lua/plugins/neotest.lua}
 
     luafile ${./lua/plugins/kline.lua}
+    luafile ${./lua/plugins/theme/tokyonight.lua}
     luafile ${./lua/plugins/theme/vscode.lua}
   '';
 
   extraPackages = with pkgs; [
-    # LSP
-    gopls # GoLang
-    jdt-language-server # Java
     lua-language-server # Lua
     nil # Nix
     typescript-language-server # JavaScript/TypeScript
@@ -100,8 +76,6 @@ in {
     kanagawa-nvim
     tokyonight-nvim
     oxocarbon-nvim
-    lemons-nvim
-    anysphere-nvim
 
     bufferline-nvim
 

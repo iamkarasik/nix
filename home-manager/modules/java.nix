@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.java = {
     enable = true;
     package = pkgs.javaPackages.compiler.temurin-bin.jdk-25;
@@ -8,6 +6,7 @@
 
   home.packages = with pkgs; [
     gradle_9
+    jdt-language-server
     maven
     visualvm
   ];

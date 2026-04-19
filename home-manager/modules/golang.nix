@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     gnumake
     go
-    gotools
     go-tools
+    gopls
+    gotools
   ];
 }
