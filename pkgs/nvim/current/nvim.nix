@@ -14,6 +14,17 @@
     name = "kline";
     src = ./lua/plugins/kline;
   };
+
+  cursor-dark = pkgs.vimUtils.buildVimPlugin {
+    pname = "cursor-dark.nvim";
+    version = "1";
+    src = pkgs.fetchFromGitHub {
+      owner = "bergholmm";
+      repo = "cursor-dark.nvim";
+      rev = "68997e3e1abdc7fed34bd9fe53a9c6cf6229fd1e";
+      sha256 = "0qv6z044gwwacc8fqrm24gfw17kk9ma6m42pbsdmpbklqkaf4b1d";
+    };
+  };
 in {
   enable = true;
   defaultEditor = true;
@@ -76,6 +87,7 @@ in {
     kanagawa-nvim
     tokyonight-nvim
     oxocarbon-nvim
+    cursor-dark
 
     bufferline-nvim
 
