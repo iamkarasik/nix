@@ -18,7 +18,6 @@
       source ${./themes/robbyrussel.zsh-theme}
       setopt prompt_subst
 
-      source ${./plugins/git-aliases.zsh}
       source ${./plugins/git.zsh}
       source ${./plugins/zsh-fzf-history-search.zsh}
       source ${./plugins/zsh-fzf-search.zsh}
@@ -33,7 +32,10 @@
       bindkey "^A" vi-beginning-of-line
       bindkey "^E" vi-end-of-line
 
-      source ${./aliases/k8s.sh}
+      source ${./alias/git.zsh}
+      source ${./alias/k8s.sh}
+      source ${./alias/jira.sh}
+
       [[ -f ~/.extrarc ]] && source ~/.extrarc
     '';
   };

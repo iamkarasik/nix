@@ -17,9 +17,5 @@
     aerospace
   ];
 
-  home.file = {
-    ".aliases-jira.sh".source = ../../dotfiles/aliases/aliases-jira.sh;
-  };
-
   home.stateVersion = stateVersion;
 }
