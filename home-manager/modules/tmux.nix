@@ -1,11 +1,8 @@
-{ pkgs, ... }:
-
-{
-  home.packages = with pkgs; [
-    tmux
-  ];
-
-  home.file = {
-    ".config/tmux".source = ../../dotfiles/tmux;
+{...}: {
+  programs.tmux = {
+    enable = true;
+    extraConfig = builtins.readFile ../../dotfiles/tmux/tmux.conf;
   };
+
+  xdg.configFile."tmux/themes".source = ../../dotfiles/tmux/themes;
 }

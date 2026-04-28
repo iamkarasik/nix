@@ -71,7 +71,9 @@ vim.diagnostic.config({
 vim.lsp.enable("gopls", true)
 vim.lsp.enable("hls", true)
 vim.lsp.enable("lua_ls", true)
+vim.lsp.enable("metals", true)
 vim.lsp.enable("nil_ls", true)
+vim.lsp.enable("rust_analyzer", true)
 vim.lsp.enable("ts_ls", true)
 
 vim.lsp.log.set_level("WARN")

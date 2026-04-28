@@ -23,7 +23,7 @@ in {
       efiSupport = true;
       useOSProber = true;
       configurationLimit = 10;
-      theme = "${pkgs.catppuccin-grub}";
+      # theme = "${pkgs.catppuccin-grub}";
     };
   };
 
@@ -77,27 +77,15 @@ in {
   };
 
   programs.zsh.enable = true; # Required because shell defaults are in /etc/passwd
+
   users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "Goose";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-    ];
   };
 
-  environment.sessionVariables = {
-    XDG_CACHE_HOME = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_STATE_HOME = "$HOME/.local/state";
-  };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.zed-mono
-    nerd-fonts.space-mono
-  ];
+  fonts.packages = import ../../home-manager/modules/fonts/packages.nix pkgs;
 
   environment.systemPackages = with pkgs; [
     file # File command
@@ -134,6 +122,33 @@ in {
     podman-tui
     podman-compose
   ];
+
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    image = ../../dotfiles/wallpaper/${wallpaper};
+
+    cursor = {
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors-white";
+      size = 30;
+    };
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono NFM";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+    };
+  };
 
   virtualisation = {
     containers.enable = true;

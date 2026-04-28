@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     pgloader
     postgresql
+    sql-formatter
   ];
 
   programs.pgcli = {

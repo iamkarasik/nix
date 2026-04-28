@@ -19,7 +19,7 @@
     neofetch
     nmap
     ripgrep
-    vault
+    vault-bin
     wget
     yq
   ];

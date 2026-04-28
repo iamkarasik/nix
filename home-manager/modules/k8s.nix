@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     k9s
     kind
@@ -15,8 +13,6 @@
 
     kubelogin
     kubelogin-oidc
-    kubernetes-helm
     aws-iam-authenticator
   ];
 }
-

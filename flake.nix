@@ -13,9 +13,19 @@
       url = "github:LnL7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:danth/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
+  outputs = inputs @ {
     nixpkgs,
     nix-darwin,
     home-manager,
@@ -25,12 +35,16 @@
       stateVersion = "25.11";
       system = "x86_64-linux";
       username = "goose";
+      gitUserName = "iamkarasik";
+      gitUserEmail = "ilankarasik@gmail.com";
     };
 
     workSettings = {
       stateVersion = "25.11";
       system = "aarch64-darwin";
       username = "ilankarasik";
+      gitUserName = "Ilan Karasik";
+      gitUserEmail = "ikarasik@confluent.io";
     };
   in {
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
@@ -39,12 +53,13 @@
       modules = [
         {nixpkgs.config = {allowUnfree = true;};}
         ./hosts/NixOS/configuration.nix
+        inputs.stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${personalSettings.username} = ./hosts/NixOS/home.nix;
-          home-manager.extraSpecialArgs = personalSettings;
+          home-manager.extraSpecialArgs = personalSettings // {inherit inputs;};
         }
       ];
     };
@@ -55,12 +70,13 @@
       modules = [
         {nixpkgs.config = {allowUnfree = true;};}
         ./hosts/MacOS/configuration.nix
+        inputs.stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${workSettings.username} = ./hosts/MacOS/home.nix;
-          home-manager.extraSpecialArgs = workSettings;
+          home-manager.extraSpecialArgs = workSettings // {inherit inputs;};
         }
       ];
     };
@@ -70,7 +86,7 @@
         system = personalSettings.system;
         config = {allowUnfree = true;};
       };
-      extraSpecialArgs = personalSettings;
+      extraSpecialArgs = personalSettings // {inherit inputs;};
       modules = [./hosts/NixOS/home.nix];
     };
 
@@ -79,7 +95,7 @@
         system = workSettings.system;
         config = {allowUnfree = true;};
       };
-      extraSpecialArgs = workSettings;
+      extraSpecialArgs = workSettings // {inherit inputs;};
       modules = [./hosts/MacOS/home.nix];
     };
   };
