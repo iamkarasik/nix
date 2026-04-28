@@ -11,12 +11,14 @@ in {
       adjust-cell-width = "6%";
       adjust-cell-height = "15%";
 
-      font-family = "JetBrainsMono Nerd Font Mono";
+      font-family = "JetBrainsMono NF";
       font-size = fonts.${system}.size;
       font-thicken = true;
       macos-option-as-alt = true;
       theme = "vscode";
       window-decoration = "none";
+
+      font-feature = ["-calt" "-liga" "-dlig"];
 
       window-padding-x = 6;
       window-padding-y = 4;

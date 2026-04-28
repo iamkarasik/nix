@@ -137,7 +137,7 @@ in {
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono NFM";
+        name = "JetBrainsMono NF";
       };
       sansSerif = {
         package = pkgs.dejavu_fonts;
