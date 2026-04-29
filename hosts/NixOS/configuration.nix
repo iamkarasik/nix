@@ -7,7 +7,6 @@
   wallpaper = "DarkForestLights.png";
 in {
   imports = [
-    # Include the results of the hardware scan.
     ./nvidia.nix
     ./hardware-configuration.nix
   ];
@@ -31,7 +30,6 @@ in {
     hostName = "nixos";
     networkmanager.enable = true;
     extraHosts = ''
-      10.88.111.4 server
     '';
 
     firewall.allowedTCPPorts = [12345];
@@ -74,6 +72,16 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+  };
+
+  services.dnsmasq = {
+    enable = true;
+
+    settings = {
+      address = [
+        "/proxmox.karas/10.88.111.210"
+      ];
+    };
   };
 
   programs.zsh.enable = true; # Required because shell defaults are in /etc/passwd
