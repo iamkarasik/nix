@@ -14,5 +14,7 @@
     kubelogin
     kubelogin-oidc
     aws-iam-authenticator
+
+    talosctl
   ];
 }

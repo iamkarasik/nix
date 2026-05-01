@@ -1,5 +1,4 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.stdenv.mkDerivation rec {
   name = "sonarlint-language-server";
   version = "4.20.2";

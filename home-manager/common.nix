@@ -17,6 +17,7 @@
     ./modules/rust.nix
     ./modules/scala.nix
     ./modules/sonarlint.nix
+    ./modules/terraform.nix
     ./modules/tmux.nix
     ./modules/typescript.nix
     ./modules/zsh.nix

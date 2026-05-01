@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    python3
+    terraform
+    terraform-ls
+    tflint
   ];
 }

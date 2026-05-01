@@ -79,7 +79,7 @@ in {
 
     settings = {
       address = [
-        "/proxmox.karas/10.88.111.210"
+        "/karas.home/10.88.111.210"
       ];
     };
   };
