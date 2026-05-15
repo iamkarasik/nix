@@ -1,18 +1,27 @@
-{system, ...}: let
-  fonts = {
-    "aarch64-darwin" = {size = 13.0;};
-    "x86_64-linux" = {size = 10.0;};
-  };
+{
+  system,
+  lib,
+  pkgs,
+  ...
+}: let
+  isDarwin = lib.hasSuffix "darwin" system;
 in {
   programs.ghostty = {
     enable = true;
+    package =
+      if isDarwin
+      then null
+      else pkgs.ghostty;
     enableZshIntegration = true;
     settings = {
       adjust-cell-width = "6%";
       adjust-cell-height = "15%";
 
       font-family = "JetBrainsMono NF";
-      font-size = fonts.${system}.size;
+      font-size =
+        if isDarwin
+        then 13.0
+        else 10.0;
       font-thicken = true;
       macos-option-as-alt = true;
       theme = "vscode";
@@ -20,7 +29,7 @@ in {
 
       font-feature = ["-calt" "-liga" "-dlig"];
 
-      window-padding-x = 6;
+      window-padding-x = "6,0";
       window-padding-y = 4;
       window-padding-balance = true;
 

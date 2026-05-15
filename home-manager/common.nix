@@ -3,6 +3,7 @@
     ./modules/alacritty.nix
     ./modules/cli.nix
     ./modules/db.nix
+    ./modules/ghostty.nix
     ./modules/git.nix
     ./modules/golang.nix
     ./modules/haskell.nix

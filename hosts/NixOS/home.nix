@@ -8,7 +8,6 @@
   imports = [
     inputs.zen-browser.homeModules.default
     ../../home-manager/common.nix
-    ../../home-manager/modules/ghostty.nix
     ../../home-manager/modules/stylix.nix
     ../../home-manager/modules/zen-browser.nix
   ];
