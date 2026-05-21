@@ -18,12 +18,12 @@
 
       # Gaps settings
       gaps = {
-        inner.horizontal = 36;
-        inner.vertical = 36;
-        outer.left = 36;
-        outer.bottom = 36;
-        outer.top = 36;
-        outer.right = 36;
+        inner.horizontal = 48;
+        inner.vertical = 48;
+        outer.left = 96;
+        outer.bottom = 96;
+        outer.top = 96;
+        outer.right = 96;
       };
 
       mode.main.binding = {

@@ -5,6 +5,8 @@
     go
     go-tools
     gofumpt
+    pkgs.unstable.golangci-lint
+    golangci-lint-langserver
     gopls
     gotools
   ];

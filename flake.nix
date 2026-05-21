@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -27,6 +28,7 @@
 
   outputs = inputs @ {
     nixpkgs,
+    unstable,
     nix-darwin,
     home-manager,
     ...
@@ -37,6 +39,7 @@
       username = "goose";
       gitUserName = "iamkarasik";
       gitUserEmail = "ilankarasik@gmail.com";
+      homeModule = ./hosts/NixOS/home.nix;
     };
 
     workSettings = {
@@ -45,22 +48,48 @@
       username = "ilankarasik";
       gitUserName = "Ilan Karasik";
       gitUserEmail = "ikarasik@confluent.io";
+      homeModule = ./hosts/MacOS/home.nix;
     };
+
+    unstableOverlay = final: _prev: {
+      unstable = import unstable {
+        inherit (final) system;
+        config.allowUnfree = true;
+      };
+    };
+
+    nixpkgsConfig = {
+      nixpkgs.config.allowUnfree = true;
+      nixpkgs.overlays = [unstableOverlay];
+    };
+
+    hmSystemModule = cfg: {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.${cfg.username} = cfg.homeModule;
+      home-manager.extraSpecialArgs = cfg // {inherit inputs;};
+    };
+
+    mkHome = cfg:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit (cfg) system;
+          config.allowUnfree = true;
+          overlays = [unstableOverlay];
+        };
+        extraSpecialArgs = cfg // {inherit inputs;};
+        modules = [cfg.homeModule];
+      };
   in {
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
       system = personalSettings.system;
       specialArgs = personalSettings;
       modules = [
-        {nixpkgs.config = {allowUnfree = true;};}
+        nixpkgsConfig
         ./hosts/NixOS/configuration.nix
         inputs.stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${personalSettings.username} = ./hosts/NixOS/home.nix;
-          home-manager.extraSpecialArgs = personalSettings // {inherit inputs;};
-        }
+        (hmSystemModule personalSettings)
       ];
     };
 
@@ -68,35 +97,15 @@
       system = workSettings.system;
       specialArgs = workSettings;
       modules = [
-        {nixpkgs.config = {allowUnfree = true;};}
+        nixpkgsConfig
         ./hosts/MacOS/configuration.nix
         inputs.stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${workSettings.username} = ./hosts/MacOS/home.nix;
-          home-manager.extraSpecialArgs = workSettings // {inherit inputs;};
-        }
+        (hmSystemModule workSettings)
       ];
     };
 
-    homeConfigurations.${personalSettings.username} = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        system = personalSettings.system;
-        config = {allowUnfree = true;};
-      };
-      extraSpecialArgs = personalSettings // {inherit inputs;};
-      modules = [./hosts/NixOS/home.nix];
-    };
-
-    homeConfigurations.${workSettings.username} = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        system = workSettings.system;
-        config = {allowUnfree = true;};
-      };
-      extraSpecialArgs = workSettings // {inherit inputs;};
-      modules = [./hosts/MacOS/home.nix];
-    };
+    homeConfigurations.${personalSettings.username} = mkHome personalSettings;
+    homeConfigurations.${workSettings.username} = mkHome workSettings;
   };
 }

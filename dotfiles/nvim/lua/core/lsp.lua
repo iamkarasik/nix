@@ -68,7 +68,7 @@ vim.diagnostic.config({
 	},
 })
 
-vim.lsp.enable("gopls", true)
+vim.lsp.enable({ "gopls", "golangci-lint" }, true)
 vim.lsp.enable("hls", true)
 vim.lsp.enable("lua_ls", true)
 vim.lsp.enable("metals", true)
