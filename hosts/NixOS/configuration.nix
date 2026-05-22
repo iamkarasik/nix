@@ -4,7 +4,7 @@
   stateVersion,
   ...
 }: let
-  wallpaper = "DarkForestLights.png";
+  wallpaper = "Sonoma-Dark.png";
 in {
   imports = [
     ./nvidia.nix
@@ -56,10 +56,8 @@ in {
       enable = true;
       autoNumlock = true;
       wayland.enable = true;
-      theme = "${import ../../pkgs/sddm/chili/chili.nix {
-        inherit pkgs;
-        inherit wallpaper;
-      }}";
+      theme = "catppuccin-mocha-mauve";
+      package = pkgs.kdePackages.sddm;
     };
   };
 
@@ -81,6 +79,18 @@ in {
       address = [
         "/karas.home/10.88.111.210"
       ];
+    };
+  };
+
+  services.openssh = {
+    enable = true;
+    ports = [22];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = ["root"];
+      UseDns = false;
+      X11Forwarding = false;
+      PermitRootLogin = "yes";
     };
   };
 
@@ -123,6 +133,16 @@ in {
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtsvg
+    (
+      pkgs.catppuccin-sddm.override {
+        flavor = "mocha";
+        accent = "mauve";
+        font = "Noto Sans";
+        fontSize = "9";
+        # background = "${./wallpaper.png}";
+        loginBackground = true;
+      }
+    )
     # End SDDM
 
     # Containers

@@ -14,7 +14,7 @@ window#waybar.hidden {
 }
 
 .module {
-  padding: 6px 10px 6px;
+  padding: 4px 8px 4px;
 }
 
 #workspaces button:hover {

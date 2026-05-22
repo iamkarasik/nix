@@ -2,7 +2,7 @@
   pkgs,
   wallpaper,
 }: let
-  image = ../../../dotfiles/wallpaper/blurred/${wallpaper};
+  image = ../../../dotfiles/wallpaper/${wallpaper};
 in
   pkgs.stdenv.mkDerivation rec {
     name = "sddm-chili-theme";
