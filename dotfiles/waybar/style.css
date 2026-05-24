@@ -14,7 +14,11 @@ window#waybar.hidden {
 }
 
 .module {
-  padding: 4px 8px 4px;
+  /* padding: 0px 10px 0px; */
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #workspaces button:hover {

@@ -26,9 +26,26 @@ in {
     };
   };
 
+  systemd.services = {
+    privnet-route = {
+      description = "Static route to privnet";
+      after = ["NetworkManager-wait-online.service"];
+      wants = ["NetworkManager-wait-online.service"];
+      wantedBy = ["multi-user.target"];
+      serviceConfig.Type = "oneshot";
+      script = ''
+        ${pkgs.iproute2}/bin/ip route replace 10.0.0.0/24 via 10.88.111.250
+      '';
+    };
+
+    NetworkManager-wait-online.enable = true;
+  };
+
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
+
+    # /etc/hosts
     extraHosts = ''
     '';
 
