@@ -142,6 +142,9 @@ in {
     xfce.thunar
     gnome-calculator
 
+    deluge
+    wine
+
     # Wayland screenshot
     slurp
     grim
