@@ -18,6 +18,10 @@ local set_keymaps = function(opts)
 			vim.diagnostic.config({ virtual_text = false })
 		end
 	end, { silent = true, noremap = true, desc = "Toggle [V]irtual [T]ext" })
+
+	vim.keymap.set("n", "<leader>tc", function()
+		vim.b.completion = not vim.b.completion
+	end, { desc = "LSP: Toggle completion for buffer" })
 end
 
 local set_cursor_highlights = function(client_id, bufnr)

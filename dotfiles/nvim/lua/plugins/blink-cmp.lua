@@ -11,6 +11,10 @@ require("blink.cmp").setup({
 
 	completion = {
 		menu = {
+			auto_show = function()
+				return vim.b.completion == nil or vim.b.completion == true
+			end,
+
 			draw = {
 				padding = 1,
 				gap = 2,
