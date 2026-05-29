@@ -1,4 +1,4 @@
--- vim.keymap.set('n', '<leader>sl', function() 
+-- vim.keymap.set('n', '<leader>sl', function()
 require("sonarlint").setup({
 	server = {
 		cmd = {

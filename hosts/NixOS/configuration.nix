@@ -143,7 +143,6 @@ in {
     gnome-calculator
 
     deluge
-    wine
 
     # Wayland screenshot
     slurp

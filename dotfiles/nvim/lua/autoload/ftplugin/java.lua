@@ -2,7 +2,8 @@ local vim = vim
 
 local jdtls_path = vim.fn.trim(vim.fn.system("command -v jdtls"))
 local lombok_jar = vim.loop.os_homedir() .. "/.config/nvim/ftplugin/java/lombok.jar"
-local ms_java_debug_jar = vim.loop.os_homedir() .. "/.config/nvim/ftplugin/java/com.microsoft.java.debug.plugin-0.53.1.jar"
+local ms_java_debug_jar = vim.loop.os_homedir()
+	.. "/.config/nvim/ftplugin/java/com.microsoft.java.debug.plugin-0.53.1.jar"
 
 local jdtls = require("jdtls")
 
@@ -24,7 +25,7 @@ local config = {
 		jdtls.setup_dap({
 			hotcodereplace = "auto",
 		})
-		require('jdtls.dap').setup_dap_main_class_configs()
+		require("jdtls.dap").setup_dap_main_class_configs()
 	end,
 }
 
