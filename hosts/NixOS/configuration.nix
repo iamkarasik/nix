@@ -9,6 +9,12 @@ in {
   imports = [
     ./nvidia.nix
     ./hardware-configuration.nix
+
+    # Services
+    ../../services/audio.nix
+    ../../services/openssh.nix
+    ../../services/dnsmasq.nix
+    ../../services/sddm.nix
   ];
 
   # Bootloader.
@@ -67,49 +73,8 @@ in {
   # Enable CUPS to print documents.
   services.printing.enable = false;
 
-  services.displayManager = {
-    autoLogin.user = username;
-    sddm = {
-      enable = true;
-      autoNumlock = true;
-      wayland.enable = true;
-      theme = "catppuccin-mocha-mauve";
-      package = pkgs.kdePackages.sddm;
-    };
-  };
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
+  # RealtimeKit - PulseAudio uses this to acquire realtime priority
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  services.dnsmasq = {
-    enable = true;
-
-    settings = {
-      address = [
-        "/karas.home/10.88.111.210"
-      ];
-    };
-  };
-
-  services.openssh = {
-    enable = true;
-    ports = [22];
-    settings = {
-      PasswordAuthentication = true;
-      AllowUsers = ["root"];
-      UseDns = false;
-      X11Forwarding = false;
-      PermitRootLogin = "yes";
-    };
-  };
 
   programs.zsh.enable = true; # Required because shell defaults are in /etc/passwd
 
