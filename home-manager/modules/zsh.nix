@@ -33,9 +33,6 @@
       bindkey "^E" vi-end-of-line
 
       source ${../../dotfiles/zsh/alias/git.zsh}
-      source ${../../dotfiles/zsh/alias/jira.sh}
-      source ${../../dotfiles/zsh/alias/k8s.sh}
-      source ${../../dotfiles/zsh/alias/terraform.sh}
 
       [[ -f ~/.extrarc ]] && source ~/.extrarc
     '';
