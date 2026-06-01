@@ -12,6 +12,8 @@
     pkgs.emacs
   ];
 
+  environment.variables.EDITOR = "nvim";
+
   environment.shellAliases = {
     jira-tickets = ''acli jira workitem search --jql "assignee = currentUser() AND resolution = Unresolved ORDER BY updated DESC" --fields "key,summary,status,priority"'';
     jira-recent = ''acli jira workitem search --jql "assignee = currentUser() AND updated >= -7d ORDER BY updated DESC" --fields "key,summary,status,priority"'';
