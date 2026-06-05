@@ -18,7 +18,10 @@ in {
     kubelogin-oidc
     aws-iam-authenticator
 
+    # Other
     talosctl
+    argo-workflows
+    fluxcd
   ];
 
   home.shellAliases = {
