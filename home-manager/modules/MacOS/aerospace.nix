@@ -15,7 +15,7 @@
     };
   };
 
-  g = gaps.${config.iamkarasik.aerospace};
+  g = gaps.${config.iamkarasik.aerospace.gapSize};
 in {
   options.iamkarasik.aerospace.gapSize = lib.mkOption {
     type = lib.types.enum ["small" "big"];
