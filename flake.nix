@@ -22,6 +22,7 @@
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
     unstable,
     nix-darwin,
@@ -63,6 +64,12 @@
       home-manager.extraSpecialArgs = cfg // {inherit inputs;};
     };
   in {
+
+    checks = {
+      x86_64-linux.NixOS = self.nixosConfigurations.NixOS.config.system.build.toplevel;
+      aarch64-darwin.MacOS = self.darwinConfigurations.MacOS.system;
+    };
+
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
       system = personalSettings.system;
       specialArgs = personalSettings;
