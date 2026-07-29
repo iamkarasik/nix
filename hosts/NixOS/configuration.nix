@@ -135,33 +135,6 @@ in {
     podman-compose
   ];
 
-  stylix = {
-    enable = true;
-    polarity = "dark";
-    image = ../../dotfiles/wallpaper/${wallpaper};
-
-    cursor = {
-      package = pkgs.capitaine-cursors;
-      name = "capitaine-cursors-white";
-      size = 30;
-    };
-
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono NF";
-      };
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-    };
-  };
-
   virtualisation = {
     containers.enable = true;
     podman = {

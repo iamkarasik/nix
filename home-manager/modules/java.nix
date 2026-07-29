@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  javaDebug = import ../../pkgs/java-debug/derivation.nix {inherit pkgs;};
+  jd = pkgs.iamkarasik.java-debug;
 in {
   programs.java = {
     enable = true;
@@ -16,6 +16,6 @@ in {
 
   xdg.configFile = {
     "nvim/ftplugin/java/lombok.jar".source = "${pkgs.lombok}/share/java/lombok.jar";
-    "nvim/ftplugin/java/com.microsoft.java.debug.plugin-${javaDebug.pluginVersion}.jar".source = "${javaDebug}/share/java/com.microsoft.java.debug.plugin-${javaDebug.pluginVersion}.jar";
+    "nvim/ftplugin/java/com.microsoft.java.debug.plugin-${jd.pluginVersion}.jar".source = "${jd}/share/java/com.microsoft.java.debug.plugin-${jd.pluginVersion}.jar";
   };
 }

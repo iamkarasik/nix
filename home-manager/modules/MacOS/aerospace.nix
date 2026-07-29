@@ -1,9 +1,29 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
-  programs.aerospace = lib.mkIf pkgs.stdenv.isDarwin {
+}: let
+  gaps = rec {
+    small = {
+      inner = 12;
+      outer = 46;
+    };
+    big = {
+      inner = small.inner * 2;
+      outer = small.outer * 2;
+    };
+  };
+
+  g = gaps.${config.modules.aerospace};
+in {
+  options.iamkarasik.aerospace.gapSize = lib.mkOption {
+    type = lib.types.enum ["small" "big"];
+    default = "small";
+    description = "Gap size in aerospace on nix-darwin";
+  };
+
+  config.programs.aerospace = lib.mkIf pkgs.stdenv.isDarwin {
     enable = true;
 
     userSettings = {
@@ -18,12 +38,12 @@
 
       # Gaps settings
       gaps = {
-        inner.horizontal = 48;
-        inner.vertical = 48;
-        outer.left = 96;
-        outer.bottom = 96;
-        outer.top = 96;
-        outer.right = 96;
+        inner.horizontal = g.inner;
+        inner.vertical = g.inner;
+        outer.left = g.outer;
+        outer.bottom = g.outer;
+        outer.top = g.outer;
+        outer.right = g.outer;
       };
 
       mode.main.binding = {

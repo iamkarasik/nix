@@ -1,10 +1,8 @@
-{pkgs, ...}: let
-  kubech = pkgs.callPackage ../../pkgs/kubech {};
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     k9s
     kind
-    kubech
+    pkgs.iamkarasik.kubech
     kubectl
     kubectl-ktop
     kubectl-neat
@@ -44,7 +42,7 @@ in {
   };
 
   programs.zsh.initContent = ''
-    source ${kubech}/share/kubech/kubech
+    source ${pkgs.iamkarasik.kubech}/share/kubech/kubech
     compdef k=kubectl
   '';
 }

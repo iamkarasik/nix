@@ -19,5 +19,6 @@
     vault-bin
     wget
     yq
+    pkgs.unstable.yamlfmt
   ];
 }

@@ -15,11 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:danth/stylix/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,16 +46,14 @@
       homeModule = ./hosts/MacOS/home.nix;
     };
 
-    unstableOverlay = final: _prev: {
-      unstable = import unstable {
-        inherit (final) system;
-        config.allowUnfree = true;
-      };
-    };
+    overlays = [
+      (import ./overlays/unstable.nix {inherit unstable;})
+      (import ./overlays/iamkarasik.nix)
+    ];
 
     nixpkgsConfig = {
       nixpkgs.config.allowUnfree = true;
-      nixpkgs.overlays = [unstableOverlay];
+      nixpkgs.overlays = overlays;
     };
 
     hmSystemModule = cfg: {
@@ -69,17 +62,6 @@
       home-manager.users.${cfg.username} = cfg.homeModule;
       home-manager.extraSpecialArgs = cfg // {inherit inputs;};
     };
-
-    mkHome = cfg:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit (cfg) system;
-          config.allowUnfree = true;
-          overlays = [unstableOverlay];
-        };
-        extraSpecialArgs = cfg // {inherit inputs;};
-        modules = [cfg.homeModule];
-      };
   in {
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
       system = personalSettings.system;
@@ -87,7 +69,6 @@
       modules = [
         nixpkgsConfig
         ./hosts/NixOS/configuration.nix
-        inputs.stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         (hmSystemModule personalSettings)
       ];
@@ -99,13 +80,9 @@
       modules = [
         nixpkgsConfig
         ./hosts/MacOS/configuration.nix
-        inputs.stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
         (hmSystemModule workSettings)
       ];
     };
-
-    homeConfigurations.${personalSettings.username} = mkHome personalSettings;
-    homeConfigurations.${workSettings.username} = mkHome workSettings;
   };
 }

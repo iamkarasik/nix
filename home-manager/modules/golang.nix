@@ -8,6 +8,7 @@
     pkgs.unstable.golangci-lint
     golangci-lint-langserver
     gopls
+    gore
     gotools
   ];
 }
