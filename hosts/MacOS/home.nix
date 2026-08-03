@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     spotify
     aerospace
+    caffeine
   ];
 
   home.stateVersion = stateVersion;
