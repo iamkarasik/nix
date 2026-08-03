@@ -66,13 +66,9 @@
   homebrew = {
     enable = true;
 
-    taps = [
-      "atlassian/acli"
-    ];
+    taps = [];
 
-    brews = [
-      "acli"
-    ];
+    brews = [];
 
     casks = [
       "ghostty"
