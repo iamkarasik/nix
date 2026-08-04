@@ -30,6 +30,8 @@
   };
 
   system.defaults = {
+    ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
+
     dock = {
       autohide = true;
       orientation = "left";
