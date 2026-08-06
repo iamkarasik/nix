@@ -2,6 +2,7 @@
   pkgs,
   stateVersion,
   username,
+  wallpaper,
   ...
 }: {
   imports = [
@@ -17,6 +18,11 @@
     spotify
     aerospace
   ];
+
+  programs.desktoppr = {
+    enable = true;
+    settings.picture = "${wallpaper}";
+  };
 
   home.stateVersion = stateVersion;
 }

@@ -36,6 +36,7 @@
       gitUserName = "iamkarasik";
       gitUserEmail = "ilankarasik@gmail.com";
       homeModule = ./hosts/NixOS/home.nix;
+      wallpaper = ./dotfiles/wallpaper/current;
     };
 
     workSettings = {
@@ -45,6 +46,7 @@
       gitUserName = "Ilan Karasik";
       gitUserEmail = "ikarasik@confluent.io";
       homeModule = ./hosts/MacOS/home.nix;
+      wallpaper = ./dotfiles/wallpaper/current;
     };
 
     overlays = [

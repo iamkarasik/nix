@@ -3,9 +3,7 @@
   username,
   stateVersion,
   ...
-}: let
-  wallpaper = "Sonoma-Dark.png";
-in {
+}: {
   imports = [
     ./nvidia.nix
     ./hardware-configuration.nix
@@ -87,9 +85,38 @@ in {
 
   fonts.packages = import ../../home-manager/modules/fonts/packages.nix pkgs;
 
+  fonts.fontconfig = {
+    enable = true;
+
+    hinting = {
+      enable = true;
+      style = "slight";
+    };
+
+    antialias = true;
+
+    subpixel = {
+      rgba = "rgb";
+      lcdfilter = "default";
+    };
+
+    defaultFonts = {
+      monospace = ["JetBrainsMono NF"];
+      sansSerif = ["Noto Sans"];
+      serif = ["Noto Serif"];
+    };
+  };
+
+  environment.variables = {
+    XCURSOR_THEME = "macOS";
+    XCURSOR_SIZE = "24";
+  };
+
   environment.systemPackages = with pkgs; [
+    apple-cursor
     file # File command
     firefox
+    pkgs.unstable.google-chrome
     git
     hypridle
     kitty

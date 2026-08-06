@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.0);
 }
 
 window#waybar.hidden {
@@ -14,19 +14,18 @@ window#waybar.hidden {
 }
 
 .module {
-  /* padding: 0px 10px 0px; */
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 #workspaces button:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #workspaces button.active {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.25);
   color: black;
 }
 
