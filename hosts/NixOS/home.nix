@@ -1,14 +1,11 @@
 {
   pkgs,
-  inputs,
   stateVersion,
   username,
   ...
 }: {
   imports = [
-    inputs.zen-browser.homeModules.default
     ../../home-manager/common.nix
-    ../../home-manager/modules/zen-browser.nix
   ];
 
   home.username = username;
