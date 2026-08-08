@@ -1,5 +1,5 @@
 * {
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
   font-size: 14px;
   border: none;
   font-family: "JetbrainsMono Nerd Font";
@@ -21,11 +21,12 @@ window#waybar.hidden {
 }
 
 #workspaces button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
 }
 
 #workspaces button.active {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 1.0);
   color: black;
 }
 
