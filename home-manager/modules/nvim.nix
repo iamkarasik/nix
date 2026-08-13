@@ -15,6 +15,14 @@
     src = ../../dotfiles/nvim/lua/plugins/kline;
   };
 
+  themes-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "themes";
+    src = ../../dotfiles/nvim/lua/plugins/themes;
+    # The require check loads each module standalone, without the colorscheme
+    # plugins these call into on the runtimepath.
+    doCheck = false;
+  };
+
   cursor-dark = pkgs.vimUtils.buildVimPlugin {
     pname = "cursor-dark.nvim";
     version = "1";
@@ -23,6 +31,17 @@
       repo = "cursor-dark.nvim";
       rev = "68997e3e1abdc7fed34bd9fe53a9c6cf6229fd1e";
       sha256 = "0qv6z044gwwacc8fqrm24gfw17kk9ma6m42pbsdmpbklqkaf4b1d";
+    };
+  };
+
+  ring0-dark = pkgs.vimUtils.buildVimPlugin {
+    pname = "ring0-dark.nvim";
+    version = "1";
+    src = pkgs.fetchFromGitHub {
+      owner = "xLeapProtocol";
+      repo = "ring0-dark.nvim";
+      rev = "17d7ec13e2a4b9167aac1ee8f249cb783249c821";
+      sha256 = "0xyvl870x2aiw33bd29hnfja909q4g3mygw2f6i1b6dc9ghhly20";
     };
   };
 in {
@@ -60,8 +79,7 @@ in {
       luafile ${../../dotfiles/nvim/lua/plugins/neotest.lua}
 
       luafile ${../../dotfiles/nvim/lua/plugins/kline.lua}
-      luafile ${../../dotfiles/nvim/lua/plugins/theme/tokyonight.lua}
-      luafile ${../../dotfiles/nvim/lua/plugins/theme/vscode.lua}
+      lua require("themes")
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -70,6 +88,7 @@ in {
       tokyonight-nvim
       oxocarbon-nvim
       cursor-dark
+      ring0-dark
 
       bufferline-nvim
 
@@ -82,6 +101,7 @@ in {
       rainbow-delimiters-nvim
 
       kline-nvim
+      themes-nvim
 
       fzf-lua
       nvim-tree-lua

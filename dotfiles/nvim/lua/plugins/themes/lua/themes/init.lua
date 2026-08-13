@@ -1,0 +1,6 @@
+require("themes.tokyonight")
+require("themes.kanagawa")
+require("themes.oxocarbon")
+require("themes.cursor-dark")
+require("themes.ring0dark")
+require("themes.vscode")

@@ -17,8 +17,6 @@
     urgent = "#E06C75FF";
   };
 
-  # The .rasi files @import "shared/colors.rasi" relative to themselves, so the
-  # theme has to ship as a directory rather than a single file.
   mkTheme = {
     name,
     styleFile,

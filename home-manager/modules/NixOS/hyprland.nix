@@ -25,7 +25,6 @@
 in {
   wayland.windowManager.hyprland = {
     enable = true;
-    # Hyprland itself comes from programs.hyprland at the system level.
     package = null;
     portalPackage = null;
 
@@ -219,8 +218,6 @@ in {
   services.hypridle = {
     enable = true;
     settings = {
-      # Owning the lock command here means powermenu and anything else can just
-      # call `loginctl lock-session` instead of duplicating the swaylock flags.
       general.lock_cmd = "${pkgs.procps}/bin/pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock -i ${wallpaper} --clock --indicator --indicator-radius 100 --effect-blur 10x5 --fade-in 1 --ring-color ${accent} --text-color ffffff";
 
       listener = [
