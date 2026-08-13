@@ -6,6 +6,9 @@
 }: {
   imports = [
     ../../home-manager/common.nix
+    ../../home-manager/modules/NixOS/hyprland.nix
+    ../../home-manager/modules/NixOS/rofi.nix
+    ../../home-manager/modules/NixOS/waybar.nix
   ];
 
   home.username = username;
@@ -26,13 +29,6 @@
       name = "WhiteSur-dark";
       package = pkgs.whitesur-icon-theme;
     };
-  };
-
-  xdg.configFile = {
-    "hypr".source = ../../dotfiles/hypr;
-    "rofi".source = ../../dotfiles/rofi;
-    "wallpaper".source = ../../dotfiles/wallpaper;
-    "waybar".source = ../../dotfiles/waybar;
   };
 
   home.enableNixpkgsReleaseCheck = false;

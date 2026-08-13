@@ -118,17 +118,14 @@
     firefox
     pkgs.unstable.google-chrome
     git
-    hypridle
     kitty
     libnotify
     lm_sensors
     networkmanagerapplet
     pulseaudio
-    rofi
     swaybg
     swaylock-effects
     vim
-    waybar
     waybar-mpris # Waybar utility to toggle audio
     wl-clipboard
     xfce.thunar
