@@ -54,7 +54,7 @@ in {
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
         allow_tearing = false;
-        layout = "orientation";
+        layout = "dwindle";
       };
 
       decoration = {
@@ -215,15 +215,73 @@ in {
     };
   };
 
+  services.hyprpolkitagent.enable = true;
+
+  programs.hyprlock = {
+    enable = true;
+
+    settings = {
+      general = {
+        hide_cursor = true;
+        grace = 0;
+      };
+
+      background = [
+        {
+          path = "${wallpaper}";
+          blur_passes = 3;
+          blur_size = 5;
+        }
+      ];
+
+      label = [
+        {
+          text = ''
+            cmd[update:1000] echo "$(date +"%H:%M:%S")";
+          '';
+          color = "rgba(ffffffff)";
+          font_size = 64;
+          font_family = "JetBrainsMono Nerd Font";
+          position = "0, 160";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+
+      input-field = [
+        {
+          size = "300, 60";
+          rounding = 30;
+          outline_thickness = 4;
+          outer_color = "rgba(${accent}ff)";
+          inner_color = "rgba(1a1a1acc)";
+          font_color = "rgba(ffffffff)";
+          check_color = "rgba(${accent}ff)";
+          fail_color = "rgba(bf616aff)";
+          fade_on_empty = false;
+          placeholder_text = "";
+          position = "0, -40";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+    };
+  };
+
   services.hypridle = {
     enable = true;
     settings = {
-      general.lock_cmd = "${pkgs.procps}/bin/pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock -i ${wallpaper} --clock --indicator --indicator-radius 100 --effect-blur 10x5 --fade-in 1 --ring-color ${accent} --text-color ffffff";
+      general.lock_cmd = "${pkgs.procps}/bin/pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
 
       listener = [
         {
           timeout = 600;
           on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
+        }
+        {
+          timeout = 1800;
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
         }
       ];
     };

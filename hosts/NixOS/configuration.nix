@@ -1,7 +1,6 @@
 {
   pkgs,
   username,
-  stateVersion,
   ...
 }: {
   imports = [
@@ -74,6 +73,9 @@
   # RealtimeKit - PulseAudio uses this to acquire realtime priority
   security.rtkit.enable = true;
 
+  # Without this hyprlock cannot authenticate and falls back to su.
+  security.pam.services.hyprlock = {};
+
   programs.zsh.enable = true; # Required because shell defaults are in /etc/passwd
 
   users.users.${username} = {
@@ -124,7 +126,6 @@
     networkmanagerapplet
     pulseaudio
     swaybg
-    swaylock-effects
     vim
     waybar-mpris # Waybar utility to toggle audio
     wl-clipboard
@@ -176,5 +177,5 @@
     };
   };
 
-  system.stateVersion = "${stateVersion}";
+  system.stateVersion = "25.11";
 }

@@ -1,6 +1,5 @@
 {
   pkgs,
-  stateVersion,
   username,
   wallpaper,
   ...
@@ -24,5 +23,6 @@
     settings.picture = "${wallpaper}";
   };
 
-  home.stateVersion = stateVersion;
+  home.enableNixpkgsReleaseCheck = false;
+  home.stateVersion = "25.11";
 }

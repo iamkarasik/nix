@@ -4,7 +4,10 @@
   ...
 }: {
   services.displayManager = {
-    autoLogin.user = username;
+    autoLogin = {
+      enable = true;
+      user = username;
+    };
     sddm = {
       enable = true;
       autoNumlock = true;

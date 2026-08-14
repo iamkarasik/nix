@@ -25,7 +25,6 @@
     ...
   }: let
     personalSettings = {
-      stateVersion = "25.11";
       system = "x86_64-linux";
       username = "goose";
       gitUserName = "iamkarasik";
@@ -35,7 +34,6 @@
     };
 
     workSettings = {
-      stateVersion = "25.11";
       system = "aarch64-darwin";
       username = "ilankarasik";
       gitUserName = "Ilan Karasik";
@@ -54,6 +52,14 @@
       nixpkgs.overlays = overlays;
     };
 
+    nixMaintenance = {
+      nix.gc = {
+        automatic = true;
+        options = "--delete-older-than 30d";
+      };
+      nix.optimise.automatic = true;
+    };
+
     hmSystemModule = cfg: {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
@@ -61,10 +67,14 @@
       home-manager.extraSpecialArgs = cfg // {inherit inputs;};
     };
   in {
-
     checks = {
       x86_64-linux.NixOS = self.nixosConfigurations.NixOS.config.system.build.toplevel;
       aarch64-darwin.MacOS = self.darwinConfigurations.MacOS.system;
+    };
+
+    formatter = {
+      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+      aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
     };
 
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
@@ -72,6 +82,7 @@
       specialArgs = personalSettings;
       modules = [
         nixpkgsConfig
+        nixMaintenance
         ./hosts/NixOS/configuration.nix
         home-manager.nixosModules.home-manager
         (hmSystemModule personalSettings)
@@ -83,6 +94,7 @@
       specialArgs = workSettings;
       modules = [
         nixpkgsConfig
+        nixMaintenance
         ./hosts/MacOS/configuration.nix
         home-manager.darwinModules.home-manager
         (hmSystemModule workSettings)
