@@ -11,7 +11,10 @@
     sddm = {
       enable = true;
       autoNumlock = true;
-      wayland.enable = true;
+      wayland = {
+        enable = true;
+        compositor = "kwin";
+      };
       theme = "catppuccin-mocha-mauve";
       package = pkgs.kdePackages.sddm;
     };

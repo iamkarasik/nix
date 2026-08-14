@@ -6,7 +6,7 @@
       y = 1;
     };
     "x86_64-linux" = {
-      size = 11.0;
+      size = 10.0;
       x = 0;
       y = 1;
     };
@@ -39,8 +39,8 @@ in {
           lines = 0;
         };
         padding = {
-          x = 0;
-          y = 0;
+          x = 4;
+          y = 6;
         };
         dynamic_padding = false;
         decorations = "buttonless";
@@ -51,25 +51,25 @@ in {
         history = 100000;
         multiplier = 5;
       };
-      # font = {
-      #   normal = {
-      #     family = "JetBrainsMono Nerd Font";
-      #     style = "Regular";
-      #   };
-      #   bold = {
-      #     family = "JetBrainsMono Nerd Font";
-      #     style = "Bold";
-      #   };
-      #   italic = {
-      #     family = "JetBrainsMono Nerd Font";
-      #     style = "ThinItalic";
-      #   };
-      #   size = curFont.size;
-      #   offset = {
-      #     x = curFont.x;
-      #     y = curFont.y;
-      #   };
-      # };
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+        };
+        bold = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Bold";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font";
+          style = "ThinItalic";
+        };
+        size = curFont.size;
+        offset = {
+          x = curFont.x;
+          y = curFont.y;
+        };
+      };
       cursor = {
         style = "Block";
       };

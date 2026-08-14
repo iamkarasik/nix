@@ -127,18 +127,11 @@ in {
         kb_options = "";
         kb_rules = "";
         follow_mouse = 1;
-        sensitivity = -0.5;
+        sensitivity = -0.7;
         repeat_rate = 75;
         repeat_delay = 200;
         touchpad.natural_scroll = false;
       };
-
-      device = [
-        {
-          name = "epic-mouse-v1";
-          sensitivity = -0.5;
-        }
-      ];
 
       bind =
         [
