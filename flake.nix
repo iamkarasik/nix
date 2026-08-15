@@ -25,25 +25,26 @@
     ...
   }: let
     theme = import ./themes/vscode.nix;
+    wallpaper = "${./dotfiles/wallpaper/Monterey.jpg}";
 
     personalSettings = {
       inherit theme;
+      inherit wallpaper;
       system = "x86_64-linux";
       username = "goose";
       gitUserName = "iamkarasik";
       gitUserEmail = "ilankarasik@gmail.com";
       homeModule = ./hosts/NixOS/home.nix;
-      wallpaper = "${./dotfiles/wallpaper/Monterey.jpg}";
     };
 
     workSettings = {
       inherit theme;
+      inherit wallpaper;
       system = "aarch64-darwin";
       username = "ilankarasik";
       gitUserName = "Ilan Karasik";
       gitUserEmail = "ikarasik@confluent.io";
       homeModule = ./hosts/MacOS/home.nix;
-      wallpaper = "${./dotfiles/wallpaper/Monterey.jpg}";
     };
 
     overlays = [

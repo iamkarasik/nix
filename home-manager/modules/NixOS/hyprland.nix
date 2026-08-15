@@ -39,8 +39,6 @@ in {
       ];
 
       "exec-once" = [
-        "waybar"
-        "nm-applet"
         "discord --start-minimized"
         "swaybg -i ${wallpaper} -m fill"
       ];
@@ -210,6 +208,7 @@ in {
   };
 
   services.hyprpolkitagent.enable = true;
+  services.network-manager-applet.enable = true;
 
   programs.hyprlock = {
     enable = true;
