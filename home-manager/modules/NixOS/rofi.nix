@@ -1,4 +1,6 @@
 {pkgs, ...}: let
+  families = import ../fonts/families.nix;
+
   nord = {
     background = "#2E3440FF";
     background-alt = "#383E4AFF";
@@ -51,14 +53,14 @@
     name = "launcher";
     styleFile = ../../../dotfiles/rofi/themes/style-5.rasi;
     colors = nord;
-    font = "JetBrainsMono Nerd Font Mono Medium 12";
+    font = "${families.sans} Medium 12";
   };
 
   powermenuTheme = mkTheme {
     name = "powermenu";
     styleFile = ../../../dotfiles/rofi/powermenu/type-2/style-1.rasi;
     colors = onedark;
-    font = "JetBrains Mono Nerd Font 10";
+    font = "${families.sans} 10";
   };
 
   powermenu = pkgs.writeShellApplication {

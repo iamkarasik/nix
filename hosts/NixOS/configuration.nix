@@ -103,7 +103,7 @@
     };
 
     defaultFonts = {
-      monospace = ["JetBrainsMono NF"];
+      monospace = [(import ../../home-manager/modules/fonts/families.nix).mono];
       sansSerif = ["Noto Sans"];
       serif = ["Noto Serif"];
     };

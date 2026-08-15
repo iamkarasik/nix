@@ -4,6 +4,7 @@
   ...
 }: let
   accent = "608B4E";
+  families = import ../fonts/families.nix;
 
   terminal = "ghostty";
   fileManager = "thunar";
@@ -234,7 +235,7 @@ in {
           '';
           color = "rgba(ffffffff)";
           font_size = 64;
-          font_family = "JetBrainsMono Nerd Font";
+          font_family = families.mono;
           position = "0, 160";
           halign = "center";
           valign = "center";

@@ -1,4 +1,6 @@
 {system, ...}: let
+  families = import ./fonts/families.nix;
+
   fonts = {
     "aarch64-darwin" = {
       size = 13.0;
@@ -53,15 +55,15 @@ in {
       };
       font = {
         normal = {
-          family = "JetBrainsMono Nerd Font";
+          family = families.mono;
           style = "Regular";
         };
         bold = {
-          family = "JetBrainsMono Nerd Font";
+          family = families.mono;
           style = "Bold";
         };
         italic = {
-          family = "JetBrainsMono Nerd Font";
+          family = families.mono;
           style = "ThinItalic";
         };
         size = curFont.size;

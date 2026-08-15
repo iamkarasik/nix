@@ -5,6 +5,7 @@
   ...
 }: let
   isDarwin = lib.hasSuffix "darwin" system;
+  families = import ./fonts/families.nix;
 in {
   programs.ghostty = {
     enable = true;
@@ -17,7 +18,7 @@ in {
       adjust-cell-width = "6%";
       adjust-cell-height = "15%";
 
-      font-family = "JetBrainsMono NF";
+      font-family = families.mono;
       font-size =
         if isDarwin
         then 13.0

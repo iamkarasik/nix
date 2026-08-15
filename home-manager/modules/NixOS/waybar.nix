@@ -3,7 +3,7 @@
   activeBg = "rgba(255, 255, 255, 1.0)";
   hoverBg = "rgba(255, 255, 255, 0.5)";
   barBg = "rgba(0, 0, 0, 0.0)";
-  font = "JetbrainsMono Nerd Font";
+  font = (import ../fonts/families.nix).sans;
 in {
   programs.waybar = {
     enable = true;
