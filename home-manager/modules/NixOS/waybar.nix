@@ -3,7 +3,8 @@
   activeBg = theme.css theme.accent;
   hoverBg = "alpha(${theme.css theme.accentAlt}, 0.5)";
   barBg = "rgba(0, 0, 0, 0.0)";
-  font = (import ../fonts/families.nix).sans;
+  families = import ../fonts/families.nix;
+  font = families.sans;
 in {
   programs.waybar = {
     enable = true;
@@ -73,6 +74,10 @@ in {
           tooltip = true;
           tooltip-format = "Disk Usage: {used} out of {total} ({percentage_used}%)";
           on-click = "thunar";
+          states = {
+            warning = 75;
+            critical = 90;
+          };
         };
         network = {
           format-ethernet = " ";
@@ -84,7 +89,7 @@ in {
           interval = 1;
           tooltip = true;
           tooltip-format = "{:%d/%M/%Y %H:%M:%S}";
-          format = "{:%b %d, %H:%M:%S}";
+          format = "<span font_features='tnum=1'>{:%b %d, %H:%M:%S}</span>";
         };
         cpu = {
           interval = 10;
@@ -92,12 +97,16 @@ in {
           max-length = 10;
           tooltip = true;
           tooltip-format = "CPU: {usage}%";
+          states = {
+            warning = 75;
+            critical = 90;
+          };
         };
         "custom/cputemp" = {
           interval = 10;
-          exec = "sensors | awk '/Tctl/ {print $2}'";
+          exec = ''sensors | awk '/Tctl/ { s = $2; n = s; sub(/^\+/, "", n); sub(/°C$/, "", n); n += 0; cls = (n >= 90 ? "critical" : (n >= 75 ? "warning" : "")); printf "{\"text\":\"%s\",\"tooltip\":\"CPU Temp: %s\",\"class\":\"%s\"}\n", s, s, cls }' '';
+          return-type = "json";
           format = " ";
-          tooltip-format = "CPU Temp: {}";
           tooltip = true;
         };
         memory = {
@@ -105,6 +114,10 @@ in {
           format = " ";
           tooltip-format = "Memory Usage: {used}G out of {total}G ({percentage}%)";
           tooltip = true;
+          states = {
+            warning = 75;
+            critical = 90;
+          };
         };
       };
     };
@@ -147,6 +160,7 @@ in {
 
       #custom-launcher {
         margin-left: 20px;
+        font-weight: bold;
       }
 
       #window,
@@ -160,6 +174,20 @@ in {
       #pulseaudio,
       #clock {
         font-weight: bold;
+      }
+
+      #cpu.warning,
+      #memory.warning,
+      #disk.warning,
+      #custom-cputemp.warning {
+        color: yellow;
+      }
+
+      #cpu.critical,
+      #memory.critical,
+      #disk.critical,
+      #custom-cputemp.critical {
+        color: red;
       }
     '';
   };
