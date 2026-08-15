@@ -1,22 +1,17 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  theme,
+  ...
+}: let
   families = import ../fonts/families.nix;
 
-  nord = {
-    background = "#2E3440FF";
-    background-alt = "#383E4AFF";
-    foreground = "#E5E9F0FF";
-    selected = "#81A1C1FF";
-    active = "#A3BE8CFF";
-    urgent = "#BF616AFF";
-  };
-
-  onedark = {
-    background = "#1E2127FF";
-    background-alt = "#282B31FF";
-    foreground = "#FFFFFFFF";
-    selected = "#61AFEFFF";
-    active = "#98C379FF";
-    urgent = "#E06C75FF";
+  palette = {
+    background = theme.rasi theme.bg;
+    background-alt = theme.rasi theme.bgAlt;
+    foreground = theme.rasi theme.fg;
+    selected = theme.rasi theme.accent;
+    active = theme.rasi theme.accentAlt;
+    urgent = theme.rasi theme.urgent;
   };
 
   mkTheme = {
@@ -52,14 +47,14 @@
   launcherTheme = mkTheme {
     name = "launcher";
     styleFile = ../../../dotfiles/rofi/themes/style-5.rasi;
-    colors = nord;
+    colors = palette;
     font = "${families.sans} Medium 12";
   };
 
   powermenuTheme = mkTheme {
     name = "powermenu";
     styleFile = ../../../dotfiles/rofi/powermenu/type-2/style-1.rasi;
-    colors = onedark;
+    colors = palette;
     font = "${families.sans} 10";
   };
 

@@ -1,7 +1,7 @@
-{...}: let
-  activeFg = "black";
-  activeBg = "rgba(255, 255, 255, 1.0)";
-  hoverBg = "rgba(255, 255, 255, 0.5)";
+{theme, ...}: let
+  activeFg = theme.css theme.contrast;
+  activeBg = theme.css theme.accent;
+  hoverBg = "alpha(${theme.css theme.accentAlt}, 0.5)";
   barBg = "rgba(0, 0, 0, 0.0)";
   font = (import ../fonts/families.nix).sans;
 in {
@@ -68,13 +68,13 @@ in {
         };
         disk = {
           interval = 10;
-          format = "{free}  ";
+          format = " ";
           tooltip = true;
           tooltip-format = "Disk Usage: {used} out of {total} ({percentage_used}%)";
           on-click = "thunar";
         };
         network = {
-          format-ethernet = "{ipaddr}  ";
+          format-ethernet = " ";
           tooltip = true;
           tooltip-format = "{ipaddr}";
           tooltip-format-ethernet = "{ifname}: {ipaddr}";
@@ -87,19 +87,21 @@ in {
         };
         cpu = {
           interval = 10;
-          format = "{}%  ";
+          format = " ";
           max-length = 10;
+          tooltip = true;
+          tooltip-format = "CPU: {usage}%";
         };
         "custom/cputemp" = {
           interval = 10;
           exec = "sensors | awk '/Tctl/ {print $2}'";
-          format = "{}  ";
+          format = " ";
           tooltip-format = "CPU Temp: {}";
           tooltip = true;
         };
         memory = {
           interval = 10;
-          format = "{used}G  ";
+          format = " ";
           tooltip-format = "Memory Usage: {used}G out of {total}G ({percentage}%)";
           tooltip = true;
         };
@@ -108,7 +110,7 @@ in {
 
     style = ''
       * {
-        font-size: 14px;
+        font-size: 13px;
         border: none;
         font-family: "${font}";
       }
@@ -144,6 +146,19 @@ in {
 
       #custom-launcher {
         margin-left: 20px;
+      }
+
+      #window,
+      #custom-music,
+      #tray,
+      #network,
+      #custom-cputemp,
+      #cpu,
+      #memory,
+      #disk,
+      #pulseaudio,
+      #clock {
+        font-weight: bold;
       }
     '';
   };

@@ -1,9 +1,9 @@
 {
   pkgs,
   wallpaper,
+  theme,
   ...
 }: let
-  accent = "608B4E";
   families = import ../fonts/families.nix;
 
   terminal = "ghostty";
@@ -51,8 +51,8 @@ in {
         gaps_in = 12;
         gaps_out = 46;
         border_size = 1;
-        "col.active_border" = "rgba(${accent}ff) rgba(${accent}ff) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "${theme.hypr theme.accent "ff"} ${theme.hypr theme.accent "ff"} 45deg";
+        "col.inactive_border" = theme.hypr theme.inactive "aa";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
@@ -233,7 +233,7 @@ in {
           text = ''
             cmd[update:1000] echo "$(date +"%H:%M:%S")";
           '';
-          color = "rgba(ffffffff)";
+          color = theme.hypr theme.fg "ff";
           font_size = 64;
           font_family = families.mono;
           position = "0, 160";
@@ -247,11 +247,11 @@ in {
           size = "300, 60";
           rounding = 30;
           outline_thickness = 4;
-          outer_color = "rgba(${accent}ff)";
-          inner_color = "rgba(1a1a1acc)";
-          font_color = "rgba(ffffffff)";
-          check_color = "rgba(${accent}ff)";
-          fail_color = "rgba(bf616aff)";
+          outer_color = theme.hypr theme.accent "ff";
+          inner_color = theme.hypr theme.bg "cc";
+          font_color = theme.hypr theme.fg "ff";
+          check_color = theme.hypr theme.accent "ff";
+          fail_color = theme.hypr theme.urgent "ff";
           fade_on_empty = false;
           placeholder_text = "";
           position = "0, -40";

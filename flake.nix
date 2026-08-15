@@ -24,7 +24,10 @@
     home-manager,
     ...
   }: let
+    theme = import ./themes/vscode.nix;
+
     personalSettings = {
+      inherit theme;
       system = "x86_64-linux";
       username = "goose";
       gitUserName = "iamkarasik";
@@ -34,6 +37,7 @@
     };
 
     workSettings = {
+      inherit theme;
       system = "aarch64-darwin";
       username = "ilankarasik";
       gitUserName = "Ilan Karasik";
