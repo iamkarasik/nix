@@ -36,7 +36,7 @@ in {
         ];
         "custom/music" = {
           return-type = "json";
-          exec = "waybar-mpris --position --autofocus --order SYMBOL:ARTIST:TITLE --play '' --pause ''";
+          exec = "waybar-mpris --position --autofocus --order SYMBOL:ARTIST:TITLE --play ' ' --pause ' '";
           on-click = "waybar-mpris --send toggle";
           escape = true;
         };
