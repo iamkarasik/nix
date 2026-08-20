@@ -85,8 +85,6 @@
     extraGroups = ["networkmanager" "wheel"];
   };
 
-  fonts.packages = import ../../home-manager/modules/fonts/packages.nix pkgs;
-
   fonts.fontconfig = {
     enable = true;
 

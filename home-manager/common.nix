@@ -4,6 +4,7 @@
     ./modules/bat.nix
     ./modules/cli.nix
     ./modules/db.nix
+    ./modules/fonts.nix
     ./modules/ghostty.nix
     ./modules/git.nix
     ./modules/golang.nix
