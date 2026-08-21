@@ -1,5 +1,9 @@
-{system, ...}: let
-  families = import ./fonts/families.nix;
+{
+  system,
+  config,
+  ...
+}: let
+  families = config.iamkarasik.fonts;
 
   fonts = {
     "aarch64-darwin" = {

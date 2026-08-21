@@ -1,12 +1,12 @@
 {
   pkgs,
   username,
-  wallpaper,
+  config,
   ...
 }: {
   imports = [
-    ../../home-manager/common.nix
-    ../../home-manager/modules/MacOS/aerospace.nix
+    ../../modules/profiles/home.nix
+    ../../modules/home-manager/darwin/aerospace.nix
   ];
 
   home.username = username;
@@ -19,7 +19,7 @@
 
   programs.desktoppr = {
     enable = true;
-    settings.picture = "${wallpaper}";
+    settings.picture = "${config.iamkarasik.wallpaper}";
   };
 
   home.enableNixpkgsReleaseCheck = false;

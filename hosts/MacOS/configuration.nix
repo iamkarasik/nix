@@ -4,6 +4,10 @@
   username,
   ...
 }: {
+  imports = [
+    ../../modules/profiles/maintenance.nix
+  ];
+
   programs = {
     zsh.enable = true;
   };

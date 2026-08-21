@@ -1,9 +1,11 @@
-{theme, ...}: let
+{config, ...}: let
+  theme = config.iamkarasik.theme;
+
   activeFg = theme.css theme.contrast;
   activeBg = theme.css theme.accent;
   hoverBg = "alpha(${theme.css theme.accentAlt}, 0.5)";
   barBg = "rgba(0, 0, 0, 0.0)";
-  families = import ../fonts/families.nix;
+  families = config.iamkarasik.fonts;
   font = families.sans;
 in {
   programs.waybar = {

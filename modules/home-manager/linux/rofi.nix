@@ -1,9 +1,10 @@
 {
   pkgs,
-  theme,
+  config,
   ...
 }: let
-  families = import ../fonts/families.nix;
+  fonts = config.iamkarasik.fonts;
+  theme = config.iamkarasik.theme;
 
   palette = {
     background = theme.rasi theme.bg;
@@ -48,14 +49,14 @@
     name = "launcher";
     styleFile = ../../../dotfiles/rofi/themes/style-5.rasi;
     colors = palette;
-    font = "${families.sans} Medium 12";
+    font = "${fonts.sans} Medium 12";
   };
 
   powermenuTheme = mkTheme {
     name = "powermenu";
     styleFile = ../../../dotfiles/rofi/powermenu/type-2/style-1.rasi;
     colors = palette;
-    font = "${families.sans} 10";
+    font = "${fonts.sans} 10";
   };
 
   powermenu = pkgs.writeShellApplication {

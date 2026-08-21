@@ -2,10 +2,11 @@
   system,
   lib,
   pkgs,
+  config,
   ...
 }: let
   isDarwin = lib.hasSuffix "darwin" system;
-  families = import ./fonts/families.nix;
+  families = config.iamkarasik.fonts;
 in {
   programs.ghostty = {
     enable = true;

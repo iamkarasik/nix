@@ -24,26 +24,15 @@
     home-manager,
     ...
   }: let
-    theme = import ./themes/vscode.nix;
-    wallpaper = "${./dotfiles/wallpaper/Monterey.jpg}";
-
     personalSettings = {
-      inherit theme;
-      inherit wallpaper;
       system = "x86_64-linux";
       username = "goose";
-      gitUserName = "iamkarasik";
-      gitUserEmail = "ilankarasik@gmail.com";
       homeModule = ./hosts/NixOS/home.nix;
     };
 
     workSettings = {
-      inherit theme;
-      inherit wallpaper;
       system = "aarch64-darwin";
       username = "ilankarasik";
-      gitUserName = "Ilan Karasik";
-      gitUserEmail = "ikarasik@confluent.io";
       homeModule = ./hosts/MacOS/home.nix;
     };
 
@@ -55,14 +44,6 @@
     nixpkgsConfig = {
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = overlays;
-    };
-
-    nixMaintenance = {
-      nix.gc = {
-        automatic = true;
-        options = "--delete-older-than 30d";
-      };
-      nix.optimise.automatic = true;
     };
 
     hmSystemModule = cfg: {
@@ -87,7 +68,6 @@
       specialArgs = personalSettings;
       modules = [
         nixpkgsConfig
-        nixMaintenance
         ./hosts/NixOS/configuration.nix
         home-manager.nixosModules.home-manager
         (hmSystemModule personalSettings)
@@ -99,7 +79,6 @@
       specialArgs = workSettings;
       modules = [
         nixpkgsConfig
-        nixMaintenance
         ./hosts/MacOS/configuration.nix
         home-manager.darwinModules.home-manager
         (hmSystemModule workSettings)

@@ -1,10 +1,11 @@
 {
   pkgs,
-  wallpaper,
-  theme,
+  config,
   ...
 }: let
-  families = import ../fonts/families.nix;
+  fonts = config.iamkarasik.fonts;
+  theme = config.iamkarasik.theme;
+  wallpaper = config.iamkarasik.wallpaper;
 
   terminal = "ghostty";
   fileManager = "thunar";
@@ -234,7 +235,7 @@ in {
           '';
           color = theme.hypr theme.fg "ff";
           font_size = 64;
-          font_family = families.mono;
+          font_family = fonts.mono;
           position = "0, 160";
           halign = "center";
           valign = "center";

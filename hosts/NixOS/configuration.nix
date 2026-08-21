@@ -2,16 +2,19 @@
   pkgs,
   username,
   ...
-}: {
+}: let
+  fonts = import ../../lib/fonts.nix;
+in {
   imports = [
     ./nvidia.nix
     ./hardware-configuration.nix
 
-    # Services
-    ../../services/audio.nix
-    ../../services/openssh.nix
-    ../../services/dnsmasq.nix
-    ../../services/sddm.nix
+    ../../modules/profiles/maintenance.nix
+
+    ../../modules/nixos/services/audio.nix
+    ../../modules/nixos/services/openssh.nix
+    ../../modules/nixos/services/dnsmasq.nix
+    ../../modules/nixos/services/sddm.nix
   ];
 
   # Bootloader.
@@ -101,8 +104,8 @@
     };
 
     defaultFonts = {
-      monospace = [(import ../../home-manager/modules/fonts/families.nix).mono];
-      sansSerif = ["Noto Sans"];
+      monospace = [fonts.mono];
+      sansSerif = [fonts.sans];
       serif = ["Noto Serif"];
     };
   };

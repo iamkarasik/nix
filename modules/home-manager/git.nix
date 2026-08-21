@@ -1,9 +1,10 @@
 {
   pkgs,
-  gitUserName,
-  gitUserEmail,
+  config,
   ...
 }: let
+  git = config.iamkarasik.git;
+
   openCmd =
     if pkgs.stdenv.isDarwin
     then "open"
@@ -14,8 +15,8 @@ in {
 
     settings = {
       user = {
-        name = gitUserName;
-        email = gitUserEmail;
+        name = git.name;
+        email = git.email;
       };
 
       alias = {

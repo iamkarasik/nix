@@ -4,10 +4,10 @@
   ...
 }: {
   imports = [
-    ../../home-manager/common.nix
-    ../../home-manager/modules/NixOS/hyprland.nix
-    ../../home-manager/modules/NixOS/rofi.nix
-    ../../home-manager/modules/NixOS/waybar.nix
+    ../../modules/profiles/home.nix
+    ../../modules/home-manager/linux/hyprland.nix
+    ../../modules/home-manager/linux/rofi.nix
+    ../../modules/home-manager/linux/waybar.nix
   ];
 
   home.username = username;
