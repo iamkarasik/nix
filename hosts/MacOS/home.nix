@@ -13,8 +13,9 @@
   home.homeDirectory = "/Users/${username}";
 
   home.packages = with pkgs; [
-    spotify
     aerospace
+    spotify
+    pkgs.unstable.docker-client
     pkgs.unstable.colima
   ];
 
