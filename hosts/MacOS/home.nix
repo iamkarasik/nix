@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     spotify
     aerospace
+    pkgs.unstable.colima
   ];
 
   programs.desktoppr = {

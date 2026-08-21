@@ -5,11 +5,12 @@
 }: let
   git = config.iamkarasik.git;
 
-  openCmd =
-    if pkgs.stdenv.isDarwin
-    then "open"
-    else "xdg-open";
+  gitOpen =
+    pkgs.writeShellScriptBin "git-open"
+    (builtins.readFile ../../dotfiles/scripts/git-open.sh);
 in {
+  home.packages = [gitOpen];
+
   programs.git = {
     enable = true;
 
@@ -22,7 +23,6 @@ in {
       alias = {
         oops = "commit --amend --no-edit";
         url = "config get remote.origin.url";
-        open = "!sh -c '${openCmd} \"$(git config --get remote.origin.url)\"'";
       };
 
       worktree.guessRemote = true;
