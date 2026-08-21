@@ -37,5 +37,13 @@ in {
       type = lib.types.attrs;
       default = import ../../lib/themes/vscode.nix;
     };
+
+    apps = {
+      google-chrome.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Install Google Chrome.";
+      };
+    };
   };
 }

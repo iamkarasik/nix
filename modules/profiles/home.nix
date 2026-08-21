@@ -3,6 +3,7 @@
     ./personal.nix
 
     ../home-manager/alacritty.nix
+    ../home-manager/apps.nix
     ../home-manager/bat.nix
     ../home-manager/cli.nix
     ../home-manager/db.nix

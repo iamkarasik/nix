@@ -125,7 +125,6 @@ in {
     apple-cursor
     file # File command
     firefox
-    pkgs.unstable.google-chrome
     git
     kitty
     libnotify
