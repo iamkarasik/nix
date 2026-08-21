@@ -1,5 +1,8 @@
-import ./lib.nix
-// {
+{
+  rasi = c: "#${c}FF";
+  css = c: "#${c}";
+  hypr = c: a: "rgba(${c}${a})";
+
   bg = "1E2127";
   bgAlt = "282B31";
   fg = "E5E9F0";

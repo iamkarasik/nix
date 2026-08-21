@@ -35,7 +35,7 @@ in {
 
     theme = lib.mkOption {
       type = lib.types.attrs;
-      default = import ../../themes/vscode.nix;
+      default = import ../../lib/themes/vscode.nix;
     };
   };
 }

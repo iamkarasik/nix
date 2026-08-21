@@ -1,6 +1,9 @@
 # tokyonight-night (folke/tokyonight.nvim)
-import ./lib.nix
-// {
+{
+  rasi = c: "#${c}FF";
+  css = c: "#${c}";
+  hypr = c: a: "rgba(${c}${a})";
+
   bg = "1A1B26";
   bgAlt = "24283B";
   fg = "C0CAF5";
