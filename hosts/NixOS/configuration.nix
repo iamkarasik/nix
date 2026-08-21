@@ -11,6 +11,7 @@ in {
     ./nvidia.nix
     ./hardware-configuration.nix
     ../../modules/profiles/maintenance.nix
+    ../../modules/profiles/nixpkgs.nix
     ../../modules/nixos/services/audio.nix
     ../../modules/nixos/services/openssh.nix
     ../../modules/nixos/services/dnsmasq.nix

@@ -19,21 +19,9 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    unstable,
     nix-darwin,
-    home-manager,
     ...
-  }: let
-    overlays = [
-      (import ./overlays/unstable.nix {inherit unstable;})
-      (import ./overlays/iamkarasik.nix)
-    ];
-
-    nixpkgsConfig = {
-      nixpkgs.config.allowUnfree = true;
-      nixpkgs.overlays = overlays;
-    };
-  in {
+  }: {
     checks = {
       x86_64-linux.NixOS = self.nixosConfigurations.NixOS.config.system.build.toplevel;
       aarch64-darwin.MacOS = self.darwinConfigurations.MacOS.system;
@@ -50,7 +38,7 @@
         inherit inputs;
         username = "goose";
       };
-      modules = [nixpkgsConfig ./hosts/NixOS/configuration.nix];
+      modules = [./hosts/NixOS/configuration.nix];
     };
 
     darwinConfigurations.MacOS = nix-darwin.lib.darwinSystem {
@@ -59,7 +47,7 @@
         inherit inputs;
         username = "iamkarasik";
       };
-      modules = [nixpkgsConfig ./hosts/MacOS/configuration.nix];
+      modules = [./hosts/MacOS/configuration.nix];
     };
   };
 }

@@ -7,6 +7,7 @@
   imports = [
     inputs.home-manager.darwinModules.home-manager
     ../../modules/profiles/maintenance.nix
+    ../../modules/profiles/nixpkgs.nix
   ];
 
   home-manager.useGlobalPkgs = true;
