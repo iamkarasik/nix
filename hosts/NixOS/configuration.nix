@@ -1,21 +1,26 @@
 {
   pkgs,
   username,
+  inputs,
   ...
 }: let
   fonts = import ../../lib/fonts.nix;
 in {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./nvidia.nix
     ./hardware-configuration.nix
-
     ../../modules/profiles/maintenance.nix
-
     ../../modules/nixos/services/audio.nix
     ../../modules/nixos/services/openssh.nix
     ../../modules/nixos/services/dnsmasq.nix
     ../../modules/nixos/services/sddm.nix
   ];
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.${username} = ./home.nix;
+  home-manager.extraSpecialArgs = {inherit inputs username;};
 
   # Bootloader.
   boot.loader = {

@@ -1,17 +1,14 @@
 {
-  system,
-  lib,
   pkgs,
   config,
   ...
 }: let
-  isDarwin = lib.hasSuffix "darwin" system;
-  families = config.iamkarasik.fonts;
+  fonts = config.iamkarasik.fonts;
 in {
   programs.ghostty = {
     enable = true;
     package =
-      if isDarwin
+      if pkgs.stdenv.isDarwin
       then null
       else pkgs.ghostty;
     enableZshIntegration = true;
@@ -19,9 +16,9 @@ in {
       adjust-cell-width = "6%";
       adjust-cell-height = "15%";
 
-      font-family = families.mono;
+      font-family = fonts.mono;
       font-size =
-        if isDarwin
+        if pkgs.stdenv.isDarwin
         then 13.0
         else 10.0;
       font-thicken = true;

@@ -1,12 +1,18 @@
 {
   pkgs,
-  system,
   username,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.home-manager.darwinModules.home-manager
     ../../modules/profiles/maintenance.nix
   ];
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.${username} = ./home.nix;
+  home-manager.extraSpecialArgs = {inherit inputs username;};
 
   programs = {
     zsh.enable = true;
@@ -23,9 +29,6 @@
     jira-recent = ''acli jira workitem search --jql "assignee = currentUser() AND updated >= -7d ORDER BY updated DESC" --fields "key,summary,status,priority"'';
     jira-view = "acli jira workitem view";
   };
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = system;
 
   system.primaryUser = username;
 

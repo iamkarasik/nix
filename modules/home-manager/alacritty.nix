@@ -1,36 +1,26 @@
 {
-  system,
+  pkgs,
   config,
   ...
 }: let
-  families = config.iamkarasik.fonts;
+  fonts = config.iamkarasik.fonts;
 
-  fonts = {
-    "aarch64-darwin" = {
+  curFont =
+    if pkgs.stdenv.isDarwin
+    then {
       size = 13.0;
       x = 1;
       y = 1;
-    };
-    "x86_64-linux" = {
+    }
+    else {
       size = 10.0;
       x = 0;
       y = 1;
     };
-  };
-
-  term = {
-    "aarch64-darwin" = "xterm-256color";
-  };
-
-  curFont =
-    fonts.${
-      system
-    } or {
-      size = 12.0;
-      x = 0;
-      y = 0;
-    };
-  curTerm = term.${system} or "alacritty";
+  curTerm =
+    if pkgs.stdenv.isDarwin
+    then "xterm-256color"
+    else "alacritty";
 in {
   programs.alacritty = {
     enable = true;
@@ -59,15 +49,15 @@ in {
       };
       font = {
         normal = {
-          family = families.mono;
+          family = fonts.mono;
           style = "Regular";
         };
         bold = {
-          family = families.mono;
+          family = fonts.mono;
           style = "Bold";
         };
         italic = {
-          family = families.mono;
+          family = fonts.mono;
           style = "ThinItalic";
         };
         size = curFont.size;

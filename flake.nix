@@ -24,18 +24,6 @@
     home-manager,
     ...
   }: let
-    personalSettings = {
-      system = "x86_64-linux";
-      username = "goose";
-      homeModule = ./hosts/NixOS/home.nix;
-    };
-
-    workSettings = {
-      system = "aarch64-darwin";
-      username = "ilankarasik";
-      homeModule = ./hosts/MacOS/home.nix;
-    };
-
     overlays = [
       (import ./overlays/unstable.nix {inherit unstable;})
       (import ./overlays/iamkarasik.nix)
@@ -44,13 +32,6 @@
     nixpkgsConfig = {
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = overlays;
-    };
-
-    hmSystemModule = cfg: {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.users.${cfg.username} = cfg.homeModule;
-      home-manager.extraSpecialArgs = cfg // {inherit inputs;};
     };
   in {
     checks = {
@@ -64,25 +45,21 @@
     };
 
     nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
-      system = personalSettings.system;
-      specialArgs = personalSettings;
-      modules = [
-        nixpkgsConfig
-        ./hosts/NixOS/configuration.nix
-        home-manager.nixosModules.home-manager
-        (hmSystemModule personalSettings)
-      ];
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        username = "goose";
+      };
+      modules = [nixpkgsConfig ./hosts/NixOS/configuration.nix];
     };
 
     darwinConfigurations.MacOS = nix-darwin.lib.darwinSystem {
-      system = workSettings.system;
-      specialArgs = workSettings;
-      modules = [
-        nixpkgsConfig
-        ./hosts/MacOS/configuration.nix
-        home-manager.darwinModules.home-manager
-        (hmSystemModule workSettings)
-      ];
+      system = "aarch64-darwin";
+      specialArgs = {
+        inherit inputs;
+        username = "iamkarasik";
+      };
+      modules = [nixpkgsConfig ./hosts/MacOS/configuration.nix];
     };
   };
 }
