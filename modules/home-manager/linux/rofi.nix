@@ -1,10 +1,10 @@
 {
   pkgs,
-  config,
+  osConfig,
   ...
 }: let
-  fonts = config.iamkarasik.fonts;
-  theme = config.iamkarasik.theme;
+  fonts = osConfig.iamkarasik.fonts;
+  theme = osConfig.iamkarasik.theme;
 
   palette = {
     background = theme.rasi theme.bg;

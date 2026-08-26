@@ -1,10 +1,10 @@
 {
   lib,
   pkgs,
-  config,
+  osConfig,
   ...
 }: let
-  apps = config.iamkarasik.apps;
+  apps = osConfig.iamkarasik.apps;
 in {
   home.packages = lib.optional apps.google-chrome.enable pkgs.unstable.google-chrome;
 }

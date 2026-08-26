@@ -6,6 +6,7 @@
 }: {
   imports = [
     inputs.home-manager.darwinModules.home-manager
+    ../../modules/profiles/personal.nix
     ../../modules/profiles/maintenance.nix
     ../../modules/profiles/nixpkgs.nix
   ];

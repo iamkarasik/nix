@@ -1,9 +1,9 @@
 {
   pkgs,
-  config,
+  osConfig,
   ...
 }: let
-  fonts = config.iamkarasik.fonts;
+  fonts = osConfig.iamkarasik.fonts;
 in {
   programs.ghostty = {
     enable = true;

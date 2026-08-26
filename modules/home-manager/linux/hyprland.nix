@@ -1,11 +1,11 @@
 {
   pkgs,
-  config,
+  osConfig,
   ...
 }: let
-  fonts = config.iamkarasik.fonts;
-  theme = config.iamkarasik.theme;
-  wallpaper = config.iamkarasik.wallpaper;
+  fonts = osConfig.iamkarasik.fonts;
+  theme = osConfig.iamkarasik.theme;
+  wallpaper = osConfig.iamkarasik.wallpaper;
 
   terminal = "ghostty";
   fileManager = "thunar";

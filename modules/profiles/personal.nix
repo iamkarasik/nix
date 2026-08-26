@@ -1,16 +1,14 @@
-{lib, ...}: let
-  fonts = import ../../lib/fonts.nix;
-in {
+{lib, ...}: {
   options.iamkarasik = {
     fonts = {
       mono = lib.mkOption {
         type = lib.types.str;
-        default = fonts.mono;
+        default = "JetBrainsMono Nerd Font";
         description = "Monospace font family.";
       };
       sans = lib.mkOption {
         type = lib.types.str;
-        default = fonts.sans;
+        default = "Inter Nerd Font";
         description = "Sans-serif font family.";
       };
     };

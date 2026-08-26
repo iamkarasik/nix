@@ -1,9 +1,9 @@
 {
   pkgs,
-  config,
+  osConfig,
   ...
 }: let
-  git = config.iamkarasik.git;
+  git = osConfig.iamkarasik.git;
 
   gitOpen =
     pkgs.writeShellScriptBin "git-open"

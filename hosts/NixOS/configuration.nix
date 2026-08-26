@@ -1,13 +1,13 @@
 {
   pkgs,
+  config,
   username,
   inputs,
   ...
-}: let
-  fonts = import ../../lib/fonts.nix;
-in {
+}: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ../../modules/profiles/personal.nix
     ./nvidia.nix
     ./hardware-configuration.nix
     ../../modules/profiles/maintenance.nix
@@ -110,8 +110,8 @@ in {
     };
 
     defaultFonts = {
-      monospace = [fonts.mono];
-      sansSerif = [fonts.sans];
+      monospace = [config.iamkarasik.fonts.mono];
+      sansSerif = [config.iamkarasik.fonts.sans];
       serif = ["Noto Serif"];
     };
   };

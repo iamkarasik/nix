@@ -1,7 +1,7 @@
 {
   pkgs,
   username,
-  config,
+  osConfig,
   ...
 }: {
   imports = [
@@ -21,7 +21,7 @@
 
   programs.desktoppr = {
     enable = true;
-    settings.picture = "${config.iamkarasik.wallpaper}";
+    settings.picture = "${osConfig.iamkarasik.wallpaper}";
   };
 
   home.enableNixpkgsReleaseCheck = false;

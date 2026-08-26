@@ -1,7 +1,5 @@
 {...}: {
   imports = [
-    ./personal.nix
-
     ../home-manager/alacritty.nix
     ../home-manager/apps.nix
     ../home-manager/bat.nix
