@@ -3,5 +3,5 @@ require("toggleterm").setup({
 	direction = "float", -- 'vertical' | 'horizontal' | 'tab' | 'float'
 })
 
-vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<CR>", { desc = "Terminal: Toggle Floating" })
-vim.keymap.set("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", { desc = "Terminal: Toggle Horizontal" })
+vim.keymap.set("n", "<leader>Tf", ":ToggleTerm direction=float<CR>", { desc = "Terminal: Toggle Floating" })
+vim.keymap.set("n", "<leader>Th", ":ToggleTerm direction=horizontal<CR>", { desc = "Terminal: Toggle Horizontal" })

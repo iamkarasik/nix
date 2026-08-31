@@ -77,7 +77,7 @@ in {
       luafile ${../../dotfiles/nvim/lua/plugins/colorizer.lua}
       luafile ${../../dotfiles/nvim/lua/plugins/rainbow-delimiters.lua}
       luafile ${../../dotfiles/nvim/lua/plugins/dap.lua}
-      luafile ${../../dotfiles/nvim/lua/plugins/neotest.lua}
+      luafile ${../../dotfiles/nvim/lua/plugins/vim-test.lua}
 
       luafile ${../../dotfiles/nvim/lua/plugins/kline.lua}
       lua require("themes")
@@ -137,9 +137,7 @@ in {
       nvim-jdtls
 
       # Testing
-      neotest
-      neotest-java
-      neotest-golang
+      vim-test
     ];
   };
 

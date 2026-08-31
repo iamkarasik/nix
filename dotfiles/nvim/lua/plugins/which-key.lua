@@ -15,6 +15,7 @@ wk.add({
 	{ "<leader>h", group = "Hunk" },
 	{ "<leader>m", group = "Format" },
 	{ "<leader>r", group = "Refactor" },
-	{ "<leader>t", group = "Test / Terminal" },
+	{ "<leader>t", group = "Test" },
+	{ "<leader>T", group = "Terminal" },
 	{ "<leader>v", group = "Toggle" },
 })
