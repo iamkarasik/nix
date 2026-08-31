@@ -1,7 +1,13 @@
-local vim = vim
 local dap = require("dap")
 local ui = require("dapui")
 ui.setup({})
+
+local function get_args(config)
+	local args_string = vim.fn.input("Arguments: ")
+	config = vim.deepcopy(config)
+	config.args = vim.list_extend(config.args or {}, vim.split(args_string, " +"))
+	return config
+end
 
 require("dap-go").setup({
 	dap_configurations = {
@@ -74,7 +80,7 @@ vim.keymap.set("n", "<leader>dc", function()
 	require("dap").continue()
 end, { desc = "Debug: Run/Continue" })
 vim.keymap.set("n", "<leader>da", function()
-	require("dap").continue({ before = get_args })
+	dap.continue({ before = get_args })
 end, { desc = "Debug: Run with Args" })
 vim.keymap.set("n", "<leader>dC", function()
 	require("dap").run_to_cursor()

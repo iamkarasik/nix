@@ -24,7 +24,7 @@ in {
 
   xdg.configFile = {
     "nvim/ftplugin/java/lombok.jar".source = "${pkgs.lombok}/share/java/lombok.jar";
-    "nvim/ftplugin/java/com.microsoft.java.debug.plugin-${jd.pluginVersion}.jar".source = "${jd}/share/java/com.microsoft.java.debug.plugin-${jd.pluginVersion}.jar";
+    "nvim/ftplugin/java/java-debug.jar".source = "${jd}/share/java/com.microsoft.java.debug.plugin-${jd.pluginVersion}.jar";
     "nvim/ftplugin/java/junit-console.jar".source = "${junit-console}";
   };
 }

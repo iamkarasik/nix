@@ -31,24 +31,24 @@ return {
 		vim.b[bufnr].completion = false
 
 		local function organize_imports()
-			local params = vim.lsp.util.make_range_params(0, "utf-8")
+			local encoding = client.offset_encoding or "utf-16"
+			local params = vim.lsp.util.make_range_params(0, encoding)
 			params.context = { only = { "source.organizeImports" }, diagnostics = {} }
 			local results = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, 1000)
 			for _, r in pairs(results or {}) do
 				for _, a in pairs(r.result or {}) do
 					if a.edit then
-						vim.lsp.util.apply_workspace_edit(a.edit, "utf-8")
+						vim.lsp.util.apply_workspace_edit(a.edit, encoding)
 					end
 				end
 			end
-			return false
 		end
 
 		local group = vim.api.nvim_create_augroup("GoplsFormat_" .. bufnr, { clear = true })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = group,
 			buffer = bufnr,
-			callback = function(_)
+			callback = function()
 				organize_imports()
 				vim.lsp.buf.format({ async = false })
 			end,
