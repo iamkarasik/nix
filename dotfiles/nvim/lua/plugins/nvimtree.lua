@@ -107,18 +107,13 @@ require("nvim-tree").setup({
 	filters = {
 		git_ignored = false,
 		dotfiles = false,
-		custom = {
-			"^.git$",
-		},
 	},
 
 	on_attach = my_on_attach,
 })
 
-vim.keymap.set("n", "<leader><Tab>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<c-e>", "<Esc>:NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ec", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Explorer: toggle" })
+vim.keymap.set("n", "<leader>ec", ":NvimTreeFocus<CR>", { noremap = true, silent = true, desc = "Explorer: focus" })
 
 vim.api.nvim_create_autocmd("QuitPre", {
 	callback = function()

@@ -1,5 +1,5 @@
 require("colorizer").setup({
-	filetypes = { "lua", "css", "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	filetypes = { "css", "html", "javascriptreact", "typescriptreact" },
 	user_default_options = {
 		names = true, -- "Name" codes like Blue or red.  Added from `vim.api.nvim_get_color_map()`
 		names_opts = { -- options for mutating/filtering names.

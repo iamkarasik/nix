@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 M.get = function()
     local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })

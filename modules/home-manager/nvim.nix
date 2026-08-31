@@ -109,6 +109,7 @@ in {
       toggleterm-nvim
 
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-textobjects
       nvim-ts-autotag
       nvim-autopairs
       vim-surround
