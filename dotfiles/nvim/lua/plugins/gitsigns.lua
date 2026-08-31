@@ -1,12 +1,5 @@
 require("gitsigns").setup({
 	numhl = false,
-	current_line_blame_opts = {
-		virt_text = true,
-		virt_text_pos = "overlay", -- 'eol' | 'overlay' | 'right_align'
-		delay = 1000,
-		ignore_whitespace = false,
-		virt_text_priority = 100,
-	},
 	on_attach = function(bufnr)
 		local gitsigns = require("gitsigns")
 
@@ -33,17 +26,17 @@ require("gitsigns").setup({
 			end
 		end)
 
-		map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Git: reset hunk" })
-		map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Git: reset buffer" })
+		map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Git: reset hunk" })
+		map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "Git: reset buffer" })
 
-		map("v", "<leader>hr", function()
+		map("v", "<leader>gr", function()
 			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 		end, { desc = "Git: reset hunk" })
 
-		map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Git: preview hunk" })
-		map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Git: preview hunk inline" })
+		map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Git: preview hunk" })
+		map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Git: preview hunk inline" })
 
-		map("n", "<leader>hb", function()
+		map("n", "<leader>gb", function()
 			gitsigns.blame_line({ full = false })
 		end, { desc = "Git: blame line" })
 	end,

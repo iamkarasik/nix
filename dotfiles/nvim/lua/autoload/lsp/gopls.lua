@@ -44,7 +44,9 @@ return {
 			return false
 		end
 
+		local group = vim.api.nvim_create_augroup("GoplsFormat_" .. bufnr, { clear = true })
 		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = group,
 			buffer = bufnr,
 			callback = function(_)
 				organize_imports()

@@ -139,7 +139,7 @@ in {
       # Testing
       neotest
       neotest-java
-      neotest-go
+      neotest-golang
     ];
   };
 

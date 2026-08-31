@@ -3,12 +3,12 @@ local neotest = require("neotest")
 neotest.setup({
 	adapters = {
 		require("neotest-java")({
-			junit_jar = nil,
+			junit_jar = vim.fn.stdpath("config") .. "/ftplugin/java/junit-console.jar",
 			incremental_build = true,
 			dap = { justMyCode = false },
 		}),
-		require("neotest-go")({
-			dap = { justMyCode = false },
+		require("neotest-golang")({
+			dap_go_enabled = true,
 		}),
 	},
 })
