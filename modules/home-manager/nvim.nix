@@ -58,6 +58,7 @@ in {
       luafile ${../../dotfiles/nvim/lua/core/settings.lua}
       luafile ${../../dotfiles/nvim/lua/core/keymaps.lua}
       luafile ${../../dotfiles/nvim/lua/core/lsp.lua}
+      luafile ${../../dotfiles/nvim/lua/core/skeletons.lua}
 
       luafile ${../../dotfiles/nvim/lua/plugins/bufferline.lua}
       luafile ${../../dotfiles/nvim/lua/plugins/which-key.lua}
@@ -148,5 +149,6 @@ in {
 
   xdg.configFile = {
     "nvim/snippets".source = ../../dotfiles/nvim/snippets;
+    "nvim/templates".source = ../../dotfiles/nvim/templates;
   };
 }

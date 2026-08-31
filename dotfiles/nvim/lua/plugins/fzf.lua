@@ -1,5 +1,8 @@
 local fzf = require("fzf-lua")
-fzf.register_ui_select({ prompt = "> " })
+fzf.register_ui_select(function(ui_opts, _)
+	local prompt = ui_opts.prompt and ui_opts.prompt:gsub("[:%s]+$", "") or "Select"
+	return { prompt = prompt .. "> " }
+end)
 
 fzf.setup({
 	defaults = {
