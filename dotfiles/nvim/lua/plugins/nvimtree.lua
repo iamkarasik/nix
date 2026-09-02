@@ -112,6 +112,7 @@ require("nvim-tree").setup({
 	on_attach = my_on_attach,
 })
 
+vim.keymap.set("n", "<leader><Tab>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Explorer: toggle" })
 vim.keymap.set("n", "<leader>ec", ":NvimTreeFocus<CR>", { noremap = true, silent = true, desc = "Explorer: focus" })
 
