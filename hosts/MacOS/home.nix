@@ -7,6 +7,7 @@
   imports = [
     ../../modules/profiles/home.nix
     ../../modules/home-manager/darwin/aerospace.nix
+    ../../modules/home-manager/darwin/caffeinate.nix
   ];
 
   home.username = username;
