@@ -138,6 +138,8 @@
     xfce.thunar
     gnome-calculator
 
+    solaar # For Logitech Mouse Charge %
+
     deluge
 
     # Wayland screenshot
